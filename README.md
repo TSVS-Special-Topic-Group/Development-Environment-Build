@@ -2,6 +2,8 @@
 用於統一且紀錄開發環境的儲存庫，會紀錄過去所有相關套件與工具，主要分成Python與Atom的工具。
 
 # Atom Packages
+[Atom相關套件統整網站](https://atomlinter.github.io/)
+
 ## Code Debugger and Tool
 ### Atom IDE
 - [atom-ide-ui](https://atom.io/packages/atom-ide-ui):IDE界面整合器，讓不同的套件可以在這上面使用，由Facebook與GitHub合作開發，FB已經將儲存庫。
