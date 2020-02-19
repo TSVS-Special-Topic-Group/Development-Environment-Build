@@ -1,5 +1,9 @@
+sudo apt-get update -y
+sudo apt-get install python3.6 python3.6-dev python3-pip -y
+sudo apt-get upgrade -y
 pip install -r requirements.txt --upgrade
 
+apm install linter
 apm install linter-pylint
 apm install python-linters
 apm install linter-pycodestyle
