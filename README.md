@@ -50,21 +50,30 @@
 - [linter-ui-default](https://atom.io/packages/linter-ui-default)
 
 ## Other
+### PLC
+[language-structured-text](https://atom.io/packages/language-structured-text):PLC程式語法套件。  
+
+### Gettext
+[language-text](https://atom.io/packages/language-text):  
+[language-structured-text](https://atom.io/packages/language-structured-text):  
+[language-as-structured-text](https://atom.io/packages/language-as-structured-text):  
+
 ### Markdown
-- [pdf-view](https://atom.io/packages/pdf-view)
-- [markdown-toc](https://atom.io/packages/markdown-toc)
-- [markdown-preview-enhanced](https://atom.io/packages/markdown-preview-enhanced)
+- [pdf-view](https://atom.io/packages/pdf-view):檢視PDF檔案的套件，基本上不用設定即可使用。
+- [markdown-toc](https://atom.io/packages/markdown-toc):製作目錄的工具，當建立成功後在存檔時會自動更新，但目前有一些Buy存在，當編輯的頁面關起或換到其他Markdown文件時，新增目錄的動作會在就頁面使用，會被鎖定在以更換的頁面中持續新增，必須重新開啟才可解決。
+- [markdown-preview-enhanced](https://atom.io/packages/markdown-preview-enhanced):功能最強大的markdown套件，包括跟蹤滾動頁面、內建PDF轉換程式、照片貼上、照片上傳處理等，為內建套件`markdown-preview`的更強大套件，預設上會將內建的停用，並且刪除雙空白`  `換行，頁面以高亮風格為預設，不過可以自行設定使用Atom的Dock風格。
 - [markdown-table-editor](https://atom.io/packages/markdown-table-editor)
 - [insert-timestamp](https://atom.io/packages/insert-timestamp):
 - [markdown-image-insert](https://atom.io/packages/markdown-image-insert)
 - [markdown-image-insertion](https://atom.io/packages/markdown-image-insertion)
-- [Markdown-pdf](https://atom.io/packages/markdown-pdf):讓Mark-down可以輸出為pdf藉此輸出。
+- [markdown-pdf](https://atom.io/packages/markdown-pdf):讓Mark-down可以輸出為pdf藉此輸出，但輸出後不會將照片嵌入，不是很好用。
+- [markdown-image-assistant](https://atom.io/packages/markdown-image-assistant):一個很好用的照片貼上套件，可以將照片拖曳到指定的欄位，使用`Ctrl + Shift + V`的快捷鍵，不影響原始的複製貼上快捷鍵。
 
 ### Python
 - [Hydrogen](https://atom.io/packages/Hydrogen):使用此可以在編輯Python時像Jupyter一樣編輯後馬上可以看到程式執行結果，此套件不需要相依[atom-ide-ui](https://atom.io/packages/atom-ide-ui)與[linter](https://atom.io/packages/linter)。
-- [kite](https://atom.io/packages/kite)
+- [kite](https://atom.io/packages/kite):
 - [autocomplete-python](https://atom.io/packages/autocomplete-python):Python變數、函式、模組、套件、除錯、自動輸入，使用Jedi與Kite技術作為支援，也是Kite官網在Atom上所指定與承認的套件，因此套件不需要相依[atom-ide-ui](https://atom.io/packages/atom-ide-ui)與[linter](https://atom.io/packages/linter)。
-
+- [python-linters](https://atom.io/packages/python-linters):Python的自動化檢查程式，可以取代[linter](https://atom.io/packages/linter)一系列的功能，未實際測試使用，還需要測試使用。
 - [busy-signal](https://atom.io/packages/busy-signal):顯示其他套件是否執行忙碌。
 <br>![](https://i.github-camo.com/8047fa31b60040277ec30c2757e44bfdab973d52/68747470733a2f2f636c6f75642e67697468756275736572636f6e74656e742e636f6d2f6173736574732f343237383131332f32323836353533362f30613132333037342d663138382d313165362d386336652d3338353734613666653134632e676966)
 - [cht-menu](https://atom.io/packages/cht-menu):讓Atom顯示繁體中文介面。
