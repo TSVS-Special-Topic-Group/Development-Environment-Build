@@ -43,7 +43,7 @@
 ## linter
 - [linter-flake8](https://atom.io/packages/linter-flake8)
 - [linter-js-yaml](https://atom.io/packages/linter-js-yaml)
-- [linter-mypy](https://atom.io/packages/linter-mypy)
+- [linter-mypy](https://atom.io/packages/linter-mypy):相依linter，使用Mypy的靜態檢查，還不清楚一些問題檢查結果。
 - [linter-pycodestyle](https://atom.io/packages/linter-pycodestyle)
 - [linter-pylama](https://atom.io/packages/linter-pylama)
 - [linter-pylint](https://atom.io/packages/linter-pylint)
@@ -73,7 +73,7 @@
 - [Hydrogen](https://atom.io/packages/Hydrogen):使用此可以在編輯Python時像Jupyter一樣編輯後馬上可以看到程式執行結果，此套件不需要相依[atom-ide-ui](https://atom.io/packages/atom-ide-ui)與[linter](https://atom.io/packages/linter)。
 - [kite](https://atom.io/packages/kite):
 - [autocomplete-python](https://atom.io/packages/autocomplete-python):Python變數、函式、模組、套件、除錯、自動輸入，使用Jedi與Kite技術作為支援，也是Kite官網在Atom上所指定與承認的套件，因此套件不需要相依[atom-ide-ui](https://atom.io/packages/atom-ide-ui)與[linter](https://atom.io/packages/linter)。
-- [python-linters](https://atom.io/packages/python-linters):Python的自動化檢查程式，可以取代[linter](https://atom.io/packages/linter)一系列的功能，未實際測試使用，還需要測試使用。
+- [python-linters](https://atom.io/packages/python-linters):Python的自動化檢查程式，可以取代[linter](https://atom.io/packages/linter)一系列套件，未實際測試使用，還需要測試是否相依[linter](https://atom.io/packages/linter)。
 - [busy-signal](https://atom.io/packages/busy-signal):顯示其他套件是否執行忙碌。
 <br>![](https://i.github-camo.com/8047fa31b60040277ec30c2757e44bfdab973d52/68747470733a2f2f636c6f75642e67697468756275736572636f6e74656e742e636f6d2f6173736574732f343237383131332f32323836353533362f30613132333037342d663138382d313165362d386336652d3338353734613666653134632e676966)
 - [cht-menu](https://atom.io/packages/cht-menu):讓Atom顯示繁體中文介面。
