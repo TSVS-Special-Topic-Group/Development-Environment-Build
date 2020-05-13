@@ -8,7 +8,6 @@ add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(
 apt-get update -y
 apt-get install docker-ce docker-ce-cli containerd.io -y
 apt-cache madison docker-ce
-docker run hello-world
 
 # 設定一般權限
 groupadd docker
@@ -18,3 +17,6 @@ docker run hello-world
 
 # docker開機自動啟動
 systemctl enable docker
+
+# 測試Hello World
+docker run hello-world
