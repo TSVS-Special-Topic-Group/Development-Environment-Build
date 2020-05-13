@@ -35,6 +35,6 @@ apm install markdown-image-insertion
 apm install markdown-image-assistant
 
 # Atom套件權限設定
-chown -R timmy:timmy ~/.atom
+chown -R $USER:$USER ~/.atom
 
 sh Docker.sh
