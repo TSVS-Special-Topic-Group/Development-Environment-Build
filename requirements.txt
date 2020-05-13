@@ -36,3 +36,6 @@ pylama
 pylama-pylint
 mypy
 typed-ast
+GitPython
+dulwich
+eel
