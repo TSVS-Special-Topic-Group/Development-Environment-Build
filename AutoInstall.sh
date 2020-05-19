@@ -6,6 +6,9 @@ apt-get upgrade -y
 # Python套件安裝
 python3 -m pip install -r requirements.txt --upgrade
 
+# Atom套件權限設定
+chown -R $USER:$USER ~/.atom
+
 # Python檢查套件
 apm install linter
 apm install linter-ui-default
@@ -34,7 +37,3 @@ apm install insert-timestamp
 apm install markdown-image-insertion
 apm install markdown-image-assistant
 
-# Atom套件權限設定
-chown -R $USER:$USER ~/.atom
-
-sh Docker.sh
