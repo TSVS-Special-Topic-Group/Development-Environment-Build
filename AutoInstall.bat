@@ -1,12 +1,21 @@
 pip install -r requirements.txt --upgrade
 
-apm install linter-pylint
+apm install linter
+apm install linter-ui-default
+apm install intentions
 apm install python-linters
-apm install linter-pycodestyle
-apm install linter-pydocstyle
-apm install linter-flake8
-apm install linter-pylama
-apm install linter-mypy
-apm install linter-vhdl
-apm install linter-travis-lint
-apm install linter-js-yaml
+
+apm install Hydrogen
+apm install kite
+apm install autocomplete-python
+
+apm install cht-menu
+
+apm install busy-signal
+
+apm install pdf-view
+apm install markdown-preview-enhanced
+apm install markdown-table-editor
+apm install insert-timestamp
+apm install markdown-image-insertion
+apm install markdown-image-assistant
