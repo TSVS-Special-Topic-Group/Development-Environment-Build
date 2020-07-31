@@ -75,10 +75,13 @@
 - [autocomplete-python](https://atom.io/packages/autocomplete-python):Python變數、函式、模組、套件、除錯、自動輸入，使用Jedi與Kite技術作為支援，也是Kite官網在Atom上所指定與承認的套件，因此套件不需要相依[atom-ide-ui](https://atom.io/packages/atom-ide-ui)與[linter](https://atom.io/packages/linter)。
 - [python-linters](https://atom.io/packages/python-linters):Python的自動化檢查程式，可以取代[linter](https://atom.io/packages/linter)一系列套件，相當不錯，但不可與其他linter其他檢查套件共存使用，會出現錯誤訊息，相依[linter](https://atom.io/packages/linter)。
 - [busy-signal](https://atom.io/packages/busy-signal):顯示其他套件是否執行忙碌。
+
 <br>![](https://i.github-camo.com/8047fa31b60040277ec30c2757e44bfdab973d52/68747470733a2f2f636c6f75642e67697468756275736572636f6e74656e742e636f6d2f6173736574732f343237383131332f32323836353533362f30613132333037342d663138382d313165362d386336652d3338353734613666653134632e676966)
+
 - [cht-menu](https://atom.io/packages/cht-menu):讓Atom顯示繁體中文介面。
 - [intentions](https://atom.io/packages/intentions):將色碼顏色顯示在色碼下方。
 
 - [teletype](https://atom.io/packages/teletype):允許開發人員與團隊成員共享他們的工作區，並同時協作代碼。
+
 <br>
 ![](https://i.github-camo.com/adc3202a16c58d99323771f9bea103467fcafb22/68747470733a2f2f757365722d696d616765732e67697468756275736572636f6e74656e742e636f6d2f323938382f33323735333136372d64373831626166302d633839392d313165372d386236342d3638336162383464336138632e676966)
