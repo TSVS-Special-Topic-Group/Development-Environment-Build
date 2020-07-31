@@ -13,10 +13,7 @@ chown -R $USER:$USER ~/.atom
 apm install linter
 apm install linter-ui-default
 apm install intentions
-apm install linter-pylint
-apm install linter-pycodestyle
-apm install linter-pydocstyle
-apm install linter-flake8
+apm install python-linters
 
 # Atom Python自動填寫
 apm install Hydrogen
@@ -36,4 +33,3 @@ apm install markdown-table-editor
 apm install insert-timestamp
 apm install markdown-image-insertion
 apm install markdown-image-assistant
-
