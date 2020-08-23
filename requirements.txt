@@ -39,3 +39,5 @@ typed-ast
 GitPython
 dulwich
 eel
+spyder
+
