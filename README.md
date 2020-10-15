@@ -83,5 +83,6 @@
 
 - [teletype](https://atom.io/packages/teletype):允許開發人員與團隊成員共享他們的工作區，並同時協作代碼。
 
-<br>
-![](https://i.github-camo.com/adc3202a16c58d99323771f9bea103467fcafb22/68747470733a2f2f757365722d696d616765732e67697468756275736572636f6e74656e742e636f6d2f323938382f33323735333136372d64373831626166302d633839392d313165372d386236342d3638336162383464336138632e676966)
+# Verilog
+- [linter-veriloghdl](https://atom.io/packages/linter-veriloghdl)
+- [verilog-tools](https://atom.io/packages/verilog-tools)
