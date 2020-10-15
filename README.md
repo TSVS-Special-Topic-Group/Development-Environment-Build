@@ -68,6 +68,7 @@
 #### linter for VHDL and Verilog
 - [linter-veriloghdl](https://atom.io/packages/linter-veriloghdl):相依Icarus Verilog、Slang與Verilator，可以選擇其中之一。
 - [linter-vhdl](https://atom.io/packages/linter-vhdl):相依GHDL，需要安裝GHDL，目前GHDL相依於Ubuntu 14.04 TLS，如要安裝在Ubuntu 18.04要自己安裝函式庫。
+- [linter-quartus](https://atom.io/packages/linter-quartus):可以使用繞過Quartus通過ModelSim驗證與模擬電路，目前還不知道怎麼使用。
 
 ## Other
 其他通常代表可以不用相依某些套件就可以使用，可能是語言支援，例如顏色標記語法、自動填入等功能。
