@@ -40,4 +40,4 @@ GitPython
 dulwich
 eel
 spyder
-
+pyverilog
