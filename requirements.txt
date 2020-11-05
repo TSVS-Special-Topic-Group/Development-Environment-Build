@@ -41,3 +41,4 @@ dulwich
 eel
 spyder
 pyverilog
+youtube_dl
