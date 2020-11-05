@@ -26,11 +26,6 @@ before_script:
   - virtualenv venv
   - source venv/bin/activate
 
-atom:
+AutoInstall:
   script:
-    - apt-get install atom -y
     - sh AutoInstall.sh
-
-ffmpeg:
-  script:
-    - apt-get install ffmpeg -y
