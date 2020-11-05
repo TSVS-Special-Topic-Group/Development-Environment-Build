@@ -83,8 +83,8 @@
 
 ### Markdown
 - [pdf-view](https://atom.io/packages/pdf-view):檢視PDF檔案的套件，基本上不用設定即可使用。
-- [markdown-toc](https://atom.io/packages/markdown-toc):製作目錄的工具，當建立成功後在存檔時會自動更新，但目前有一些Buy存在，當編輯的頁面關起或換到其他Markdown文件時，新增目錄的動作會在就頁面使用，會被鎖定在以更換的頁面中持續新增，必須重新開啟才可解決。
-- [markdown-preview-enhanced](https://atom.io/packages/markdown-preview-enhanced):功能最強大的markdown套件，包括跟蹤滾動頁面、內建PDF轉換程式、照片貼上、照片上傳處理等，為內建套件`markdown-preview`的更強大套件，預設上會將內建的停用，並且刪除雙空白`  `換行，頁面以高亮風格為預設，不過可以自行設定使用Atom的Dock風格。還內建`markdown-toc`的功能並且錯誤問題較少。
+- [markdown-toc](https://atom.io/packages/markdown-toc):製作目錄的工具，當建立成功後在存檔時會自動更新，但目前有一些Buy存在，當編輯的頁面關起或換到其他Markdown文件時，新增目錄的動作會在就頁面使用，會被鎖定在以更換的頁面中持續新增，必須重新開啟才可解決，目前都統一使用[markdown-preview-enhanced](https://atom.io/packages/markdown-preview-enhanced)套件。
+- [markdown-preview-enhanced](https://atom.io/packages/markdown-preview-enhanced):功能最強大的markdown套件，包括跟蹤滾動頁面、內建PDF轉換程式、照片貼上、照片上傳處理等，為內建套件`markdown-preview`的更強大套件，預設上會將內建的停用，並且刪除雙空白`  `換行，頁面以高亮風格為預設，不過可以自行設定使用Atom的Dock風格。內建`markdown-toc`的功能並且錯誤問題較少。
 - [markdown-table-editor](https://atom.io/packages/markdown-table-editor):製作表格工具，快速有效率。
 - [insert-timestamp](https://atom.io/packages/insert-timestamp):時間戳製作功能，寫部落格式很棒的工具。
 - [markdown-image-insert](https://atom.io/packages/markdown-image-insert):大陸人製作，雖然不會與照片衝突，但有一些小問題。
@@ -110,3 +110,9 @@
 - [busy-signal](https://atom.io/packages/busy-signal):顯示其他套件是否執行忙碌。
 
 <br>![](https://i.github-camo.com/8047fa31b60040277ec30c2757e44bfdab973d52/68747470733a2f2f636c6f75642e67697468756275736572636f6e74656e742e636f6d2f6173736574732f343237383131332f32323836353533362f30613132333037342d663138382d313165362d386336652d3338353734613666653134632e676966)
+
+# Atom套件權限設定
+
+```
+chown -R $USER:$USER ~/.atom
+```
