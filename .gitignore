@@ -5,6 +5,13 @@ __mmdb__/
 *.mp3
 *.vob
 
+# 忽略Kite安裝檔案
+kite-installer
+
+# 忽略安裝時會下載的目錄與檔案
+slang/
+dulwich/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -109,3 +116,10 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+
+# slang
+.vs/
+build/
+tests/regression/
+compile_commands.json
+CMakeSettings.json
