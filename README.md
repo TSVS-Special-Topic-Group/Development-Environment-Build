@@ -23,6 +23,11 @@
     - [Python](#python)
     - [Verilog and VHDL](#verilog-and-vhdl)
     - [Tool](#tool)
+- [Atom套件權限設定](#atom套件權限設定)
+- [Docker](#docker)
+  - [設定一般權限](#設定一般權限)
+  - [docker開機自動啟動](#docker開機自動啟動)
+  - [測試Hello World](#測試hello-world)
 
 <!-- /code_chunk_output -->
 
@@ -115,4 +120,21 @@
 
 ```
 chown -R $USER:$USER ~/.atom
+```
+
+# Docker
+## 設定一般權限
+```
+sudo groupadd docker
+sudo usermod -aG docker $USER
+```
+
+## docker開機自動啟動
+```
+sudo systemctl enable docker
+```
+
+## 測試Hello World
+```
+docker run hello-world
 ```
