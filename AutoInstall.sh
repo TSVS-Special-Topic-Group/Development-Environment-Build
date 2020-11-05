@@ -27,7 +27,7 @@ sudo python3 -m pip install -r requirements.txt --upgrade
 # 安裝Dulwich
 git clone https://github.com/dulwich/dulwich.git
 cd dulwich/
-python setup.py --pure install
+sudo python3 setup.py --pure install
 cd ..
 
 # Atom UI
