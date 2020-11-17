@@ -7,6 +7,10 @@
 - [開發環境建構](https://github.com/TSVS-Special-Topic-Group/Development-Environment-Build)
 - [Atom 套件推薦](https://github.com/we684123/Atom_packages/tree/8663ebefbbcaf7003b6806314be70cc751cc7773)
 
+給Windows開發環境安裝的壓縮檔，但很久沒有更新了：
+
+- [AutoInstall.zip](https://drive.google.com/file/d/1ezvU8E0IVuq9n1EmXH5jg-6q0FK1Ko_C)
+
 # 目錄
 
 <!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=6 orderedList=false} -->
