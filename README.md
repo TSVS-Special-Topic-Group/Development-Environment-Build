@@ -108,6 +108,11 @@
 - [verilog-tools](https://atom.io/packages/verilog-tools):看不出來怎麼使用，好像是自動化相關的程式。
 - [lancelot-language-hdl](https://atom.io/packages/lancelot-language-hdl):nand2tetris課程的HDL的程式碼語法標記和現有晶片摘要，還是不懂這是要做什麼。
 
+### reStructuredText
+- [rst-preview-pandoc](https://atom.io/packages/rst-preview-pandoc)
+- [atom-rst-preview-docutils](https://atom.io/packages/atom-rst-preview-docutils)
+- [language-restructuredtext](https://atom.io/packages/language-restructuredtext)
+
 ### Tool
 - [cht-menu](https://atom.io/packages/cht-menu):讓Atom顯示繁體中文介面。
 - [intentions](https://atom.io/packages/intentions):將色碼顏色顯示在色碼下方。
