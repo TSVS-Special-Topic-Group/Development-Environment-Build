@@ -22,9 +22,15 @@ before_script:
   - apt-get update -yq
   - apt-get upgrade -y
   - python -V  # Print out python version for debugging
-  - pip install -r requirements.txt
+  - python -V  # Print out python version for debugging
+
+  # 安裝虛擬環境
+  - pip install virtualenv
   - virtualenv venv
   - source venv/bin/activate
+
+  # 相依性佈署
+  - pip install -r requirements.txt -U
 
 AutoInstall:
   script:
