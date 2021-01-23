@@ -129,7 +129,7 @@
 - [teletype](https://atom.io/packages/teletype):允許開發人員與團隊成員共享他們的工作區，並同時協作代碼。
 - [busy-signal](https://atom.io/packages/busy-signal):顯示其他套件是否執行忙碌。
 
-<br>![](https://i.github-camo.com/8047fa31b60040277ec30c2757e44bfdab973d52/68747470733a2f2f636c6f75642e67697468756275736572636f6e74656e742e636f6d2f6173736574732f343237383131332f32323836353533362f30613132333037342d663138382d313165362d386336652d3338353734613666653134632e676966)
+<br>![](https://cloud.githubusercontent.com/assets/4278113/22865536/0a123074-f188-11e6-8c6e-38574a6fe14c.gif)
 
 # Atom套件權限設定
 
