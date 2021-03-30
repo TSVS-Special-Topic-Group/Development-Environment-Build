@@ -12,16 +12,6 @@
 - [AutoInstall.zip](https://drive.google.com/file/d/1ezvU8E0IVuq9n1EmXH5jg-6q0FK1Ko_C)
 
 # 目錄
-
-<!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=6 orderedList=false} -->
-<!-- code_chunk_output -->
-
-- [目錄](#目錄)
-- [目錄](#目錄-1)
-
-<!-- /code_chunk_output -->
-
-# 目錄
 - [首頁](README.md)
   - [Atom套件](docs/Atom-Packages.md)
   - [開發環境建置](Development-Environment-Build.md)
