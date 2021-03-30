@@ -43,7 +43,6 @@ spyder
 pyverilog
 youtube_dl
 mkdocs
-
 astroid
 certifi
 chardet
