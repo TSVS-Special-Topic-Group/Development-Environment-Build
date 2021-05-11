@@ -1,9 +1,12 @@
 # 系統更新與升級
 sudo apt-get update -y
+sudo apt update -y
 sudo apt-get install python3 python3-dev python3-pip -y -f
 sudo apt-get install git ffmpeg libxss1 xdg-utils -y -f
-sudo apt install iverilog verilator cmake -y -f
+sudo apt-get install cmake -y -f
+sudo apt install iverilog verilator ghdl -y -f
 sudo apt-get upgrade -y
+sudo apt upgrade -y
 
 # 安裝Kit
 wget -O kite-installer https://linux.kite.com/dls/linux/current
@@ -56,4 +59,4 @@ apm install pdf-view markdown-preview-enhanced markdown-table-editor insert-time
 apm install linter-veriloghdl linter-vhdl
 
 # Atom HDL language support
-apm install language-verilog language-vhdl lancelot-language-hdl
+apm install language-verilog language-vhdl lancelot-language-hdl language-hdl
