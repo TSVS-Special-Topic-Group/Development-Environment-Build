@@ -39,6 +39,7 @@ typed-ast
 GitPython
 dulwich
 eel
+pyqt5
 spyder
 pyverilog
 youtube_dl
@@ -61,3 +62,4 @@ toml
 tweepy
 urllib3
 wrapt
+google-cloud-storage

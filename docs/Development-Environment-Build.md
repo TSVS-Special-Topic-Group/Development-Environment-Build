@@ -20,3 +20,10 @@ sudo systemctl enable docker
 ```
 docker run hello-world
 ```
+
+## 忽略重新安裝更新
+遇到無法解除安裝後重新安裝的套件時，加上`--ignore-installed`參數更新。
+
+```
+sudo python3 -m pip install -r requirements.txt --upgrade --ignore-installed
+```
