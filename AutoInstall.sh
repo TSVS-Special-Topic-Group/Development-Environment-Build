@@ -60,3 +60,9 @@ apm install linter-veriloghdl linter-vhdl
 
 # Atom HDL language support
 apm install language-verilog language-vhdl lancelot-language-hdl language-hdl
+
+# Atom C language support
+apm install linter-gcc
+
+# 終端機
+apm install platformio-ide-terminal
