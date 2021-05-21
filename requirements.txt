@@ -63,3 +63,6 @@ tweepy
 urllib3
 wrapt
 google-cloud-storage
+coverage
+codecov
+fastimport
