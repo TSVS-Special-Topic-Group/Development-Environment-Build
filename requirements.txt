@@ -67,3 +67,4 @@ fastimport
 wheel
 twine
 setuptools
+gpg
