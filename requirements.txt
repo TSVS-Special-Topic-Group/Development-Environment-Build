@@ -12,6 +12,7 @@ ipython
 jupyter
 Flask
 requests
+urllib3
 urllib5
 PyMySQL
 peewee
@@ -53,16 +54,16 @@ isort
 lazy-object-proxy
 mccabe
 oauthlib
-pylint
 PySocks
-requests
 requests-oauthlib
 six
 toml
 tweepy
-urllib3
 wrapt
 google-cloud-storage
 coverage
 codecov
 fastimport
+wheel
+twine
+setuptools
