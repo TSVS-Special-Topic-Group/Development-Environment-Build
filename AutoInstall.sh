@@ -1,12 +1,46 @@
 # 系統更新與升級
-sudo apt-get update -y
 sudo apt update -y
+sudo apt upgrade -y
+
+# 加入安裝來源
+sudo add-apt-repository ppa:kdenlive/kdenlive-stable -y
+wget -qO - https://packagecloud.io/AtomEditor/atom/gpgkey | sudo apt-key add -
+sudo sh -c 'echo "deb [arch=amd64] https://packagecloud.io/AtomEditor/atom/any/ any main" /etc/apt/sources.list.d/atom.list'
+sudo add-apt-repository ppa:obsproject/obs-studio -y
+sudo add-apt-repository ppa:inkscape.dev/stable -y
+sudo apt-get update
+
+# apt-get安裝
 sudo apt-get install python3 python3-dev python3-pip -y -f
 sudo apt-get install git ffmpeg libxss1 xdg-utils -y -f
 sudo apt-get install cmake -y -f
 sudo apt install iverilog verilator ghdl -y -f
-sudo apt-get upgrade -y
+sudo apt install v4l2loopback-dkms -y -f
+# sudo apt-get install kdenlive gimp obs-studio -y -f
+# sudo apt-get install libreoffice -y -f
+# sudo apt-get install atom -y -f
+sudo apt-get install flatpak -y -f
+
+# 來源更新
+flatpak --user --system remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+
+# Flatpak安裝
+flatpak install flathub io.atom.Atom --system -y
+flatpak install flathub com.axosoft.GitKraken --system -y
+flatpak install flathub com.spotify.Client --system -y
+flatpak install flathub org.gimp.GIMP --system -y
+flatpak install flathub org.kde.kdenlive --system -y
+flatpak install flathub com.rawtherapee.RawTherapee --system -y
+flatpak install flathub com.obsproject.Studio --system -y
+flatpak install flathub org.darktable.Darktable --system -y
+flatpak install flathub org.videolan.VLC --system -y
+flatpak install flathub com.spotify.Client --system -y
+flatpak install flathub org.libreoffice.LibreOffice --system -y
+flatpak install flathub org.telegram.desktop --system -y
+
+# 更新
 sudo apt upgrade -y
+flatpak update
 
 # 安裝Kit
 wget -O kite-installer https://linux.kite.com/dls/linux/current
