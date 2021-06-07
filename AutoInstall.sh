@@ -22,7 +22,7 @@ sudo apt install v4l2loopback-dkms -y -f
 sudo apt-get install flatpak -y -f
 
 # 來源更新
-flatpak --user --system remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
 # Flatpak安裝
 flatpak install flathub io.atom.Atom --system -y
@@ -37,6 +37,8 @@ flatpak install flathub org.videolan.VLC --system -y
 flatpak install flathub com.spotify.Client --system -y
 flatpak install flathub org.libreoffice.LibreOffice --system -y
 flatpak install flathub org.telegram.desktop --system -y
+flatpak install flathub com.usebottles.bottles --system -y
+flatpak install flathub org.blender.Blender --system -y
 
 # 更新
 sudo apt upgrade -y
