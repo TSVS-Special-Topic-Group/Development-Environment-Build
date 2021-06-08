@@ -13,7 +13,6 @@ jupyter
 Flask
 requests
 urllib3
-urllib5
 PyMySQL
 peewee
 flask-cors
