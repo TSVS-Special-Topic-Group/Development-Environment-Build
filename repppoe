@@ -1,0 +1,16 @@
+#!/bin/bash
+#if !ping -c 3 168.95.1.1 > /dev/null 2>&1
+#if !(cat /proc/net/dev | grep ppp0) > /dev/null 2>&1
+#if !(cat /proc/net/dev | grep ppp) > /dev/null 2>&1
+echo Try...
+if ! ping -c 3 www.google.com > /dev/null 2>&1
+then
+poff -a
+pon dsl-provider
+plog
+echo Success
+#/usr/bin/pon
+else
+echo Fail
+fi
+date
