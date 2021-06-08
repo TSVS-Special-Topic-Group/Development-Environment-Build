@@ -20,6 +20,7 @@ sudo apt install v4l2loopback-dkms -y -f
 # sudo apt-get install libreoffice -y -f
 # sudo apt-get install atom -y -f
 sudo apt-get install flatpak -y -f
+sudo apt install python-gpg libgpgme-dev -y -f
 
 # 來源更新
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
