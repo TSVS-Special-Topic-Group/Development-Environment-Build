@@ -28,5 +28,7 @@ before_script:
   - virtualenv venv
   - source venv/bin/activate
 
-  # 相依性佈署
+
+test:
+  # Python相依性佈署
   - pip install -r requirements.txt -U
