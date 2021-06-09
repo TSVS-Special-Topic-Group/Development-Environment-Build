@@ -16,6 +16,12 @@ sudo usermod -aG docker $USER
 sudo systemctl enable docker
 ```
 
+## 切換docker群組身份
+
+```
+newgrp docker
+```
+
 ## 測試Hello World
 ```
 docker run hello-world
