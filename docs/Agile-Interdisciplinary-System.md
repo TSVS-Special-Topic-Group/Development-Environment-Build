@@ -155,14 +155,20 @@ docker run hello-world
 ```
 groupadd docker
 usermod -aG docker $USER
-newgrp docker
-docker run hello-world
 ```
 
 docker開機自動啟動
 
 ```
-systemctl enable docker
+sudo systemctl enable docker
+sudo systemctl enable docker.service
+sudo systemctl enable containerd.service
+```
+
+測試
+
+```
+docker run hello-world
 ```
 
 ## Docker GitLab
@@ -171,7 +177,6 @@ systemctl enable docker
 
 ```
 docker pull gitlab/gitlab-ce:latest
-
 ```
 
 使用Docker運行GitLab伺服器。
@@ -842,7 +847,7 @@ crontab -e
 # m h  dom mon dow   command
 
 # GitLab-CE與GitLab Runner更新的時間
-00 16 * * 0 sh /home/timmy/Git/Agile-Interdisciplinary-System/auto_update_upgrade_backup.sh
+00 16 * * 0 sh /home/$USER/Git/Agile-Interdisciplinary-System/auto_update_upgrade_backup.sh
 ```
 
 重新啟動
@@ -860,7 +865,7 @@ sudo nano /etc/crontab
 
 輸入公司排定的更新時間。
 
-```
+```shell
 # /etc/crontab: system-wide crontab
 # Unlike any other crontab you don't have to run the `crontab'
 # command to install the new version when you edit this file
@@ -876,7 +881,7 @@ sudo nano /etc/crontab
 
 重新啟動
 
-```
+```shell
 sudo systemctl restart cron.service
 ```
 
