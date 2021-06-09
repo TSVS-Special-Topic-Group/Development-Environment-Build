@@ -1,10 +1,11 @@
 #!/bin/bash
 echo Try...
-if ! ping -c 3 www.google.com > /dev/null 2>&1
+if ! (cat /proc/net/dev | grep ppp0) > /dev/null 2>&1
   then
     poff -a
     pon dsl-provider
     plog
+    ping -c 3 www.google.com
     echo Success
   else
     echo Fail
