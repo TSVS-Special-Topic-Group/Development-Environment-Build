@@ -33,3 +33,30 @@ docker run hello-world
 ```
 sudo python3 -m pip install -r requirements.txt --upgrade --ignore-installed
 ```
+
+## 手動執行Docker執行GitLab CI
+啟動Docker執行Python容器
+
+```shell
+docker pull python:latest
+docker run -it -d --name docker-devlop-venv-build python:latest
+```
+
+進入容器
+
+```shell
+docker exec -it docker-devlop-venv-build bash
+```
+
+執行以下指令：
+
+```shell
+git clone https://github.com/TSVS-Special-Topic-Group/Development-Environment-Build.git
+cd Development-Environment-Build
+python -V  # Print out python version for debugging
+pip install pip --upgrade
+pip install virtualenv
+virtualenv venv
+source venv/bin/activate
+pip install -r requirements.txt --upgrade
+```
