@@ -13,6 +13,7 @@
 
 # 目錄
 - [首頁](README.md)
+  - [開發環境建置](docs/index.md)
   - [Atom套件](docs/Atom-Packages.md)
-  - [開發環境建置](Development-Environment-Build.md)
-  - [參考資料](Reference.md)
+  - [敏捷跨領域系統](docs/Agile-Interdisciplinary-System.md)
+  - [參考資料](docs/Reference.md)
