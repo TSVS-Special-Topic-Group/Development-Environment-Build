@@ -11,9 +11,4 @@
 
 - [AutoInstall.zip](https://drive.google.com/file/d/1ezvU8E0IVuq9n1EmXH5jg-6q0FK1Ko_C)
 
-# 目錄
-- [首頁](README.md)
-  - [開發環境建置](docs/index.md)
-  - [Atom套件](docs/Atom-Packages.md)
-  - [敏捷跨領域系統](docs/Agile-Interdisciplinary-System.md)
-  - [參考資料](docs/Reference.md)
+[繼續閱讀](docs/index.md)
