@@ -25,6 +25,8 @@
     - [Installing GCC: Binaries](https://gcc.gnu.org/install/binaries.html)
   - [Mingw-w64](http://mingw-w64.org/doku.php)
   - [CMake](https://cmake.org/)
+  - [Cppcheck](http://cppcheck.sourceforge.net/)
+  - [Valgrind](https://valgrind.org/)
 # Python
   - [Stickler](https://stickler-ci.com/)
     - [Python](https://stickler-ci.com/docs#python)
