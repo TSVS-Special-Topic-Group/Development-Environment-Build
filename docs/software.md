@@ -1,4 +1,4 @@
-# 開發軟體
+# 開發工具
 作業系統，建議依照數字順序：
 
 1. Linux：Linux教學 [鳥哥的Linux私房菜](https://linux.vbird.org/)

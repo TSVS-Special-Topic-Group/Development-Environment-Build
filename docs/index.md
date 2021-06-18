@@ -12,7 +12,9 @@
 
 # 目錄
 
-- [Atom套件](/docs/Atom-Packages.md)
-- [敏捷跨領域系統](/docs/Agile-Interdisciplinary-System.md)
+- [開發工具](/docs/software.md)
+- [python套件製作教學](/docs/python-pack.md)
+- [atom套件](/docs/atom-packages.md)
+- [敏捷跨領域系統](/docs/agile-interdisciplinary-system.md)
 - [其他](/docs/other.md)
-- [參考資料](/docs/Reference.md)
+- [參考資料](/docs/reference.md)

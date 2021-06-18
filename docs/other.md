@@ -59,4 +59,7 @@ pip install virtualenv
 virtualenv venv
 source venv/bin/activate
 pip install -r requirements.txt --upgrade
+exit
+docker stop docker-devlop-venv-build
+docker rm docker-devlop-venv-build
 ```
