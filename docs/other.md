@@ -34,7 +34,7 @@ docker run hello-world
 sudo python3 -m pip install -r requirements.txt --upgrade --ignore-installed
 ```
 
-## 手動執行Docker執行GitLab CI
+## 手動執行Docker執行GitLab CI腳本內容
 啟動Docker執行Python容器
 
 ```shell
