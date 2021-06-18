@@ -60,6 +60,11 @@ virtualenv venv
 source venv/bin/activate
 pip install -r requirements.txt --upgrade
 exit
+```
+
+離開容器
+
+```
 docker stop docker-devlop-venv-build
 docker rm docker-devlop-venv-build
 ```

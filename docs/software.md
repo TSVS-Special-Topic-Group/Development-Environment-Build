@@ -1,7 +1,7 @@
 # 開發工具
 作業系統，建議依照數字順序：
 
-1. Linux：Linux教學 [鳥哥的Linux私房菜](https://linux.vbird.org/)
+1. Linux
 2. Mac
 3. Windows
 
@@ -102,7 +102,8 @@
 - HDL：詳細請參考 [數位邏輯設計/1-開發環境建置](https://github.com/Multimedia-Processing/Digital-Logic-Design/blob/master/docs/1-%E9%96%8B%E7%99%BC%E7%92%B0%E5%A2%83%E5%BB%BA%E7%BD%AE.md)
   - Quartus II 64-bit 15.0 Web Edition
   - Quartus II 32-bit 13.1 Web Edition
-  - Xilinx Vivado 2020.1
+  - Quartus II 64-bit Web Edition：使用最新版即可
+  - Xilinx Vivado：使用最新版即可
   - Opne Source：
     - iverilog
     - verilator
@@ -114,3 +115,4 @@
 - [OpenHome.cc](https://openhome.cc/)
 - [kaiching.org](http://kaiching.org/)
 - [開放原始碼技術文件網](https://opensourcedoc.com/)
+- [鳥哥的Linux私房菜](https://linux.vbird.org/)
