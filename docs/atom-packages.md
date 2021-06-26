@@ -32,6 +32,8 @@
   - [Python](#python)
     - [Hydrogen](#hydrogenhttpsgithubcomnteracthydrogen)
     - [Autocomplete python](#autocomplete-pythonhttpsgithubcomautocomplete-pythonautocomplete-python)
+  - [C](#c)
+    - [gpp-compiler](#gpp-compiler)
   - [PLC](#plc)
   - [Gettext](#gettext)
   - [Markdown](#markdown)
@@ -197,6 +199,13 @@ IDE界面整合器，讓不同的套件可以在這上面使用，以下套件�
 自動補全 Python 程式碼
 
 ![自動補全 python 程式碼](https://cloud.githubusercontent.com/assets/193864/12288427/61fe2114-ba0f-11e5-9832-98869180d87f.gif)
+
+## C
+### gpp-compiler
+可以像大學很多教學使用的整合開發環境 Dev++ 一樣的功能與使用，按 `F5` 可以自動編譯，本人是覺得相當好用，但如果程式執行速度過快沒有等待或者任意鍵的停止動作會直接關閉甚至看不到視窗跑出來，但實際是有執行過但速度太快所以沒有看到。
+
+前往 [Atom Packages](https://atom.io/packages/gpp-compiler)  
+前往 [GitHub](https://github.com/kriscross07/atom-gpp-compiler)  
 
 ## PLC
 - [language-structured-text](https://atom.io/packages/language-structured-text)：PLC程式語法套件。  
