@@ -21,6 +21,9 @@ cache:
 before_script:
   - python -V  # Print out python version for debugging
 
+  - apt update -y
+  - apt upgrade -y
+  - apt install graphviz graphviz-dev protobuf-compiler libprotoc-dev -y -f
   - pip install pip --upgrade
 
   # 安裝虛擬環境
