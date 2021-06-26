@@ -76,6 +76,8 @@ veriloggen
 ipgen
 pycoram
 mulpy
+onnx
+nngen
 
 youtube_dl
 mkdocs
