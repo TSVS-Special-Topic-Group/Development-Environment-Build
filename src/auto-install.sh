@@ -15,6 +15,7 @@ sudo apt-get install python3 python3-dev python3-pip -y -f
 sudo apt-get install git ffmpeg libxss1 xdg-utils -y -f
 sudo apt-get install cmake -y -f
 sudo apt install iverilog verilator ghdl -y -f
+sudo apt-get install graphviz graphviz-dev -y -f
 sudo apt install v4l2loopback-dkms -y -f
 # sudo apt-get install kdenlive gimp obs-studio -y -f
 # sudo apt-get install libreoffice -y -f
