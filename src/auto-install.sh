@@ -48,12 +48,12 @@ flatpak install flathub org.blender.Blender --system -y
 sudo apt upgrade -y
 flatpak update
 
-# 安裝Kit
+# 安裝 Kit
 wget -O kite-installer https://linux.kite.com/dls/linux/current
 bash kite-installer --download
 bash kite-installer --install
 
-# 安裝slang
+# 安裝 slang
 git clone https://github.com/MikePopoloski/slang.git
 cd slang
 mkdir build && cd build
@@ -65,13 +65,44 @@ sudo make install
 cd ../../
 
 # Python套件安裝
+python3 -m pip install -r requirements.txt --upgrade
 sudo python3 -m pip install -r requirements.txt --upgrade
 
-# 安裝Dulwich
+# 安裝 Dulwich
 git clone https://github.com/dulwich/dulwich.git
 cd dulwich/
 sudo python3 setup.py --pure install
 cd ..
+
+# 安裝 veriloggen
+#git clone https://github.com/PyHDI/veriloggen.git
+#cd veriloggen/
+#sudo python3 setup.py install
+#cd ..
+
+# 安裝 hardcheck
+#git clone https://github.com/PyHDI/hardcheck.git
+#cd hardcheck/
+#sudo python3 setup.py install
+#cd ..
+
+# 安裝 ipgen
+#git clone https://github.com/PyHDI/ipgen.git
+#cd ipgen/
+#sudo python3 setup.py install
+#cd ..
+
+# 安裝 PyCoRAM
+#git clone https://github.com/PyHDI/PyCoRAM.git
+#cd PyCoRAM/
+#sudo python3 setup.py install
+#cd ..
+
+# 安裝 mulpy
+#git clone https://github.com/PyHDI/mulpy.git
+#cd mulpy/
+#sudo python3 setup.py install
+#cd ..
 
 # Atom UI
 apm install linter
