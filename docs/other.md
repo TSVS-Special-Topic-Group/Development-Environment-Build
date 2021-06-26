@@ -54,6 +54,26 @@ docker exec -it docker-devlop-venv-build bash
 git clone https://github.com/TSVS-Special-Topic-Group/Development-Environment-Build.git
 cd Development-Environment-Build
 python -V  # Print out python version for debugging
+```
+
+安裝Python相依C/C++程式：
+
+```shell
+# 更新
+apt update -y
+apt upgrade -y
+
+# 相關Python環境
+apt install git ffmpeg libxss1 xdg-utils cmake valgrind cppcheck build-essential iverilog verilator ghdl graphviz graphviz-dev protobuf-compiler libprotoc-dev python-gpg libgpgme-dev v4l2loopback-dkms -y -f
+
+# 無關Python內容
+apt install kdenlive gimp obs-studio libreoffice flatpak -y -f
+apt install atom -y -f
+```
+
+安裝Python相關套件：
+
+```shell
 pip install pip --upgrade
 pip install virtualenv
 virtualenv venv
@@ -64,7 +84,7 @@ exit
 
 離開容器
 
-```
+```shell
 docker stop docker-devlop-venv-build
 docker rm docker-devlop-venv-build
 ```
