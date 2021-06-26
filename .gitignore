@@ -11,6 +11,11 @@ kite-installer
 # 忽略安裝時會下載的目錄與檔案
 slang/
 dulwich/
+veriloggen/
+hardcheck/
+ipgen/
+PyCoRAM/
+mulpy/
 get-docker.sh
 
 # Byte-compiled / optimized / DLL files
