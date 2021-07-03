@@ -40,6 +40,7 @@
     - [Markdown preview enhanced](#markdown-preview-enhancedhttpsgithubcomshd101wyymarkdown-preview-enhanced)
   - [Verilog and VHDL](#verilog-and-vhdl)
   - [reStructuredText](#restructuredtext)
+  - [Android](#android)
   - [Tool](#tool)
     - [intentions](#intentionshttpsatomiopackagesintentions)
     - [busy-signal](#busy-signalhttpsatomiopackagesbusy-signal)
@@ -244,6 +245,11 @@ IDE界面整合器，讓不同的套件可以在這上面使用，以下套件�
 - [rst-preview-pandoc](https://atom.io/packages/rst-preview-pandoc)
 - [atom-rst-preview-docutils](https://atom.io/packages/atom-rst-preview-docutils)
 - [language-restructuredtext](https://atom.io/packages/language-restructuredtext)
+
+## Android
+
+- dart
+- atom-toolbar
 
 ## Tool
 
