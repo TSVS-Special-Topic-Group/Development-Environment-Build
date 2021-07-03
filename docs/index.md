@@ -14,6 +14,7 @@
 
 - [開發工具](/docs/software.md)
 - [python套件製作教學](/docs/python-pack.md)
+- [Andriod開發環境](/docs/andriod-devlop-venv-build.md)
 - [atom套件](/docs/atom-packages.md)
 - [敏捷跨領域系統](/docs/agile-interdisciplinary-system.md)
 - [其他](/docs/other.md)
