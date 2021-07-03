@@ -30,6 +30,7 @@ template/
 
 # 忽略Kite安裝檔案
 kite-installer
+kite-installer.sh
 
 # 忽略安裝時會下載的目錄與檔案
 slang/
