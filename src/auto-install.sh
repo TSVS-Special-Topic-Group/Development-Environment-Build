@@ -1,17 +1,20 @@
+# apt-get安裝
+# ==========
 # 系統更新與升級
 sudo apt update -y
 sudo apt upgrade -y
 
 # 加入安裝來源
+# Kdenlive
 sudo add-apt-repository ppa:kdenlive/kdenlive-stable -y
-wget -qO - https://packagecloud.io/AtomEditor/atom/gpgkey | sudo apt-key add -
-sudo sh -c 'echo "deb [arch=amd64] https://packagecloud.io/AtomEditor/atom/any/ any main" /etc/apt/sources.list.d/atom.list'
+# Atom
+sudo sh -c 'wget -qO - https://packagecloud.io/AtomEditor/atom/gpgkey | sudo apt-key add -'
+sudo sh -c 'echo "deb [arch=amd64] https://packagecloud.io/AtomEditor/atom/any/ any main" > /etc/apt/sources.list.d/atom.list'
+# OBS
 sudo add-apt-repository ppa:obsproject/obs-studio -y
+# inkscape
 sudo add-apt-repository ppa:inkscape.dev/stable -y
 sudo apt-get update
-
-# apt-get安裝
-sudo apt-get install python3 python3-dev python3-pip -y -f
 
 # C 語言
 sudo apt-get install cmake make -y -f
@@ -19,19 +22,25 @@ sudo apt-get install valgrind -y -f
 sudo apt-get install cppcheck -y -f
 sudo apt install build-essential -y -f
 
-# apt-get python HDL相關
+# Python
+sudo apt-get install python3 python3-dev python3-pip -y -f
 sudo apt-get install git ffmpeg libxss1 xdg-utils -y -f
-sudo apt install iverilog verilator ghdl -y -f
 sudo apt-get install graphviz graphviz-dev -y -f
+sudo apt install python-gpg libgpgme-dev -y -f
 sudo apt-get install protobuf-compiler libprotoc-dev -y -f
 
-# 給 OBS使用
+# HDL
+sudo apt install iverilog verilator ghdl -y -f
+
+# 給 OBS 使用
 sudo apt install v4l2loopback-dkms -y -f
+
 # sudo apt-get install kdenlive gimp obs-studio -y -f
 # sudo apt-get install libreoffice -y -f
 # sudo apt-get install atom -y -f
+
+# 給 Flatpak 使用
 sudo apt-get install flatpak -y -f
-sudo apt install python-gpg libgpgme-dev -y -f
 
 # 來源更新
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
@@ -57,9 +66,8 @@ sudo apt upgrade -y
 flatpak update
 
 # 安裝 Kit
-wget -O kite-installer https://linux.kite.com/dls/linux/current
-bash kite-installer --download
-bash kite-installer --install
+wget -O kite-installer.sh https://linux.kite.com/dls/linux/current
+bash kite-installer.sh --install
 
 # 安裝 slang
 git clone https://github.com/MikePopoloski/slang.git
