@@ -61,7 +61,7 @@ PyYAML
 ruamel.yaml
 demjson
 
-python-language-server[all]
+python-language-server
 pyserial
 PyProbe
 msgpack
@@ -79,8 +79,22 @@ mulpy
 onnx
 nngen
 
-youtube_dl
 mkdocs
+mkdocs-bootstrap
+mkdocs-webcontext-plugin
+mkdocs-mdpo-plugin
+mkdocs-markdownextradata-plugin
+mkdocs-gitlab-plugin
+mkdocs-rss-plugin
+mkdocs-i18n
+mkdocs-material
+mdx_truly_sane_lists
+mkdocs-redirects
+mkdocs-mermaid-plugin
+mkdocs-mermaid2-plugin
+
+python-gnupg
+youtube_dl
 astroid
 certifi
 chardet
@@ -99,11 +113,11 @@ google-cloud-storage
 ruamel.std.zipfile
 futures
 futures3
+feedparser
 
 fastimport
 wheel
 twine
 setuptools
-python-gnupg
 
 TA-Lib
