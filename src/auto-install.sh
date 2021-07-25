@@ -34,6 +34,7 @@ sudo apt-get install -y zlib1g-dev libbz2-dev liblzma-dev libboost-all-dev -y -f
 
 # HDL
 sudo apt install iverilog verilator ghdl -y -f
+sudo apt-get install libtinfo5 -f -y
 
 # 給 OBS 使用
 sudo apt install v4l2loopback-dkms -y -f
