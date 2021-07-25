@@ -14,7 +14,7 @@ sudo sh -c 'echo "deb [arch=amd64] https://packagecloud.io/AtomEditor/atom/any/ 
 sudo add-apt-repository ppa:obsproject/obs-studio -y
 # inkscape
 sudo add-apt-repository ppa:inkscape.dev/stable -y
-sudo apt-get update
+sudo apt-get update -y
 
 # C 語言
 sudo apt-get install cmake make -y -f
@@ -23,11 +23,14 @@ sudo apt-get install cppcheck -y -f
 sudo apt install build-essential -y -f
 
 # Python
-sudo apt-get install python3 python3-dev python3-pip -y -f
+sudo apt-get install python3 python3-dev python3-pip python3-all-dev -y -f
 sudo apt-get install git ffmpeg libxss1 xdg-utils -y -f
 sudo apt-get install graphviz graphviz-dev -y -f
 sudo apt install python-gpg libgpgme-dev -y -f
 sudo apt-get install protobuf-compiler libprotoc-dev -y -f
+sudo apt-get install python3-pyaudio portaudio19-dev -y -f
+sudo apt-get install build-essential swig libpulse-dev libasound2-dev  -y -f
+sudo apt-get install -y zlib1g-dev libbz2-dev liblzma-dev libboost-all-dev -y -f
 
 # HDL
 sudo apt install iverilog verilator ghdl -y -f
