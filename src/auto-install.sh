@@ -14,6 +14,9 @@ sudo sh -c 'echo "deb [arch=amd64] https://packagecloud.io/AtomEditor/atom/any/ 
 sudo add-apt-repository ppa:obsproject/obs-studio -y
 # inkscape
 sudo add-apt-repository ppa:inkscape.dev/stable -y
+# Lutris
+sudo add-apt-repository ppa:lutris-team/lutris -y
+
 sudo apt-get update -y
 
 # C 語言
@@ -38,6 +41,9 @@ sudo apt-get install libtinfo5 -f -y
 
 # 給 OBS 使用
 sudo apt install v4l2loopback-dkms -y -f
+
+# Lutris
+sudo apt install lutris
 
 # sudo apt-get install kdenlive gimp obs-studio -y -f
 # sudo apt-get install libreoffice -y -f
