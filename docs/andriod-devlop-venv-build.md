@@ -7,15 +7,21 @@
 
 - [Android 開發環境建置](#android-開發環境建置)
 - [目錄](#目錄)
-- [Dart](#dart)
-- [Flutter](#flutter)
+- [自行建置整合開發環境](#自行建置整合開發環境)
+  - [Dart](#dart)
+  - [Flutter](#flutter)
+  - [DevTools](#devtools)
+  - [Atom](#atom)
 - [Android Studio](#android-studio)
-- [DevTools](#devtools)
 - [問題](#問題)
 - [參考資料](#參考資料)
 
 <!-- /code_chunk_output -->
-# Dart
+
+# 自行建置整合開發環境
+最簡單執行環境。
+
+## Dart
 ```
 sudo sh -c 'wget -qO- https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -'
 sudo sh -c 'wget -qO- https://storage.googleapis.com/download.dartlang.org/linux/debian/dart_stable.list > /etc/apt/sources.list.d/dart_stable.list'
@@ -23,10 +29,86 @@ sudo apt-get update
 sudo apt-get install dart
 ```
 
-# Flutter
+## Flutter
 
 ```
 sudo apt-get install clang cmake ninja-build pkg-config libgtk-3-dev
+```
+
+檢查環境
+
+```
+flutter doctor -v
+```
+
+會輸出以下內容：
+
+```
+[✓] Flutter (Channel stable, 2.2.2, on Linux, locale zh_TW.UTF-8)
+    • Flutter version 2.2.2 at /home/timmy/snap/flutter/common/flutter
+    • Framework revision d79295af24 (7 周前), 2021-06-11 08:56:01 -0700
+    • Engine revision 91c9fc8fe0
+    • Dart version 2.13.3
+
+[✓] Android toolchain - develop for Android devices (Android SDK version 30.0.3)
+    • Android SDK at /home/timmy/Android/Sdk/
+    • Platform android-S, build-tools 30.0.3
+    • Java binary at: /var/lib/flatpak/app/com.google.AndroidStudio/current/active/files/extra/android-studio/jre/bin/java
+    • Java version OpenJDK Runtime Environment (build 11.0.8+0-b944-P17168821)
+    • All Android licenses accepted.
+
+[✓] Chrome - develop for the web
+    • Chrome at google-chrome
+
+[✓] Linux toolchain - develop for Linux desktop
+    • clang version 6.0.0-1ubuntu2 (tags/RELEASE_600/final)
+    • cmake version 3.10.2
+    • ninja version 1.8.2
+    • pkg-config version 0.29.1
+
+[✓] Android Studio
+    • Android Studio at /var/lib/flatpak/app/com.google.AndroidStudio/current/active/files/extra/android-studio
+    • Flutter plugin can be installed from:
+      🔨 https://plugins.jetbrains.com/plugin/9212-flutter
+    • Dart plugin can be installed from:
+      🔨 https://plugins.jetbrains.com/plugin/6351-dart
+    • android-studio-dir = /var/lib/flatpak/app/com.google.AndroidStudio/current/active/files/extra/android-studio
+    • Java version OpenJDK Runtime Environment (build 11.0.8+0-b944-P17168821)
+
+[✓] Connected device (2 available)
+    • Linux (desktop) • linux  • linux-x64      • Linux
+    • Chrome (web)    • chrome • web-javascript • Google Chrome 91.0.4472.164
+
+• No issues found!
+```
+
+代表整個環境都建置與準備好。
+
+這個指令是同意Google針對Android的授權與條款，才可以進行整合開發。如果沒有透過`flutter doctor --android-licenses`指令的話，會出現下列問題：
+
+```
+[✓] Flutter (Channel unknown, 1.22.6, on Linux, locale zh_TW.UTF-8)
+    • Flutter version 1.22.6 at /home/timmy/Git/flutter
+    • Framework revision 9b2d32b605 (6 個月前), 2021-01-22 14:36:39 -0800
+    • Engine revision 2f0af37152
+    • Dart version 2.10.5
+
+ 
+[✓] Android toolchain - develop for Android devices (Android SDK version 30.0.3)
+    • Android SDK at /home/timmy/Android/Sdk
+    • Platform android-S, build-tools 30.0.3
+    • Java binary at: /usr/bin/java
+    • Java version OpenJDK Runtime Environment (build 11.0.11+9-Ubuntu-0ubuntu2.20.04)
+    • All Android licenses accepted.
+
+[!] Android Studio (not installed)
+    • Android Studio not found; download from https://developer.android.com/studio/index.html
+      (or visit https://flutter.dev/docs/get-started/install/linux#android-setup for detailed instructions).
+
+[✓] Connected device (1 available)
+    • sdk gphone x86 64 arm64 (mobile) • emulator-5554 • android-x64 • Android 11 (API 30) (emulator)
+
+! Doctor found issues in 1 category.
 ```
 
 ```
@@ -41,6 +123,8 @@ sudo snap install flutter --classic
 flutter config --enable-linux-desktop
 ```
 
+這樣可以更新Flutter版本，通常Flutter內建最新的Dart，因此各位可以只安裝Flutter就可以使用Dart。
+
 ```
 flutter upgrade
 ```
@@ -49,21 +133,26 @@ flutter upgrade
 flutter run
 ```
 
-# Android Studio
+執行結果：
 
 ```
-flatpak install flathub com.google.AndroidStudio --system -y
-```
+Launching lib/main.dart on Chrome in debug mode...
+Waiting for connection from debug service on Chrome...             51.6s
+This app is linked to the debug service: ws://127.0.0.1:43173/HkPIAHf6hvI=/ws
+Debug service listening on ws://127.0.0.1:43173/HkPIAHf6hvI=/ws
+
+💪 Running with sound null safety 💪
+
+🔥  To hot restart changes while running, press "r" or "R".
+For a more detailed help message, press "h". To quit, press "q".
+Loading app from service worker.
 
 ```
-flatpak run com.google.AndroidStudio
-```
 
-```
-flutter config --android-studio-dir=/var/lib/flatpak/app/com.google.AndroidStudio/current/active/files/extra/android-studio
-```
+如果有修改程式碼，記得在comm按下`R`鍵讓它自動重新編譯與整理。
 
-# DevTools
+## DevTools
+開發者工具
 ```
 flutter pub global activate devtools
 ```
@@ -79,6 +168,22 @@ dart pub global run devtools
 ```
 cd path/to/flutter/app
 flutter run
+```
+
+## Atom
+
+# Android Studio
+
+```
+flatpak install flathub com.google.AndroidStudio --system -y
+```
+
+```
+flatpak run com.google.AndroidStudio
+```
+
+```
+flutter config --android-studio-dir=/var/lib/flatpak/app/com.google.AndroidStudio/current/active/files/extra/android-studio
 ```
 
 # 問題
