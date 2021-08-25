@@ -20,8 +20,18 @@ voila
 spyder
 
 Flask
-Django
 flask-cors
+
+Django
+djangorestframework
+graphene-django
+django-graphql-jwt
+django-graphql-auth
+django-filter
+uritemplate
+Pygments
+django-guardian
+
 eel
 pyqt5
 
@@ -50,6 +60,8 @@ mccabe
 coverage
 codecov
 python-language-server[all]
+
+line_profiler
 
 radon
 pycryptodome
@@ -92,6 +104,7 @@ mdx_truly_sane_lists
 mkdocs-redirects
 mkdocs-mermaid-plugin
 mkdocs-mermaid2-plugin
+markdown
 
 python-gnupg
 youtube_dl
