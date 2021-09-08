@@ -43,11 +43,15 @@ sudo apt-get install libtinfo5 -f -y
 sudo apt install v4l2loopback-dkms -y -f
 
 # Lutris
-sudo apt install lutris
+sudo apt install lutris -y -f
 
 # sudo apt-get install kdenlive gimp obs-studio -y -f
 # sudo apt-get install libreoffice -y -f
 # sudo apt-get install atom -y -f
+
+# ImageMagick
+sudo apt install libtiff-dev libpng-dev -y -f
+sudo apt install imagemagick -y -f
 
 # 給 Flatpak 使用
 sudo apt-get install flatpak -y -f
@@ -70,6 +74,11 @@ flatpak install flathub org.libreoffice.LibreOffice --system -y
 flatpak install flathub org.telegram.desktop --system -y
 flatpak install flathub com.usebottles.bottles --system -y
 flatpak install flathub org.blender.Blender --system -y
+flatpak install flathub com.github.muriloventuroso.pdftricks --system -y
+
+# RPM
+sudo apt install rpm
+sudo apt install alien
 
 # 更新
 sudo apt upgrade -y
