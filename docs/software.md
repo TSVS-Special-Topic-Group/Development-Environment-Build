@@ -10,6 +10,10 @@
 - Atom
   - 支援：Linux、Windows、Mac
 
+筆記軟體
+
+- Obsidian
+
 版本控制軟體
 
 - 註冊
