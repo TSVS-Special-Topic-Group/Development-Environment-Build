@@ -16,6 +16,9 @@ sudo add-apt-repository ppa:obsproject/obs-studio -y
 sudo add-apt-repository ppa:inkscape.dev/stable -y
 # Lutris
 sudo add-apt-repository ppa:lutris-team/lutris -y
+# playonlinux
+wget -q "http://deb.playonlinux.com/public.gpg" -O- | sudo apt-key add -
+sudo wget http://deb.playonlinux.com/playonlinux_cosmic.list -O /etc/apt/sources.list.d/playonlinux.list
 
 sudo apt-get update -y
 
@@ -34,6 +37,9 @@ sudo apt-get install protobuf-compiler libprotoc-dev -y -f
 sudo apt-get install python3-pyaudio portaudio19-dev -y -f
 sudo apt-get install build-essential swig libpulse-dev libasound2-dev  -y -f
 sudo apt-get install -y zlib1g-dev libbz2-dev liblzma-dev libboost-all-dev -y -f
+
+# playonlinux
+sudo apt-get install playonlinux -y -f
 
 # HDL
 sudo apt install iverilog verilator ghdl -y -f
