@@ -81,75 +81,79 @@ flatpak install flathub org.telegram.desktop --system -y
 flatpak install flathub com.usebottles.bottles --system -y
 flatpak install flathub org.blender.Blender --system -y
 flatpak install flathub com.github.muriloventuroso.pdftricks --system -y
+flatpak install flathub md.obsidian.Obsidian --system -y
 
 # RPM
-sudo apt install rpm
-sudo apt install alien
+sudo apt install rpm -y
+sudo apt install alien -y
 
 # 更新
 sudo apt upgrade -y
 flatpak update
+sudo apt autoremove -y
 
 # 安裝 Kit
-wget -O kite-installer.sh https://linux.kite.com/dls/linux/current
-bash kite-installer.sh --install
-
-# 安裝 slang
-git clone https://github.com/MikePopoloski/slang.git
-cd slang
-mkdir build && cd build
-cmake -DCMAKE_CXX_COMPILER=g++-9 -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr/local/bin ..
-make -j8
-ctest
-bin/unittests
-sudo make install
-cd ../../
+# wget -O kite-installer.sh https://linux.kite.com/dls/linux/current
+# bash kite-installer.sh --install
+#
+# # 安裝 slang
+# git clone https://github.com/MikePopoloski/slang.git
+# cd slang
+# mkdir build && cd build
+# cmake -DCMAKE_CXX_COMPILER=g++-9 -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr/local/bin ..
+# make -j8
+# ctest
+# bin/unittests
+# sudo make install
+# cd ../../
 
 # Python套件安裝
+cd ..
+python3 -m pip install pip --upgrade --no-warn-script-location
 python3 -m pip install -r requirements.txt --upgrade
 sudo python3 -m pip install -r requirements.txt --upgrade
 
 # 安裝 Dulwich
-git clone https://github.com/dulwich/dulwich.git
-cd dulwich/
-sudo python3 setup.py --pure install
-cd ..
+# git clone https://github.com/dulwich/dulwich.git
+# cd dulwich/
+# sudo python3 setup.py --pure install
+# cd ..
 
 # 安裝 veriloggen
-#git clone https://github.com/PyHDI/veriloggen.git
-#cd veriloggen/
-#sudo python3 setup.py install
-#cd ..
+# git clone https://github.com/PyHDI/veriloggen.git
+# cd veriloggen/
+# sudo python3 setup.py install
+# cd ..
 
 # 安裝 hardcheck
-#git clone https://github.com/PyHDI/hardcheck.git
-#cd hardcheck/
-#sudo python3 setup.py install
-#cd ..
+# git clone https://github.com/PyHDI/hardcheck.git
+# cd hardcheck/
+# sudo python3 setup.py install
+# cd ..
 
 # 安裝 ipgen
-#git clone https://github.com/PyHDI/ipgen.git
-#cd ipgen/
-#sudo python3 setup.py install
-#cd ..
+# git clone https://github.com/PyHDI/ipgen.git
+# cd ipgen/
+# sudo python3 setup.py install
+# cd ..
 
 # 安裝 PyCoRAM
-#git clone https://github.com/PyHDI/PyCoRAM.git
-#cd PyCoRAM/
-#sudo python3 setup.py install
-#cd ..
+# git clone https://github.com/PyHDI/PyCoRAM.git
+# cd PyCoRAM/
+# sudo python3 setup.py install
+# cd ..
 
 # 安裝 mulpy
-#git clone https://github.com/PyHDI/mulpy.git
-#cd mulpy/
-#sudo python3 setup.py install
-#cd ..
+# git clone https://github.com/PyHDI/mulpy.git
+# cd mulpy/
+# sudo python3 setup.py install
+# cd ..
 
 # 安裝 onnx
-#git clone https://github.com/onnx/onnx.git
-#cd onnx
-#git submodule update --init --recursive
-#sudo python setup.py install
+# git clone https://github.com/onnx/onnx.git
+# cd onnx
+# git submodule update --init --recursive
+# sudo python setup.py install
 
 # Atom UI
 apm install linter
