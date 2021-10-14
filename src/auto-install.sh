@@ -92,10 +92,11 @@ sudo apt upgrade -y
 flatpak update
 sudo apt autoremove -y
 
-# 安裝 Kit
+# 安裝 Kite
 # wget -O kite-installer.sh https://linux.kite.com/dls/linux/current
+# bash kite-installer.sh --download
 # bash kite-installer.sh --install
-#
+
 # # 安裝 slang
 # git clone https://github.com/MikePopoloski/slang.git
 # cd slang
