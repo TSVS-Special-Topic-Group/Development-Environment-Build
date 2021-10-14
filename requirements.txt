@@ -59,7 +59,7 @@ yapf
 mccabe
 coverage
 codecov
-python-language-server[all]
+python-language-server
 
 line_profiler
 
@@ -91,6 +91,7 @@ mulpy
 onnx
 nngen
 
+psycopg2-binary
 mkdocs
 mkdocs-bootstrap
 mkdocs-webcontext-plugin
