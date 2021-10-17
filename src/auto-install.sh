@@ -82,6 +82,7 @@ flatpak install flathub com.usebottles.bottles --system -y
 flatpak install flathub org.blender.Blender --system -y
 flatpak install flathub com.github.muriloventuroso.pdftricks --system -y
 flatpak install flathub md.obsidian.Obsidian --system -y
+flatpak install flathub org.kde.krita --system -y
 
 # RPM
 sudo apt install rpm -y
