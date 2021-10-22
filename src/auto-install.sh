@@ -20,6 +20,9 @@ sudo add-apt-repository ppa:lutris-team/lutris -y
 wget -q "http://deb.playonlinux.com/public.gpg" -O- | sudo apt-key add -
 sudo wget http://deb.playonlinux.com/playonlinux_cosmic.list -O /etc/apt/sources.list.d/playonlinux.list
 
+sudo apt install apt-file -y -f
+sudo apt-file update
+sudo apt list --upgradable
 sudo apt-get update -y
 
 # C 語言
@@ -59,6 +62,10 @@ sudo apt install lutris -y -f
 sudo apt install libtiff-dev libpng-dev -y -f
 sudo apt install imagemagick -y -f
 
+# Java
+sudo apt install openjdk-17-jre-headless openjdk-17-jre -y -f
+sudo apt-get install libxrender1 libxtst6 libxi6 libxext6 -y -f
+
 # 給 Flatpak 使用
 sudo apt-get install flatpak -y -f
 
@@ -89,6 +96,9 @@ sudo apt install rpm -y
 sudo apt install alien -y
 
 # 更新
+sudo apt-file update
+sudo apt update -y
+sudo apt list --upgradable
 sudo apt upgrade -y
 flatpak update
 sudo apt autoremove -y
