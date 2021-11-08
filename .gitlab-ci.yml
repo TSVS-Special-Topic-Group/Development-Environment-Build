@@ -35,4 +35,5 @@ before_script:
 test:
   script:
   # Python相依性佈署測試
-  - pip install -r requirements.txt --upgrade
+  # - pip install -r requirements.txt --upgrade
+  - pip install mkdocs psycopg2-binary mkdocs mkdocs-bootstrap mkdocs-webcontext-plugin mkdocs-mdpo-plugin mkdocs-markdownextradata-plugin mkdocs-gitlab-plugin mkdocs-rss-plugin mkdocs-i18n mkdocs-material mdx_truly_sane_lists mkdocs-redirects mkdocs-mermaid-plugin mkdocs-mermaid2-plugin markdown --upgrade
