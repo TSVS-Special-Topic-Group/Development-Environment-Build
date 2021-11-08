@@ -14,6 +14,7 @@ scikit-learn
 virtualenv
 
 ipython
+ipyparallel
 jupyter
 jupyterlab
 voila
