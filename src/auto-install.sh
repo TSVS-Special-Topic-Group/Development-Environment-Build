@@ -91,9 +91,14 @@ flatpak install flathub com.github.muriloventuroso.pdftricks --system -y
 flatpak install flathub md.obsidian.Obsidian --system -y
 flatpak install flathub org.kde.krita --system -y
 
+# 數學軟體
+sudo apt-get install sagemath -y -f
+flatpak install flathub org.scilab.Scilab --system -y
+flatpak install flathub org.octave.Octave --system -y
+
 # RPM
-sudo apt install rpm -y
-sudo apt install alien -y
+sudo apt install rpm -y -f
+sudo apt install alien -y -f
 
 # 更新
 sudo apt-file update
