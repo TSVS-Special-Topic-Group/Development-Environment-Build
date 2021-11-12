@@ -52,3 +52,6 @@ https://yysu.medium.com/%E7%B2%BE%E9%80%9Apython-30-days-day-3-54a0347a574b
 https://noter.tw/4267/gdirve-%E8%AE%93%E4%BD%A0%E5%9C%A8-linux-%E6%96%87%E5%AD%97%E4%BB%8B%E9%9D%A2%E4%B9%9F%E8%83%BD%E5%A5%BD%E5%A5%BD%E4%BD%BF%E7%94%A8-google-drive/
 
 https://ubuntuqa.com/zh-tw/article/7522.html
+
+# 常見的問題
+Windows因為沒有C/C++的函式庫所以常常安裝不了，或者沒有C/C++的環境，因此要下載一些相關檔案，後續安裝上就可以快速解決。
