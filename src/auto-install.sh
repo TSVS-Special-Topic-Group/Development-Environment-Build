@@ -206,5 +206,8 @@ apm install linter-gcc gpp-compiler
 # Atom Docker
 apm install linter-docker docker language-docker
 
-# 終端機
+# Atom 終端機
 apm install platformio-ide-terminal
+
+# Atom 檔案圖標 小地圖
+apm install file-icons minimap
