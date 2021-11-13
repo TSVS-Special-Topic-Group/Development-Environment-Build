@@ -180,13 +180,16 @@ apm install intentions
 # Python linter
 apm install python-linters
 
+# Python debugger
+apm install python-debugger
+
 # Atom Python自動填寫
 apm install Hydrogen
 apm install kite
 apm install autocomplete-python
 
 # Atom 繁體中文
-apm install cht-menu
+apm install atom-i18n
 
 # Atom效能檢查
 apm install busy-signal
@@ -209,5 +212,5 @@ apm install linter-docker docker language-docker
 # Atom 終端機
 apm install platformio-ide-terminal
 
-# Atom 檔案圖標 小地圖
-apm install file-icons minimap
+# Atom 檔案圖標 小地圖 突顯
+apm install file-icons minimap highlight-selected
