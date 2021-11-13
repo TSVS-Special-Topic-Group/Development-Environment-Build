@@ -19,6 +19,7 @@ jupyter
 jupyterlab
 voila
 spyder
+ipykernel
 
 Flask
 flask-cors
