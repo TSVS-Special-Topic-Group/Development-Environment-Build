@@ -72,6 +72,8 @@
     - [git-time-machine](#git-time-machinehttpsgithubcomlittlebeegit-time-machine)
     - [context-menu-manager](#context-menu-managerhttpsgithubcomhughfenghencontext-menu-manager)
     - [Diagram](#diagram)
+    - [Bin](#bin)
+      - [hex-view](#hex-view)
 - [參考資料](#參考資料)
 
 <!-- /code_chunk_output -->
@@ -415,6 +417,17 @@ Atom 中文化，嚴格來說是國際化，使用 i18n 的方式翻譯。而且
 ### Diagram
 - flow-diagram
 - diagrams
+
+### Bin
+檢視二進制檔案。
+
+- hex-view
+
+#### hex-view
+
+View Hex Dump: alt-shift-h
+
+Decode Hex Dump: alt-shift-d
 
 # 參考資料
 
