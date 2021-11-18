@@ -96,6 +96,9 @@ sudo apt-get install sagemath -y -f
 flatpak install flathub org.scilab.Scilab --system -y
 flatpak install flathub org.octave.Octave --system -y
 
+# 圖片檢視
+sudo apt install heif-gdk-pixbuf heif-thumbnailer libheif1 -y -f
+
 # RPM
 sudo apt install rpm -y -f
 sudo apt install alien -y -f
