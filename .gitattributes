@@ -15,10 +15,10 @@
 
 # HDL
 # ============
-*.v text eol=lf
-*.hdl text eol=lf
-*.vhd text eol=lf
-*.vvp text eol=lf
+*.v      text eol=lf
+*.hdl    text eol=lf
+*.vhd    text eol=lf
+*.vvp    text eol=lf
 
 # Binary files
 # ============
