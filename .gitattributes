@@ -13,6 +13,13 @@
 *.pyz    text eol=lf diff=python
 *.pyi    text eol=lf diff=python
 
+# HDL
+# ============
+*.v text eol=lf
+*.hdl text eol=lf
+*.vhd text eol=lf
+*.vvp text eol=lf
+
 # Binary files
 # ============
 *.db     binary
