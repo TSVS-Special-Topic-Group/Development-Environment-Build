@@ -26,9 +26,11 @@ sudo apt list --upgradable
 sudo apt-get update -y
 
 # C 語言
-sudo apt-get install cmake make -y -f
-sudo apt-get install valgrind -y -f
-sudo apt-get install cppcheck -y -f
+sudo apt-get install cmake make clang -y -f # 編譯、環境建置
+sudo apt-get install valgrind -y -f  # 動態檢查
+sudo apt-get install cppcheck -y -f  # 靜態檢查
+sudo apt-get install infer astyle uncrustify clang-format -y -f  # 風格化
+sudo apt-get install check -y -f  # 程式程式
 sudo apt install build-essential -y -f
 
 # Python
