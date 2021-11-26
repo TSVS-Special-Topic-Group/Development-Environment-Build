@@ -92,6 +92,7 @@ flatpak install flathub org.blender.Blender --system -y
 flatpak install flathub com.github.muriloventuroso.pdftricks --system -y
 flatpak install flathub md.obsidian.Obsidian --system -y
 flatpak install flathub org.kde.krita --system -y
+flatpak install flathub org.inkscape.Inkscape --system -y
 
 # 數學軟體
 sudo apt-get install sagemath -y -f
@@ -133,7 +134,8 @@ sudo apt autoremove -y
 cd ..
 python3 -m pip install pip --upgrade --no-warn-script-location
 python3 -m pip install -r requirements.txt --upgrade
-sudo python3 -m pip install -r requirements.txt --upgrade
+# sudo python3 -m pip install -r requirements.txt --upgrade
+python3 -m ipykernel install --user
 
 # 安裝 Dulwich
 # git clone https://github.com/dulwich/dulwich.git
