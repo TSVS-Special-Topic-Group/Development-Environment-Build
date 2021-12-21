@@ -19,6 +19,8 @@ sudo add-apt-repository ppa:lutris-team/lutris -y
 # playonlinux
 wget -q "http://deb.playonlinux.com/public.gpg" -O- | sudo apt-key add -
 sudo wget http://deb.playonlinux.com/playonlinux_cosmic.list -O /etc/apt/sources.list.d/playonlinux.list
+# 電源管理
+sudo add-apt-repository ppa:slimbook/slimbook
 
 sudo apt install apt-file -y -f
 sudo apt-file update
@@ -98,6 +100,9 @@ flatpak install flathub org.inkscape.Inkscape --system -y
 sudo apt-get install sagemath -y -f
 flatpak install flathub org.scilab.Scilab --system -y
 flatpak install flathub org.octave.Octave --system -y
+flatpak install flathub org.geogebra.GeoGebra --system -y
+flatpak install flathub io.github.veusz.Veusz --system -y
+flatpak install flathub com.github.fabiocolacio.marker --system -y
 
 # 圖片檢視
 sudo apt install heif-gdk-pixbuf heif-thumbnailer libheif1 -y -f
@@ -105,6 +110,17 @@ sudo apt install heif-gdk-pixbuf heif-thumbnailer libheif1 -y -f
 # RPM
 sudo apt install rpm -y -f
 sudo apt install alien -y -f
+
+# 觸控板
+sudo apt-get install libinput-tools
+sudo apt-get install ruby
+sudo gem install fusuma
+sudo apt-get install xdotool
+sudo gem update fusuma
+
+# 電源管理
+sudo apt install tlp
+sudo apt install slimbookbattery
 
 # 更新
 sudo apt-file update
