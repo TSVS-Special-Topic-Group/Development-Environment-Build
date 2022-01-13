@@ -107,6 +107,7 @@ mdx_truly_sane_lists
 mkdocs-redirects
 mkdocs-mermaid-plugin
 mkdocs-mermaid2-plugin
+markdown-katex
 markdown
 
 python-gnupg
