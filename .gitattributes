@@ -166,17 +166,17 @@ makefile text eol=lf
 *.ps1 text eol=lf
 
 # Word 格式
-*.doc diff=astextplain
-*.dotx diff=astextplain
-*.odt diff=astextplain
-*.ott diff=astextplain
-*.fodt diff=astextplain
-*.uot diff=astextplain
-*.dot diff=astextplain
-*.docx diff=astextplain
-*.docm diff=astextplain
+*.doc diff=doc
+*.dotx diff=dotx
+*.odt diff=odt
+*.ott diff=ott
+*.fodt text eol=lf diff=fodt
+*.uot diff=uot
+*.dot diff=dot
+*.docx diff=docx
+*.docm diff=docm
 *.pdf diff=astextplain
-*.rtf diff=astextplain
+*.rtf text eol=lf
 
 # PowerPint 格式
 *.pptx -text
@@ -260,6 +260,7 @@ makefile text eol=lf
 *.raw binary
 *.webp binary
 *.ddd binary
+*.kra binary
 
 # 音訊
 *.mp2 binary
