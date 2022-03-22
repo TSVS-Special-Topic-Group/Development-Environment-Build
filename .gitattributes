@@ -3,6 +3,10 @@
 
 # Basic .gitattributes for a python repo.
 
+# MATH
+# ============
+*.m
+
 # Source files
 # ============
 *.pxd    text eol=lf diff=python
