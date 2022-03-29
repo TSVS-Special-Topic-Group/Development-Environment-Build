@@ -129,23 +129,23 @@ sudo apt install rpm -y -f
 sudo apt install alien -y -f
 
 # 觸控板
-sudo apt-get install libinput-tools
-sudo apt-get install ruby
-sudo gem install fusuma
-sudo apt-get install xdotool
-sudo gem update fusuma
+sudo apt-get install libinput-tools -y -f
+sudo apt-get install ruby -y -f
+sudo gem install fusuma -y -f
+sudo apt-get install xdotool -y -f
+sudo gem update fusuma -y -f
 
 # 電源管理
-sudo apt install tlp
-sudo apt install slimbookbattery
+sudo apt install tlp -y -f
+sudo apt install slimbookbattery -y -f
 
 # 更新
 sudo apt-file update
-sudo apt update -y
+sudo apt update -y -f
 sudo apt list --upgradable
-sudo apt upgrade -y
+sudo apt upgrade -y -f
 flatpak update
-sudo apt autoremove -y
+sudo apt autoremove -y -f
 
 # 安裝 Kite
 # wget -O kite-installer.sh https://linux.kite.com/dls/linux/current
