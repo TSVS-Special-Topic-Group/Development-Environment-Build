@@ -39,6 +39,9 @@ pyqt5
 
 requests
 urllib3
+types-requests
+requests-oauthlib
+beautifulsoup4
 
 PyMySQL
 types-PyMySQL
@@ -121,7 +124,6 @@ isort
 lazy-object-proxy
 oauthlib
 PySocks
-requests-oauthlib
 six
 toml
 tweepy
