@@ -77,7 +77,7 @@ sudo apt install lutris -y -f
 
 # sudo apt-get install kdenlive gimp obs-studio -y -f
 # sudo apt-get install libreoffice -y -f
-# sudo apt-get install atom -y -f
+sudo apt-get install atom -y -f
 
 # ImageMagick
 sudo apt install libtiff-dev libpng-dev -y -f
@@ -87,6 +87,9 @@ sudo apt install imagemagick -y -f
 sudo apt install openjdk-17-jre-headless openjdk-17-jre -y -f
 sudo apt-get install libxrender1 libxtst6 libxi6 libxext6 -y -f
 
+# exFat NTFS 檔案
+sudo apt install exfat-fuse exfat-utils -y -f
+
 # 給 Flatpak 使用
 sudo apt-get install flatpak -y -f
 
@@ -94,7 +97,7 @@ sudo apt-get install flatpak -y -f
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
 # Flatpak安裝
-flatpak install flathub io.atom.Atom --system -y
+# flatpak install flathub io.atom.Atom --system -y
 flatpak install flathub com.axosoft.GitKraken --system -y
 flatpak install flathub com.spotify.Client --system -y
 flatpak install flathub org.gimp.GIMP --system -y
@@ -163,6 +166,49 @@ sudo apt autoremove -y -f
 # sudo make install
 # cd ../../
 
+# Atom UI
+apm install linter
+apm install linter-ui-default
+apm install intentions
+
+# Python linter
+apm install python-linters
+
+# Python debugger
+apm install python-debugger
+
+# Atom Python自動填寫
+apm install Hydrogen
+apm install kite
+apm install autocomplete-python
+
+# Atom 繁體中文
+apm install atom-i18n
+
+# Atom效能檢查
+apm install busy-signal
+
+# Atom Markdown
+apm install pdf-view markdown-preview-enhanced markdown-table-editor insert-timestamp markdown-image-insertion markdown-image-assistant
+
+# Atom HDL linter
+apm install linter-veriloghdl linter-vhdl
+
+# Atom HDL language support
+apm install language-verilog language-vhdl lancelot-language-hdl language-hdl
+
+# Atom C language support
+apm install linter-gcc gpp-compiler
+
+# Atom Docker
+apm install linter-docker docker language-docker
+
+# Atom 終端機
+apm install platformio-ide-terminal
+
+# Atom 檔案圖標 小地圖 突顯
+apm install file-icons minimap highlight-selected
+
 # Python套件安裝
 cd ..
 python3 -m pip install pip --upgrade --no-warn-script-location
@@ -211,46 +257,3 @@ python3 -m ipykernel install --user
 # cd onnx
 # git submodule update --init --recursive
 # sudo python setup.py install
-
-# Atom UI
-apm install linter
-apm install linter-ui-default
-apm install intentions
-
-# Python linter
-apm install python-linters
-
-# Python debugger
-apm install python-debugger
-
-# Atom Python自動填寫
-apm install Hydrogen
-apm install kite
-apm install autocomplete-python
-
-# Atom 繁體中文
-apm install atom-i18n
-
-# Atom效能檢查
-apm install busy-signal
-
-# Atom Markdown
-apm install pdf-view markdown-preview-enhanced markdown-table-editor insert-timestamp markdown-image-insertion markdown-image-assistant
-
-# Atom HDL linter
-apm install linter-veriloghdl linter-vhdl
-
-# Atom HDL language support
-apm install language-verilog language-vhdl lancelot-language-hdl language-hdl
-
-# Atom C language support
-apm install linter-gcc gpp-compiler
-
-# Atom Docker
-apm install linter-docker docker language-docker
-
-# Atom 終端機
-apm install platformio-ide-terminal
-
-# Atom 檔案圖標 小地圖 突顯
-apm install file-icons minimap highlight-selected
