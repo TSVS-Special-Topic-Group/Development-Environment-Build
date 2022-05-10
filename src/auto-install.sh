@@ -217,43 +217,43 @@ python3 -m pip install -r requirements.txt --upgrade
 python3 -m ipykernel install --user
 
 # 安裝 Dulwich
-# git clone https://github.com/dulwich/dulwich.git
-# cd dulwich/
-# sudo python3 setup.py --pure install
-# cd ..
+git clone https://github.com/dulwich/dulwich.git
+cd dulwich/
+python3 setup.py --pure install
+cd ..
 
 # 安裝 veriloggen
-# git clone https://github.com/PyHDI/veriloggen.git
-# cd veriloggen/
-# sudo python3 setup.py install
-# cd ..
+git clone https://github.com/PyHDI/veriloggen.git
+cd veriloggen/
+python3 setup.py install
+cd ..
 
 # 安裝 hardcheck
-# git clone https://github.com/PyHDI/hardcheck.git
-# cd hardcheck/
-# sudo python3 setup.py install
-# cd ..
+git clone https://github.com/PyHDI/hardcheck.git
+cd hardcheck/
+python3 setup.py install
+cd ..
 
 # 安裝 ipgen
-# git clone https://github.com/PyHDI/ipgen.git
-# cd ipgen/
-# sudo python3 setup.py install
-# cd ..
+git clone https://github.com/PyHDI/ipgen.git
+cd ipgen/
+python3 setup.py install
+cd ..
 
 # 安裝 PyCoRAM
-# git clone https://github.com/PyHDI/PyCoRAM.git
-# cd PyCoRAM/
-# sudo python3 setup.py install
-# cd ..
+git clone https://github.com/PyHDI/PyCoRAM.git
+cd PyCoRAM/
+python3 setup.py install
+cd ..
 
 # 安裝 mulpy
-# git clone https://github.com/PyHDI/mulpy.git
-# cd mulpy/
-# sudo python3 setup.py install
-# cd ..
+git clone https://github.com/PyHDI/mulpy.git
+cd mulpy/
+python3 setup.py install
+cd ..
 
 # 安裝 onnx
-# git clone https://github.com/onnx/onnx.git
-# cd onnx
-# git submodule update --init --recursive
-# sudo python setup.py install
+git clone https://github.com/onnx/onnx.git
+cd onnx
+git submodule update --init --recursive
+python setup.py install
