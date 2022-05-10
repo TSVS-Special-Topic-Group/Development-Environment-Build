@@ -97,6 +97,7 @@ onnx
 nngen
 
 psycopg2-binary
+psycopg2
 mkdocs
 mkdocs-bootstrap
 mkdocs-webcontext-plugin
