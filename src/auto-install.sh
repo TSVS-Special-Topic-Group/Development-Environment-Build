@@ -123,6 +123,8 @@ flatpak install flathub org.octave.Octave --system -y
 flatpak install flathub org.geogebra.GeoGebra --system -y
 flatpak install flathub io.github.veusz.Veusz --system -y
 flatpak install flathub com.github.fabiocolacio.marker --system -y
+sudo apt install ktikz -y -f
+sudo apt install qtikz -y -f
 
 # 圖片檢視
 sudo apt install heif-gdk-pixbuf heif-thumbnailer libheif1 -y -f
