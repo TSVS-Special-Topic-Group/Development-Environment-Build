@@ -154,3 +154,6 @@ twine
 setuptools
 
 TA-Lib
+
+PyOpenGL
+PyOpenGL_accelerate
