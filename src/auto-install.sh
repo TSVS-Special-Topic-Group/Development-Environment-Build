@@ -140,6 +140,10 @@ sudo gem install fusuma -y -f
 sudo apt-get install xdotool -y -f
 sudo gem update fusuma -y -f
 
+# 遠端軟體
+sudo apt install xfce4 xfce4-goodies tightvncserver
+sudo ufw allow 5901/tcp
+
 # 電源管理
 sudo apt install tlp -y -f
 sudo apt install slimbookbattery -y -f
