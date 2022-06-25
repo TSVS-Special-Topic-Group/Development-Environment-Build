@@ -1,6 +1,8 @@
 # Atom套件推薦
 主要介紹Atom的程式開發、「整合開發環境」(IDE)、「除錯工具」(Debugger tool)等套件，主要以Python、C、TypeScript、JavaScript、Markdown的工具。
 
+GitHub已經於2022決定中止維護Atom，於2022年12月中止。
+
 # 目錄
 
 <!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=6 orderedList=false} -->
