@@ -90,6 +90,13 @@ sudo apt-get install libxrender1 libxtst6 libxi6 libxext6 -y -f
 # exFat NTFS 檔案
 sudo apt install exfat-fuse exfat-utils -y -f
 
+# Apply
+sudo apt install cmake clang bison flex libfuse-dev libudev-dev pkg-config libc6-dev-i386 \
+linux-headers-generic gcc-multilib libcairo2-dev libgl1-mesa-dev libglu1-mesa-dev libtiff5-dev \
+libfreetype6-dev git git-lfs libelf-dev libxml2-dev libegl1-mesa-dev libfontconfig1-dev libbsd-dev \
+libxrandr-dev libxcursor-dev libgif-dev libavutil-dev libpulse-dev libavformat-dev libavcodec-dev \
+libswresample-dev libdbus-1-dev libxkbfile-dev libssl-dev -y -f
+
 # 給 Flatpak 使用
 sudo apt-get install flatpak -y -f
 
@@ -218,7 +225,7 @@ apm install file-icons minimap highlight-selected
 # Python套件安裝
 cd ..
 python3 -m pip install pip --upgrade --no-warn-script-location
-python3 -m pip install -r requirements.txt --upgrade
+python3 -m pip install -r requirements.txt --upgrade --no-warn-script-location
 # sudo python3 -m pip install -r requirements.txt --upgrade
 python3 -m ipykernel install --user
 
