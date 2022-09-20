@@ -274,3 +274,5 @@ git clone https://github.com/onnx/onnx.git
 cd onnx
 git submodule update --init --recursive
 python setup.py install
+
+rm -rf PyCoRAM/ onnx/ PyCoRAM/ ipgen/ hardcheck/ veriloggen/ dulwich/ slang/ mulpy/
