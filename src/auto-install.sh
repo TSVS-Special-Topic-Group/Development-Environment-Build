@@ -97,6 +97,9 @@ libfreetype6-dev git git-lfs libelf-dev libxml2-dev libegl1-mesa-dev libfontconf
 libxrandr-dev libxcursor-dev libgif-dev libavutil-dev libpulse-dev libavformat-dev libavcodec-dev \
 libswresample-dev libdbus-1-dev libxkbfile-dev libssl-dev -y -f
 
+# Array 3.0
+sudo apt install ibus-array -y -f
+
 # 給 Flatpak 使用
 sudo apt-get install flatpak -y -f
 
@@ -148,8 +151,8 @@ sudo apt-get install xdotool -y -f
 sudo gem update fusuma -y -f
 
 # 遠端軟體
-sudo apt install xfce4 xfce4-goodies tightvncserver
-sudo ufw allow 5901/tcp
+sudo apt install xfce4 xfce4-goodies tightvncserver -y -f
+# sudo ufw allow 5901/tcp
 
 # 電源管理
 sudo apt install tlp -y -f
@@ -160,7 +163,7 @@ sudo apt-file update
 sudo apt update -y -f
 sudo apt list --upgradable
 sudo apt upgrade -y -f
-flatpak update
+flatpak update -y
 sudo apt autoremove -y -f
 
 # 安裝 Kite
