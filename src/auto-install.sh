@@ -17,10 +17,10 @@ sudo add-apt-repository ppa:inkscape.dev/stable -y
 # Lutris
 sudo add-apt-repository ppa:lutris-team/lutris -y
 # playonlinux
-wget -q "http://deb.playonlinux.com/public.gpg" -O- | sudo apt-key add -
-sudo wget http://deb.playonlinux.com/playonlinux_cosmic.list -O /etc/apt/sources.list.d/playonlinux.list
+sudo sh -c 'wget -q "http://deb.playonlinux.com/public.gpg" -O- | sudo apt-key add -'
+sudo sh -c 'wget http://deb.playonlinux.com/playonlinux_cosmic.list -O /etc/apt/sources.list.d/playonlinux.list'
 # 電源管理
-sudo add-apt-repository ppa:slimbook/slimbook
+sudo add-apt-repository ppa:slimbook/slimbook -y
 
 sudo apt install apt-file -y -f
 sudo apt-file update
@@ -58,7 +58,7 @@ sudo apt install --no-install-recommends software-properties-common dirmngr
 # Fingerprint: 298A3A825C0D65DFD57CBB651716619E084DAB9
 sudo wget -qO- https://cloud.r-project.org/bin/linux/ubuntu/marutter_pubkey.asc | sudo tee -a /etc/apt/trusted.gpg.d/cran_ubuntu_key.asc
 # add the R 4.0 repo from CRAN -- adjust 'focal' to 'groovy' or 'bionic' as needed
-sudo add-apt-repository "deb https://cloud.r-project.org/bin/linux/ubuntu $(lsb_release -cs)-cran40/"
+sudo add-apt-repository "deb https://cloud.r-project.org/bin/linux/ubuntu $(lsb_release -cs)-cran40/" -y
 sudo add-apt-repository ppa:c2d4u.team/c2d4u4.0+ -y
 
 sudo apt-get install libatlas3-base -y -f
