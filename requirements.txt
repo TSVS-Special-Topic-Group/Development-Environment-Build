@@ -158,5 +158,7 @@ setuptools
 
 TA-Lib
 
+swig
+gym
 PyOpenGL
-PyOpenGL_accelerate
+# PyOpenGL_accelerate
