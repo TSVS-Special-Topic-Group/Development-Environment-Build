@@ -40,6 +40,7 @@ hardcheck/
 ipgen/
 PyCoRAM/
 mulpy/
+onnx/
 get-docker.sh
 
 # slang
