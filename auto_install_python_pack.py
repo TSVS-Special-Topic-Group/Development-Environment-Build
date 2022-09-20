@@ -4,7 +4,7 @@ from os import system
 
 with open('requirements.txt', 'r') as file:
     for line in file.readlines():
-        if line != "\n":
+        if line != "\n" and line[:2] != "# ":
             print(line[:-1])
             system(
                 "python3 -m pip install " +
