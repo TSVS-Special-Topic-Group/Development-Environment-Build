@@ -2,7 +2,7 @@
 from os import system
 
 
-with open('requirements.txt', 'r') as file:
+with open('requirements.txt', 'r', encoding='utf8') as file:
     for line in file.readlines():
         if line != "\n" and line[:2] != "# ":
             print(line[:-1])
