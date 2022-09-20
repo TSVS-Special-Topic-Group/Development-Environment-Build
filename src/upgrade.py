@@ -1,8 +1,9 @@
 """Upgrade Gitlab."""
 
-from bs4 import BeautifulSoup
 from os import system
 from time import sleep
+
+from bs4 import BeautifulSoup
 import requests
 
 
@@ -24,7 +25,7 @@ for i in range(3):
     while HAVE_DEVOPS:
         try:
             # 將此頁面的HTML GET下來
-            r = requests.get("https://127.0.0.1", verify=False)
+            r = requests.get("https://127.0.0.1", verify=False, timeout=60)
 
             # print(r.text)  # 印出HTML
 
