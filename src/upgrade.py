@@ -9,7 +9,7 @@ import requests
 system("sudo docker stop gitlab")
 system("sudo docker rm gitlab")
 
-for i in range(8):
+for i in range(3):
     print(i)
     system(
         "docker run -d" +
@@ -18,7 +18,7 @@ for i in range(8):
         " --volume /var/lib/gitlab/config/:/etc/gitlab" +
         " --volume /var/lib/gitlab/logs/:/var/log/gitlab" +
         " --volume /var/lib/gitlab/data/:/var/opt/gitlab" +
-        " gitlab/gitlab-ce:14." + str(i) + ".0-ce.0")
+        " gitlab/gitlab-ce:15." + str(i) + ".0-ce.0")
 
     HAVE_DEVOPS = True
     while HAVE_DEVOPS:
@@ -54,7 +54,7 @@ for i in range(8):
 
     system("sudo docker stop gitlab")
     system("sudo docker rm gitlab")
-    system("docker rmi gitlab/gitlab-ce:14." + str(i) + ".0-ce.0")
+    system("docker rmi gitlab/gitlab-ce:15." + str(i) + ".0-ce.0")
 
 system(
     "docker run -d" +
