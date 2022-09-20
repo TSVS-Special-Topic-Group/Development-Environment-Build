@@ -6,7 +6,7 @@ system("echo > auto_install_python_pack.log")
 
 with open('requirements.txt', 'r', encoding='utf8') as file:
     for line in file.readlines():
-        if line != "\n" and line[:2] != "# ":
+        if line != "\n" and line[:1] != "#":
             print(line[:-1])
             system(
                 "python3 -m pip install " +
