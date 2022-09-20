@@ -230,9 +230,7 @@ apm install file-icons minimap highlight-selected
 
 # Python套件安裝
 cd ..
-python3 -m pip install pip --upgrade --no-warn-script-location
-python3 -m pip install -r requirements.txt --upgrade --no-warn-script-location
-# sudo python3 -m pip install -r requirements.txt --upgrade
+python3 auto_install_python_pack.py
 python3 -m ipykernel install --user
 
 # 安裝 Dulwich
