@@ -43,7 +43,8 @@ sudo apt install python-gpg libgpgme-dev -y -f
 sudo apt-get install protobuf-compiler libprotoc-dev -y -f
 sudo apt-get install python3-pyaudio portaudio19-dev -y -f
 sudo apt-get install build-essential swig libpulse-dev libasound2-dev  -y -f
-sudo apt-get install -y zlib1g-dev libbz2-dev liblzma-dev libboost-all-dev -y -f
+sudo apt-get install zlib1g-dev libbz2-dev liblzma-dev libboost-all-dev -y -f
+sudo apt install libxslt1-dev -y -f
 
 # R
 # update indices
