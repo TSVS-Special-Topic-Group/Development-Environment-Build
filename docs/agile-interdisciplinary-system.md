@@ -708,62 +708,64 @@ helm repo update
 然後才再來安裝，此時請加上`--generate-name`，請注意在安裝之前請將Kubernetes啟動，此Kubernetes套件管理軟體才可以正常運作。
 
 ```
-helm install stable/mysql --generate-name
+helm install bitnami/mysql --generate-name
 ```
 
 如果成功，會出現以下訊息，並且告訴你此服務的一些資訊。
 
 ```
-NAME: mysql-1585907027
-LAST DEPLOYED: Fri Apr  3 17:43:54 2020
+NAME: mysql-1664023587
+LAST DEPLOYED: Sat Sep 24 20:46:28 2022
 NAMESPACE: default
 STATUS: deployed
 REVISION: 1
+TEST SUITE: None
 NOTES:
-MySQL can be accessed via port 3306 on the following DNS name from within your cluster:
-mysql-1585907027.default.svc.cluster.local
+CHART NAME: mysql
+CHART VERSION: 9.3.4
+APP VERSION: 8.0.30
 
-To get your root password run:
+** Please be patient while the chart is being deployed **
 
-    MYSQL_ROOT_PASSWORD=$(kubectl get secret --namespace default mysql-1585907027 -o jsonpath="{.data.mysql-root-password}" | base64 --decode; echo)
+Tip:
+
+  Watch the deployment status using the command: kubectl get pods -w --namespace default
+
+Services:
+
+  echo Primary: mysql-1664023587.default.svc.cluster.local:3306
+
+Execute the following to get the administrator credentials:
+
+  echo Username: root
+  MYSQL_ROOT_PASSWORD=$(kubectl get secret --namespace default mysql-1664023587 -o jsonpath="{.data.mysql-root-password}" | base64 -d)
 
 To connect to your database:
 
-1. Run an Ubuntu pod that you can use as a client:
+  1. Run a pod that you can use as a client:
 
-    kubectl run -i --tty ubuntu --image=ubuntu:16.04 --restart=Never -- bash -il
+      kubectl run mysql-1664023587-client --rm --tty -i --restart='Never' --image  docker.io/bitnami/mysql:8.0.30-debian-11-r15 --namespace default --env MYSQL_ROOT_PASSWORD=$MYSQL_ROOT_PASSWORD --command -- bash
 
-2. Install the mysql client:
+  2. To connect to primary service (read/write):
 
-    $ apt-get update && apt-get install mysql-client -y
-
-3. Connect using the mysql cli, then provide your password:
-    $ mysql -h mysql-1585907027 -p
-
-To connect to your database directly from outside the K8s cluster:
-    MYSQL_HOST=127.0.0.1
-    MYSQL_PORT=3306
-
-    # Execute the following command to route the connection:
-    kubectl port-forward svc/mysql-1585907027 3306
-
-    mysql -h ${MYSQL_HOST} -P${MYSQL_PORT} -u root -p${MYSQL_ROOT_PASSWORD}
+      mysql -h mysql-1664023587.default.svc.cluster.local -uroot -p"$MYSQL_ROOT_PASSWORD"
 
 ```
 
-如果要查看下載的版本，可以透過`helm ls`指令查詢，查詢的結果類似於Docker。
+如果要查看下載的版本，可以透過`helm list`或`helm ls`指令查詢，查詢的結果類似於Docker。
 
 ```
-NAME                	NAMESPACE	REVISION	UPDATED                                	STATUS  CHART          	APP VERSION
-mysql-1585907027    	default  	1       	2020-04-03 17:43:54.091233211 +0800 CST	deployedmysql-1.6.2    	5.7.28     
-wordpress-1585906821	default  	1       	2020-04-03 17:40:29.580447579 +0800 CST	deployedwordpress-9.0.2	5.3.2      
+NAME            	NAMESPACE	REVISION	UPDATED                                	STATUS  	CHART      	APP VERSION
+mysql-1664023587	default  	1       	2022-09-24 20:46:28.911454009 +0800 CST	deployed	mysql-9.3.4	8.0.30     
 
 ```
 
-如果不爽哪一個軟體，可以透過`uninstall`，但要將前面查詢的名稱完整的貼上才能刪除，例如前面使用`helm ls`查詢mysql的安裝，可以看到真正名稱為`mysql-1585907027`，因此在這邊`uninstall`後面要放上`mysql-1585907027`，指令為`helm uninstall mysql-1585907027`，以下為輸出結果。
+而透過 `helm show chart bitnami/mysql` 的指令可以看出這個Chart套件內容與架構，來了解會執行什麼內容。如果要完整且全部的資訊，使用 `helm show all bitnami/mysql` 可以得到相當完整且詳細的資訊。
+
+如果不爽哪一個軟體，可以透過`helm uninstall`，但要將前面查詢的名稱完整的貼上才能刪除，例如前面使用`helm list`或`helm ls`查詢mysql的安裝，可以看到真正名稱為`mysql-1664023587`，因此在這邊`uninstall`後面要放上`mysql-1664023587`，指令為`helm uninstall mysql-1664023587`，以下為輸出結果。
 
 ```
-release "mysql-1585907027" uninstalled
+release "mysql-1664023587" uninstalled
 ```
 
 ## Helm GitLab
@@ -788,10 +790,23 @@ helm repo add gitlab https://charts.gitlab.io
 kubectl create namespace gitlab
 ```
 
-設定外部憑證。
+如果是使用自己的憑證，則需要額外設定外部憑證才可以進行。如果使用此教學的方式，則會需要進入容器內在 `/etc/gitlab-runner/certs/gitlab.example.com.crt` 找到；外部則是 `/var/lib/gitlab/config/gitlab.example.com.crt` 找到。有兩個地方需要進行設定，一個是Helm Chart；另一個是Kubectl在啟動一個空間的時候進行。
+
+Helm Chart 部份：
+
+```yaml
+## Set the certsSecretName in order to pass custom certificates for GitLab Runner to use
+## Provide resource name for a Kubernetes Secret Object in the same namespace,
+## this is used to populate the /etc/gitlab-runner/certs directory
+## ref: https://docs.gitlab.com/runner/configuration/tls-self-signed.html#supported-options-for-self-signed-certificates
+##
+certsSecretName: gitlab-atca-ddns-net-cert
+```
+
+Kubectl 部份：
 
 ```
-kubectl --namespace gitlab create secret generic gitlab-example-com-cert --from-file=gitlab.example.com.crt=gitlab.example.com.crt
+kubectl --namespace gitlab create secret generic gitlab-example-com-cert --from-file=gitlab.example.com.crt
 ```
 
 使用Helm啟動GitLab-Runner。
