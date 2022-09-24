@@ -50,11 +50,11 @@ aipp:
     - apt install libxslt1-dev -y -f
     - apt-get install python-virtualenv g++ libyaml-dev libav-tools libmp3lame0 libavcodec-extra-* -y -f
     - apt-get install libpq-dev  postgresql postgresql-contrib -y -f # pgsql
-    - apt install cmake clang bison flex libfuse-dev libudev-dev pkg-config libc6-dev-i386 \
-    linux-headers-generic gcc-multilib libcairo2-dev libgl1-mesa-dev libglu1-mesa-dev libtiff5-dev \
-    libfreetype6-dev git git-lfs libelf-dev libxml2-dev libegl1-mesa-dev libfontconfig1-dev libbsd-dev \
-    libxrandr-dev libxcursor-dev libgif-dev libavutil-dev libpulse-dev libavformat-dev libavcodec-dev \
-    libswresample-dev libdbus-1-dev libxkbfile-dev libssl-dev -y -f
+    - apt install cmake clang bison flex libfuse-dev libudev-dev pkg-config libc6-dev-i386
+    - apt install linux-headers-generic gcc-multilib libcairo2-dev libgl1-mesa-dev libglu1-mesa-dev libtiff5-dev 
+    - apt install libfreetype6-dev git git-lfs libelf-dev libxml2-dev libegl1-mesa-dev libfontconfig1-dev libbsd-dev 
+    - apt install libxrandr-dev libxcursor-dev libgif-dev libavutil-dev libpulse-dev libavformat-dev libavcodec-dev 
+    - apt install libswresample-dev libdbus-1-dev libxkbfile-dev libssl-dev -y -f
 
     # C 語言
     - apt-get install cmake make clang -y -f # 編譯、環境建置
