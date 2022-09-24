@@ -49,6 +49,7 @@
   - [Helm GitLab-Runner](#helm-gitlab-runner)
     - [從GitLab下載Chart安裝GitLab-Runner](#從gitlab下載chart安裝gitlab-runner)
     - [使用Helm的Chart安裝GitLab-Runner](#使用helm的chart安裝gitlab-runner)
+- [Ubuntu防火牆設定](#ubuntu防火牆設定)
 - [自動化備份](#自動化備份)
   - [異地備份](#異地備份)
   - [腳本](#腳本)
@@ -182,7 +183,7 @@ docker pull gitlab/gitlab-ce:latest
 使用Docker運行GitLab伺服器。
 
 ```
-docker run -d --publish 443:443 --publish 80:80 --publish 23:22 --name gitlab --restart always --volume /var/lib/gitlab/config/:/etc/gitlab --volume /var/lib/gitlab/logs/:/var/log/gitlab --volume /var/lib/gitlab/data/:/var/opt/gitlab gitlab/gitlab-ce:latest
+docker run -d --publish 443:443 --publish 80:80 --publish 22:22 --publish 25:25 --publish 465:465 --publish 587:587 --name gitlab --restart always --volume /var/lib/gitlab/config/:/etc/gitlab --volume /var/lib/gitlab/logs/:/var/log/gitlab --volume /var/lib/gitlab/data/:/var/opt/gitlab gitlab/gitlab-ce:latest
 ```
 
 ### 使用Docker更新GitLab
@@ -207,7 +208,7 @@ sudo docker pull gitlab/gitlab-ce:latest
 再次運行GitLab。
 
 ```
-docker run -d --publish 443:443 --publish 80:80 --publish 23:22 --name gitlab --restart always --volume /var/lib/gitlab/config/:/etc/gitlab --volume /var/lib/gitlab/logs/:/var/log/gitlab --volume /var/lib/gitlab/data/:/var/opt/gitlab gitlab/gitlab-ce:latest
+docker run -d --publish 443:443 --publish 80:80 --publish 22:22 --publish 25:25 --publish 465:465 --publish 587:587 --name gitlab --restart always --volume /var/lib/gitlab/config/:/etc/gitlab --volume /var/lib/gitlab/logs/:/var/log/gitlab --volume /var/lib/gitlab/data/:/var/opt/gitlab gitlab/gitlab-ce:latest
 ```
 
 ### GitLab強制導向https
@@ -489,16 +490,13 @@ SELECT * FROM public."ci_variables";
 ```
 DELETE FROM ci_group_variables;
 DELETE FROM ci_variables;
--- Clear project tokens
 UPDATE projects SET runners_token = null, runners_token_encrypted = null;
--- Clear group tokens
 UPDATE namespaces SET runners_token = null, runners_token_encrypted = null;
--- Clear instance tokens
 UPDATE application_settings SET runners_registration_token_encrypted = null;
--- Clear runner tokens
 UPDATE ci_runners SET token = null, token_encrypted = null;
--- Clear build tokens
 UPDATE ci_builds SET token = null, token_encrypted = null;
+UPDATE ci_builds SET token = null, token_encrypted = null;
+TRUNCATE integrations, chat_names, issue_tracker_data, jira_tracker_data, slack_integrations, web_hooks, zentao_tracker_data, web_hook_logs;
 ```
 
 ## Docker GitLab-Runner
@@ -570,22 +568,33 @@ grep -E --color 'vmx|svm' /proc/cpuinfo
 在安裝Minikube前需要先安裝Kubectl，可以使用`curl`或`apt-get`安裝。
 
 ### 使用`curl`下載並安裝
+以下是在沒有權限的時候安裝方式：
 
 ```
-curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl
-curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.18.0/bin/linux/amd64/kubectl
-chmod +x ./kubectl
-sudo mv ./kubectl /usr/local/bin/kubectl
-kubectl version --client
+curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+curl -LO "https://dl.k8s.io/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl.sha256"
+echo "$(cat kubectl.sha256)  kubectl" | sha256sum --check
+chmod +x kubectl
+mkdir -p ~/.local/bin
+mv ./kubectl ~/.local/bin/kubectl
+# and then append (or prepend) ~/.local/bin to $PATH
+```
+
+如果有權限則改為以下方式：
+
+```
+sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
 ```
 
 ### 使用`apt-get`套件管理軟體安裝
 Ubuntu可以使用`apt-get`安裝使用。
 
 ```
-sudo apt-get update && sudo apt-get install -y apt-transport-https
-curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
-echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee -a /etc/apt/sources.list.d/kubernetes.list
+sudo apt-get update
+sudo apt-get install -y ca-certificates curl
+sudo apt-get install -y apt-transport-https
+sudo curl -fsSLo /usr/share/keyrings/kubernetes-archive-keyring.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg
+echo "deb [signed-by=/usr/share/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list
 sudo apt-get update
 sudo apt-get install -y kubectl
 ```
@@ -622,9 +631,11 @@ brew install minikube
 ```
 
 ### 設定使用虛擬環境
-請自行選擇使用Docker、KVM或者VirtualBox當作運行Kubernetes叢集。
+由於Kubernetes是一個容器的管理器，因此初次使用須自行選擇使用Docker、KVM或者VirtualBox當作運行Kubernetes叢集，這裡我們選擇使用Docker。
 
 #### 使用Docker
+由於我有特別使用別的使用者作為管理，因此使用安裝Docker的方式一樣，來
+
 使用Docker當作Kubernetes的叢集環境。
 
 ```
@@ -653,6 +664,7 @@ brew update
 brew update
 brew install helm
 ```
+
 ### 使用`snap`安裝Helm
 由於官方安裝此軟體的名稱已經改變了，需要請使用`brew install helm`作為安裝指令。
 
@@ -661,16 +673,16 @@ sudo snap install helm --classic
 ```
 
 ### 快速使用Helm
-Helm 3之後不需要初始化，可以直接新增遠端儲存庫`https://kubernetes-charts.storage.googleapis.com/`並命名成`stable`:
+Helm 3之後不需要初始化，可以直接新增遠端儲存庫`https://artifacthub.io`並命名成`stable`:
 
 ```
-helm repo add stable https://kubernetes-charts.storage.googleapis.com/
+helm repo add bitnami https://charts.bitnami.com/bitnami
 ```
 
 可以查看安裝後的狀態。
 
 ```
-helm search repo stable
+helm search repo bitnami
 ```
 
 應該會輸出以下資料:
@@ -800,6 +812,54 @@ helm upgrade --namespace gitlab -f values.yaml gitlab-runner gitlab/gitlab-runne
 helm delete gitlab-runner -n gitlab
 ```
 
+# Ubuntu防火牆設定
+可以先查看是否啟動防火牆。
+
+```
+sudo ufw status
+```
+
+如果沒有啟動，則啟動防火牆。
+
+```
+sudo ufw enable
+```
+
+想要關閉，則關閉防火牆。
+
+```
+sudo ufw disable
+```
+
+特定狀況充許所有連線。
+
+```
+sudo ufw default allow
+```
+
+一般來說會先拒絕所有連線。
+
+```
+sudo ufw default deny
+```
+
+可以查看一些預定Port規則來使用。
+
+```
+cat /etc/services | egrep '^ssh|^http|^email'
+```
+
+我們使用的設定：
+
+```
+sudo ufw allow 80/tcp
+sudo ufw allow 443/tcp 
+sudo ufw allow 22/tcp 
+sudo ufw allow 25/tcp 
+sudo ufw allow 465/tcp 
+sudo ufw allow 587/tcp
+```
+
 # 自動化備份
 請先參閱 [GitLab備份與還原](#GitLab備份與還原)了解如何設定與備份GitLab，並且了解如何還原。
 
@@ -820,7 +880,7 @@ minikube delete
 
 docker pull gitlab/gitlab-ce:latest
 
-docker run -d --publish 443:443 --publish 80:80 --publish 23:22 --name gitlab --restart always --volume /var/lib/gitlab/config/:/etc/gitlab --volume /var/lib/gitlab/logs/:/var/log/gitlab --volume /var/lib/gitlab/data/:/var/opt/gitlab gitlab/gitlab-ce:latest
+docker run -d --publish 443:443 --publish 80:80 --publish 22:22 --publish 25:25 --publish 465:465 --publish 587:587 --name gitlab --restart always --volume /var/lib/gitlab/config/:/etc/gitlab --volume /var/lib/gitlab/logs/:/var/log/gitlab --volume /var/lib/gitlab/data/:/var/opt/gitlab gitlab/gitlab-ce:latest
 minikube start --cpus=4
 kubectl create namespace gitlab
 helm repo update
