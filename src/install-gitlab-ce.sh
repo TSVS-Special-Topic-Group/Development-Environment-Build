@@ -41,3 +41,7 @@ minikube config set driver docker
 
 # Helm
 sudo snap install helm --classic
+kubectl create namespace gitlab
+kubectl create secret generic gitlab-atca-ddns-net-cert --namespace gitlab --from-file=atca.ddns.net.crt
+helm install --namespace gitlab gitlab-runner -f values.yaml gitlab/gitlab-runner
+helm upgrade --namespace gitlab -f values.yaml gitlab-runner gitlab/gitlab-runner
