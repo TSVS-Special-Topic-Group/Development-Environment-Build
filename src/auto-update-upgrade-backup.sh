@@ -13,7 +13,7 @@ sudo apt-get upgrade -y
 docker pull gitlab/gitlab-ce:latest
 
 docker run --cpus=6 --cpuset-cpus 0-6 -d --publish 443:443 --publish 80:80 --publish 22:22 --publish 25:25 --publish 465:465 --publish 587:587 --name gitlab --restart always --volume /var/lib/gitlab/config/:/etc/gitlab --volume /var/lib/gitlab/logs/:/var/log/gitlab --volume /var/lib/gitlab/data/:/var/opt/gitlab gitlab/gitlab-ce:latest
-minikube start --cpus=6
+minikube start --cpus=6 --force
 kubectl create namespace gitlab
 helm repo update
 helm install --namespace gitlab gitlab-runner -f gitlab-values.yaml gitlab/gitlab-runner
