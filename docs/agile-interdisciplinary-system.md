@@ -172,6 +172,24 @@ sudo systemctl enable containerd.service
 docker run hello-world
 ```
 
+安裝Nvidia GPU容器
+
+```
+curl -s -L https://nvidia.github.io/nvidia-container-runtime/gpgkey | \
+  sudo apt-key add -
+distribution=$(. /etc/os-release;echo $ID$VERSION_ID)
+curl -s -L https://nvidia.github.io/nvidia-container-runtime/$distribution/nvidia-container-runtime.list | \
+  sudo tee /etc/apt/sources.list.d/nvidia-container-runtime.list
+sudo apt-get update
+sudo apt-get install nvidia-container-runtime
+```
+
+測試是否可以成使用GPU，可以使用 `--gpus` 指令。
+
+```
+docker run -it --rm --gpus all ubuntu nvidia-smi
+```
+
 ## Docker GitLab
 ### 使用Docker安裝GitLab
 下載最新映像檔。
@@ -868,10 +886,10 @@ cat /etc/services | egrep '^ssh|^http|^email'
 
 ```
 sudo ufw allow 80/tcp
-sudo ufw allow 443/tcp 
-sudo ufw allow 22/tcp 
-sudo ufw allow 25/tcp 
-sudo ufw allow 465/tcp 
+sudo ufw allow 443/tcp
+sudo ufw allow 22/tcp
+sudo ufw allow 25/tcp
+sudo ufw allow 465/tcp
 sudo ufw allow 587/tcp
 ```
 
