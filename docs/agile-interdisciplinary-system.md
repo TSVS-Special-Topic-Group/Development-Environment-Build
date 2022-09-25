@@ -992,7 +992,7 @@ sudo nano /etc/crontab
 ...
 
 # GitLab-CE與GitLab Runner更新的時間
-* 5 * * 0 root sh /home/$USER/Git/Agile-Interdisciplinary-System/auto_update_upgrade_backup.sh
+* 5 * * 0 root sh /home/$USER/Git/backup/auto_update_upgrade_backup.sh >> /var/log/
 
 ```
 
