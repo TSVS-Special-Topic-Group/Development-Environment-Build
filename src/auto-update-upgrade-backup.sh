@@ -1,3 +1,4 @@
+git pull
 docker exec -t gitlab gitlab-backup create  # 在更新前先進行備份
 
 docker stop gitlab
