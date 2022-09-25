@@ -1,4 +1,5 @@
 # 開發環境建構
+[![pipeline status](https://atca.ddns.net/timmy61109/Development-Environment-Build/badges/master/pipeline.svg)](https://atca.ddns.net/timmy61109/Development-Environment-Build/-/commits/master)[![coverage report](https://atca.ddns.net/timmy61109/Development-Environment-Build/badges/master/coverage.svg)](https://atca.ddns.net/timmy61109/Development-Environment-Build/-/commits/master)[![Latest Release](https://atca.ddns.net/timmy61109/Development-Environment-Build/-/badges/release.svg)](https://atca.ddns.net/timmy61109/Development-Environment-Build/-/releases)
 用於統一且紀錄開發環境的儲存庫，會講解開發時開注意什麼，以及將過去所有相關套件與工具，主要介紹Atom的Python、Markdown的工具，同時儲存庫有自動化安裝與佈署的腳本，其中Linux是介紹最為方便、完整與詳細，Windows反而沒有這麼詳細，其他的程式語言所使用的軟體與套件則有機會使用在放上去。
 
 兩個來源儲存庫：
