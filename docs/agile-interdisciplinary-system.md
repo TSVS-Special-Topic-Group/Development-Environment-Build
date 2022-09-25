@@ -927,6 +927,7 @@ sudo ufw allow 587/tcp
 用於更新、升級與備份的腳本原始碼，可以透過設定排程來讓備份更加順利與方便。
 
 ```shell
+git pull
 docker exec -t gitlab gitlab-backup create  # 在更新前先進行備份
 
 docker stop gitlab
@@ -935,14 +936,19 @@ helm delete gitlab-runner -n gitlab
 minikube stop
 minikube delete
 
+sudo apt-get update
+sudo apt-get upgrade -y
+# sudo dpkg -i minikube_*.deb
 docker pull gitlab/gitlab-ce:latest
 
-docker run -d --publish 443:443 --publish 80:80 --publish 22:22 --publish 25:25 --publish 465:465 --publish 587:587 --name gitlab --restart always --volume /var/lib/gitlab/config/:/etc/gitlab --volume /var/lib/gitlab/logs/:/var/log/gitlab --volume /var/lib/gitlab/data/:/var/opt/gitlab gitlab/gitlab-ce:latest
-minikube start --cpus=4
+docker run --cpus=6 --cpuset-cpus 0-6 -d --publish 443:443 --publish 80:80 --publish 22:22 --publish 25:25 --publish 465:465 --publish 587:587 --name gitlab --restart always --volume /var/lib/gitlab/config/:/etc/gitlab --volume /var/lib/gitlab/logs/:/var/log/gitlab --volume /var/lib/gitlab/data/:/var/opt/gitlab gitlab/gitlab-ce:latest
+minikube start --cpus=6 --force
 kubectl create namespace gitlab
 helm repo update
-helm install --namespace gitlab gitlab-runner -f /home/$USER/Git/Agile-Interdisciplinary-System/values.yaml gitlab/gitlab-runner
-
+helm install --namespace gitlab gitlab-runner -f gitlab-values.yaml gitlab/gitlab-runner
+helm install --namespace gitlab atca-gitlab-runner -f atca-values.yaml gitlab/gitlab-runner
+helm upgrade --namespace gitlab gitlab-runner -f gitlab-values.yaml gitlab/gitlab-runner
+helm upgrade --namespace gitlab atca-gitlab-runner -f atca-values.yaml gitlab/gitlab-runner
 ```
 
 ## 設定排程
@@ -964,7 +970,7 @@ crontab -e
 # m h  dom mon dow   command
 
 # GitLab-CE與GitLab Runner更新的時間
-00 16 * * 0 sh /home/$USER/Git/Agile-Interdisciplinary-System/auto_update_upgrade_backup.sh
+00 16 * * 0 sh /home/$USER/Git/backup/auto_update_upgrade_backup.sh
 ```
 
 重新啟動
@@ -992,8 +998,7 @@ sudo nano /etc/crontab
 ...
 
 # GitLab-CE與GitLab Runner更新的時間
-* 5 * * 0 root sh /home/$USER/Git/backup/auto_update_upgrade_backup.sh >> /var/log/
-
+* 5 * * 0 root sh /home/$USER/Git/backup/auto_update_upgrade_backup.sh >> /var/log/auto_update_upgrade_backup.log
 ```
 
 重新啟動
