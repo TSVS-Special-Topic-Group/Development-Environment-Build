@@ -42,5 +42,7 @@ minikube config set driver docker
 # Helm
 sudo snap install helm --classic
 kubectl create namespace gitlab
-helm install --namespace gitlab gitlab-runner -f values.yaml gitlab/gitlab-runner
-helm upgrade --namespace gitlab -f values.yaml gitlab-runner gitlab/gitlab-runner
+helm install --namespace gitlab gitlab-runner -f gitlab-values.yaml gitlab/gitlab-runner
+helm install --namespace gitlab atca-gitlab-runner -f atca-values.yaml gitlab/gitlab-runner
+helm upgrade --namespace gitlab gitlab-runner -f gitlab-values.yaml gitlab/gitlab-runner
+helm upgrade --namespace gitlab atca-gitlab-runner -f atca-values.yaml gitlab/gitlab-runner
