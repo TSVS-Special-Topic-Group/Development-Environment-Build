@@ -24,7 +24,7 @@ sudo cp gitlab.rb /var/lib/gitlab/config/
 # sudo cp gitlab-secrets.json /var/lib/gitlab/config/
 docker restart gitlab
 
-# Kubectl 
+# Kubectl
 sudo apt-get update
 sudo apt-get install -y ca-certificates curl
 sudo apt-get install -y apt-transport-https
@@ -41,6 +41,8 @@ minikube config set driver docker
 
 # Helm
 sudo snap install helm --classic
+helm repo add gitlab https://charts.gitlab.io
+helm repo update
 kubectl create namespace gitlab
 helm install --namespace gitlab gitlab-runner -f gitlab-values.yaml gitlab/gitlab-runner
 helm install --namespace gitlab atca-gitlab-runner -f atca-values.yaml gitlab/gitlab-runner
