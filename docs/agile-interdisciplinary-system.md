@@ -927,6 +927,7 @@ sudo ufw allow 587/tcp
 用於更新、升級與備份的腳本原始碼，可以透過設定排程來讓備份更加順利與方便。
 
 ```shell
+cd /root/Git/backup
 git pull
 docker exec -t gitlab gitlab-backup create  # 在更新前先進行備份
 
