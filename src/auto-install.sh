@@ -72,6 +72,10 @@ sudo apt-get install playonlinux -y -f
 sudo apt install iverilog verilator ghdl -y -f
 sudo apt-get install libtinfo5 -f -y
 
+# DDNS
+sudo apt-get install libio-socket-ssl-perl -y -f
+sudo apt-get install ddclient -y -f
+
 # 給 OBS 使用
 sudo apt install v4l2loopback-dkms -y -f
 
