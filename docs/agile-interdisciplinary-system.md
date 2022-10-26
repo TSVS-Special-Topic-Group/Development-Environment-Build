@@ -29,6 +29,9 @@
         - [GitLab進行還原](#gitlab進行還原)
       - [遺失或未備份`gitlab-secrets.json`問題](#遺失或未備份gitlab-secretsjson問題)
   - [Docker GitLab-Runner](#docker-gitlab-runner)
+  - [Docker Kroki](#docker-kroki)
+  - [Docker PlantUML](#docker-plantuml)
+  - [Docker Gitpod](#docker-gitpod)
 - [Kubernetes](#kubernetes)
   - [安裝Kubernetes](#安裝kubernetes)
   - [檢查虛擬環境](#檢查虛擬環境)
@@ -594,6 +597,20 @@ openssl s_client -connect ${SERVER}:${PORT} -showcerts </dev/null 2>/dev/null | 
 #使用自訂簽證註冊
 gitlab-runner register --name timewaver-translate --url https://gitlab.example.com --registration-token mzR62nG88Lb4UzJek1xH --tls-ca-file=/etc/gitlab-runner/certs/gitlab.example.com.crt
 ```
+
+## Docker Kroki
+
+```
+docker run -d --name kroki -p 8080:8000 yuzutech/kroki
+```
+
+## Docker PlantUML
+
+```
+docker run -d --name plantuml -p 8080:8080 plantuml/plantuml-server:tomcat
+```
+
+## Docker Gitpod
 
 # Kubernetes
 ## 安裝Kubernetes
