@@ -1025,6 +1025,41 @@ sudo nano /etc/crontab
 sudo systemctl restart cron.service
 ```
 
+# DDclient
+使用 DDclient 更新 no-ip 或者 Google Domain 的網域IP，透過以下指令安裝。
+
+```
+sudo apt-get install libio-socket-ssl-perl
+sudo apt-get install ddclient
+```
+
+安裝過程會自動跑設定，如果後續想要改動，可以進入到 `/etc/ddclient.conf` 進行編輯與修改。
+
+```
+sudo nano /etc/ddclient.conf
+```
+
+設定開機時自動啟動。
+
+```
+sudo systemctl start ddclient  
+sudo systemctl enable ddclient
+sudo systemctl restart ddclient
+sudo systemctl stop ddclient  
+```
+
+設定完成後，可以進行測試看是否可以更新成功。
+
+```
+sudo ddclient -daemon=0 -debug -verbose -noquiet
+```
+
+以下為更新成功。
+
+```
+SUCCESS:  updating ddns.example.com: good: IP address set to 1.2.3.4
+```
+
 # 參考資料
 
 - Docker
@@ -1076,3 +1111,7 @@ sudo systemctl restart cron.service
 - 自動化備份
   - [第十六章、檔案伺服器之二： SAMBA 伺服器](http://linux.vbird.org/linux_server/0370samba.php)
   - [第十五章、例行性工作排程(crontab)](https://linux.vbird.org/linux_basic/centos7/0430cron.php)
+- 動態網域
+  - https://ddclient.net/
+  - https://blog.cre0809.com/archives/231
+  - https://support.google.com/domains/answer/6147083?authuser=0&hl=zh-Hant#zippy=%2C%E5%9C%A8%E9%96%98%E9%81%93%E4%B8%BB%E6%A9%9F%E6%88%96%E4%BC%BA%E6%9C%8D%E5%99%A8%E4%B8%AD%E8%A8%AD%E5%AE%9A%E7%94%A8%E6%88%B6%E7%AB%AF%E7%A8%8B%E5%BC%8F
