@@ -16,6 +16,10 @@
 - https://www.openmediavault.org/
 - https://youtu.be/Kq849CpGd88
 - https://techcult.com/best-free-and-open-source-nas-software/
+- https://blog.user.today/10-free-truenas-note/
+- https://osslab.tv/nas-software-2/
+https://osslab.tv/nas-software-1/
+- https://hackmd.io/@Not/TrueNasCoreInstall
 - 提供 Kubernetes 使用 NAS 容量空間作為 CSI 虛擬空間技術
     - https://github.com/hpe-storage/truenas-csp
     - https://artifacthub.io/packages/helm/hpe-storage/hpe-csi-driver
