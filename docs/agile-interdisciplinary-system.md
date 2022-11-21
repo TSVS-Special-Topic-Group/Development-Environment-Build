@@ -59,6 +59,7 @@
   - [設定排程](#設定排程)
     - [設定使用者的設定檔](#設定使用者的設定檔)
     - [設定系統的設定檔](#設定系統的設定檔)
+- [DDclient](#ddclient)
 - [參考資料](#參考資料)
 
 <!-- /code_chunk_output -->
@@ -663,6 +664,11 @@ sudo apt-get install -y kubectl
 
 ### 使用安裝套件安裝
 到Minikube的[官方連結](https://github.com/kubernetes/minikube/releases)選擇使用的系統與環境安裝，針對Ubuntr可以使用`dgkp`安裝`.deb`檔案。
+
+```
+curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube_latest_amd64.deb
+sudo dpkg -i minikube_latest_amd64.deb
+```
 
 ### 使用二進位檔案安裝
 
