@@ -83,6 +83,7 @@ PyYAML
 ruamel.yaml
 # demjson
 demjson3
+xmlplain
 
 pyserial
 PyProbe
