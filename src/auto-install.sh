@@ -48,6 +48,19 @@ sudo apt install libxslt1-dev -y -f
 sudo apt-get install python-virtualenv g++ libyaml-dev libav-tools libmp3lame0 libavcodec-extra-* -y -f
 sudo apt-get install libpq-dev  postgresql postgresql-contrib -y -f # pgsql
 
+# QEMU
+sudo apt install qemu qemu-utils qemu-kvm
+sudo apt install libvirt-clients libvirt-daemon-system bridge-utils virtinst libvirt-daemon virt-manager
+sudo apt install sshguard openssh-server mosh
+sudo apt install seabios ovmf hugepages
+sudo apt install cpu-checker
+kvm-ok
+grep -c vmx /proc/cpuinfo
+grep -c svm /proc/cpuinfo
+sudo systemctl status libvirtd.service
+sudo adduser $USER libvirt
+sudo adduser $USER libvirt-qemu
+
 # R
 # update indices
 sudo apt update -qq
