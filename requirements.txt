@@ -166,3 +166,6 @@ swig
 gym
 PyOpenGL
 # PyOpenGL_accelerate
+
+tuxdrive
+GoSync
