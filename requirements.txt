@@ -169,3 +169,13 @@ PyOpenGL
 
 tuxdrive
 GoSync
+
+beautifulsoup4
+opencv-python
+pygame
+requests
+numpy
+gTTS
+pyttsx3
+googletrans
+mediapipe
