@@ -47,6 +47,15 @@ sudo apt-get install zlib1g-dev libbz2-dev liblzma-dev libboost-all-dev -y -f
 sudo apt install libxslt1-dev -y -f
 sudo apt-get install python-virtualenv g++ libyaml-dev libav-tools libmp3lame0 libavcodec-extra-* -y -f
 sudo apt-get install libpq-dev  postgresql postgresql-contrib -y -f # pgsql
+sudo apt-get install -y -f \
+    libopencv-core-dev \
+    libopencv-highgui-dev \
+    libopencv-calib3d-dev \
+    libopencv-features2d-dev \
+    libopencv-imgproc-dev \
+    libopencv-video-dev
+sudo apt install espeak -y -f
+sudo apt install libespeak-dev -y -f
 
 # QEMU
 sudo apt install qemu qemu-utils qemu-kvm
