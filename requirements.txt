@@ -69,6 +69,7 @@ mccabe
 coverage
 codecov
 python-language-server
+black
 
 line_profiler
 
