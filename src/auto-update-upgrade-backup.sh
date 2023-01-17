@@ -1,5 +1,6 @@
 cd ~/Git/backup
 git pull
+helm repo add gitlab https://charts.gitlab.io
 docker exec -t gitlab gitlab-backup create  # 在更新前先進行備份
 
 docker stop gitlab
