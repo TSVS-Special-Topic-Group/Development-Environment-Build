@@ -56,6 +56,7 @@ sudo apt-get install -y -f \
     libopencv-video-dev
 sudo apt install espeak -y -f
 sudo apt install libespeak-dev -y -f
+sudo apt-get install python3-tk -y -f
 
 # QEMU
 sudo apt install qemu qemu-utils qemu-kvm
@@ -222,7 +223,7 @@ apm install python-linters
 # Python debugger
 apm install python-debugger
 
-# Atom Python自動填寫
+# Atom Python 自動完成
 apm install Hydrogen
 apm install kite
 apm install autocomplete-python
@@ -253,6 +254,79 @@ apm install platformio-ide-terminal
 
 # Atom 檔案圖標 小地圖 突顯
 apm install file-icons minimap highlight-selected
+
+# VS code Atom Thnem
+code --install-extension akamud.vscode-theme-onedark
+code --install-extension ms-vscode.atom-keybindings
+
+# VS code Python
+code --install-extension ms-python.vscode-pylance
+code --install-extension ms-python.python
+
+# VS code 環境管理
+code --install-extension donjayamanne.python-environment-manager
+
+# VS code Python Lint
+code --install-extension ms-python.pylint
+
+# VS code Python Indent
+code --install-extension KevinRose.vsc-python-indent
+
+# VS code Python Django
+code --install-extension batisteo.vscode-django
+code --install-extension tht13.python
+# code --install-extension formulahendry.code-runner
+
+# VS code Python Docs
+code --install-extension njpwerner.autodocstring
+
+# VS code 排序匯入套件
+code --install-extension ms-python.isort
+
+# VS code 熱門套件擴展安裝
+# code --install-extension donjayamanne.python-extension-pack
+
+# VS code Chinese Traditional Language
+code --install-extension MS-CEINTL.vscode-language-pack-zh-hant
+
+# VS code Containers
+## Dcoker
+code --install-extension ms-azuretools.vscode-docker
+
+## Containers
+code --install-extension ms-vscode-remote.remote-containers
+
+# Kubernetes
+code --install-extension ms-kubernetes-tools.vscode-kubernetes-tools
+code --install-extension lunuan.kubernetes-templates
+code --install-extension ipedrazas.kubernetes-snippets
+
+# VS code Autocomplete
+code --install-extension TabNine.tabnine-vscode
+code --install-extension VisualStudioExptTeam.vscodeintellicode
+
+# VS code 程式碼顏色
+code --install-extension wholroyd.jinja
+code --install-extension magicstack.MagicPython
+
+# File icon
+code --install-extension PKief.material-icon-theme
+code --install-extension file-icons.file-icons
+
+# VS code verilog
+code --install-extension mshr-h.VerilogHDL
+code --install-extension theonekevin.icarusext
+code --install-extension MohammadKurjieh.verilogrunner
+
+# VS code
+code --install-extension puorc.awesome-vhdl
+code --install-extension ViDE-Software.v4pvhdlforprofessionals
+code --install-extension vhdlwhiz.vhdl-by-vhdlwhiz
+code --install-extension rjyoung.vscode-modern-vhdl-support
+
+# Markdown support
+code --install-extension shd101wyy.markdown-preview-enhanced
+code --install-extension marp-team.marp-vscode
 
 # Python套件安裝
 cd ..
@@ -299,6 +373,6 @@ cd ..
 git clone https://github.com/onnx/onnx.git
 cd onnx
 git submodule update --init --recursive
-python setup.py install
+python3 setup.py install
 
 rm -rf PyCoRAM/ onnx/ PyCoRAM/ ipgen/ hardcheck/ veriloggen/ dulwich/ slang/ mulpy/
