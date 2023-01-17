@@ -13,54 +13,44 @@ cache:
   - ".cache/pip"
   - venv/
 before_script:
-- python -V
-- apt update -y
-- apt upgrade -y
-- apt install graphviz graphviz-dev protobuf-compiler libprotoc-dev -y -f
-- pip install pip --upgrade
-- pip install virtualenv
-- virtualenv venv
-- source venv/bin/activate
-- pip install mkdocs psycopg2-binary mkdocs mkdocs-bootstrap mkdocs-webcontext-plugin
-  mkdocs-mdpo-plugin mkdocs-markdownextradata-plugin mkdocs-gitlab-plugin mkdocs-rss-plugin
-  mkdocs-i18n mkdocs-material mdx_truly_sane_lists mkdocs-redirects mkdocs-mermaid-plugin
-  mkdocs-mermaid2-plugin markdown --upgrade
+  - python -V
+  - apt update -y
+  - apt upgrade -y
+  - apt install graphviz graphviz-dev protobuf-compiler libprotoc-dev -y -f
+  - pip install pip --upgrade
+  - pip install virtualenv
+  - virtualenv venv
+  - source venv/local/bin/activate
+  - pip install mkdocs psycopg2-binary mkdocs mkdocs-bootstrap mkdocs-webcontext-plugin
+    mkdocs-mdpo-plugin mkdocs-markdownextradata-plugin mkdocs-gitlab-plugin mkdocs-rss-plugin
+    mkdocs-i18n mkdocs-material mdx_truly_sane_lists mkdocs-redirects mkdocs-mermaid-plugin
+    mkdocs-mermaid2-plugin markdown --upgrade
+
 aipp:
+  stage: build
   script:
   - python src/auto_install_python_pack.py
+
 mkdocs:
+  stage: build
   script:
   - mkdocs build
   artifacts:
     paths:
     - site/
 pages:
-  stages:
-    - build
-    - test
-    - deploy
-    - review
-    - dast
-    - staging
-    - canary
-    - production
-    - incremental rollout 10%
-    - incremental rollout 25%
-    - incremental rollout 50%
-    - incremental rollout 100%
-    - performance
-    - cleanup
+  stage: deploy
   script:
     - mkdir .public
     - cp -r * .public
     - mv .public public
+    - deactivate
   artifacts:
     paths:
       - public
   rules:
   - if: "$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH"
   environment: production
-sast:
-  stage: test
+
 include:
 - template: Auto-DevOps.gitlab-ci.yml
