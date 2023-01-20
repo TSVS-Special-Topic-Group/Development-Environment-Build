@@ -327,6 +327,8 @@ code --install-extension rjyoung.vscode-modern-vhdl-support
 # Markdown support
 code --install-extension shd101wyy.markdown-preview-enhanced
 code --install-extension marp-team.marp-vscode
+code --install-extension yzhang.markdown-all-in-one
+code --install-extension DavidAnson.vscode-markdownlint
 
 # Python套件安裝
 cd ..
