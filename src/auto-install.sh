@@ -64,6 +64,7 @@ sudo apt install libvirt-clients libvirt-daemon-system bridge-utils virtinst lib
 sudo apt install sshguard openssh-server mosh
 sudo apt install seabios ovmf hugepages
 sudo apt install cpu-checker
+sudo apt install spice-vdagent
 kvm-ok
 grep -c vmx /proc/cpuinfo
 grep -c svm /proc/cpuinfo
