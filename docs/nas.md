@@ -9,6 +9,18 @@
 
 看過參考影片後，決定嘗試使用也是屬於 Linux 的 QEMU 虛擬主機，希望可以帶給我隔離的好環境。
 
+# 環境佈署
+
+安裝相依套件與軟體：
+
+```
+sudo apt-get install qemu-kvm libvirt-daemon-system \
+  libvirt-clients virtinst bridge-utils
+```
+
+# 設定橋接器
+因為想要避開虛擬界面的NAT功能，來讓虛擬主機可以直接通道外部，所以需要重新設定橋接設定，來讓虛擬主機IP可以直接被外部DHCP設定。
+
 # 參考資料
 
 - https://www.truenas.com/
