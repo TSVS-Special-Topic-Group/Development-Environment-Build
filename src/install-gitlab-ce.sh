@@ -34,8 +34,8 @@ sudo apt-get update
 sudo apt-get install -y kubectl
 
 # Minikube
-https://github.com/kubernetes/minikube/releases/download/v1.27.0/minikube_1.27.0-0_amd64.deb
-sudo dpkg -i minikube_*.deb
+curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube_latest_amd64.deb
+sudo dpkg -i minikube_latest_amd64.deb
 minikube start --driver=docker
 minikube config set driver docker
 
