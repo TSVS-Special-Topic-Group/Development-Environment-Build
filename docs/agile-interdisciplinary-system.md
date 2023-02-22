@@ -556,7 +556,7 @@ docker run -d --name gitlab-runner --restart always -v /var/lib/gitlab-runner/:/
 使用`docker exec -it gitlab-runner bash`進入到容器，使用以下設定:
 
 ```
-gitlab-runner register --name timewaver-translate --url https://gitlab.example.com --registration-token mzR62nG88Lb4UzJek1xH
+gitlab-runner register --name gitlab-example-com --url https://gitlab.example.com --registration-token mzR62nG88Lb4UzJek1xH
 ```
 
 然後依照參數輸入內容。
@@ -653,8 +653,8 @@ Ubuntu可以使用`apt-get`安裝使用。
 sudo apt-get update
 sudo apt-get install -y ca-certificates curl
 sudo apt-get install -y apt-transport-https
-sudo curl -fsSLo /usr/share/keyrings/kubernetes-archive-keyring.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg
-echo "deb [signed-by=/usr/share/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list
+sudo curl -fsSLo /etc/apt/keyrings/kubernetes-archive-keyring.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg
+echo "deb [signed-by=/etc/apt/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list
 sudo apt-get update
 sudo apt-get install -y kubectl
 ```
