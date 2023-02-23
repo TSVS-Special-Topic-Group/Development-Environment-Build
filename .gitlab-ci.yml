@@ -16,7 +16,6 @@ before_script:
   - python -V
   - apt update -y
   - apt upgrade -y
-  - apt install graphviz graphviz-dev protobuf-compiler libprotoc-dev -y -f
   - pip install pip --upgrade
   - pip install virtualenv
   - virtualenv venv
@@ -32,6 +31,7 @@ auto install:
 auto install python pack:
   stage: test
   script:
+    - apt install graphviz graphviz-dev protobuf-compiler libprotoc-dev -y -f
     - python src/auto_install_python_pack.py
 
 mkdocs:
