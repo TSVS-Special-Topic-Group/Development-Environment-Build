@@ -106,8 +106,10 @@ sudo apt install v4l2loopback-dkms -y -f
 sudo apt install lutris -y -f
 
 # sudo apt-get install kdenlive gimp obs-studio -y -f
-# sudo apt-get install libreoffice -y -f
 sudo apt-get install atom -y -f
+
+# Libreoffice
+sudo apt-get install libreoffice libreoffice-common -y -f
 
 # ImageMagick
 sudo apt install libtiff-dev libpng-dev -y -f
@@ -147,7 +149,7 @@ flatpak install flathub com.obsproject.Studio --system -y
 flatpak install flathub org.darktable.Darktable --system -y
 flatpak install flathub org.videolan.VLC --system -y
 flatpak install flathub com.spotify.Client --system -y
-flatpak install flathub org.libreoffice.LibreOffice --system -y
+# flatpak install flathub org.libreoffice.LibreOffice --system -y
 flatpak install flathub org.telegram.desktop --system -y
 flatpak install flathub com.usebottles.bottles --system -y
 flatpak install flathub org.blender.Blender --system -y
