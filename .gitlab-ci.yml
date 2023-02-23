@@ -21,11 +21,19 @@ before_script:
   - virtualenv venv
   - source venv/bin/activate
 
-auto install:
+auto install venv:
   stage: test
   script:
     - sh src/auto-install.sh
+
+auto install docker:
+  stage: test
+  script:
     - sh src/docker.sh
+
+auto install gitlab ce:
+  stage: test
+  script:
     - sh src/install-gitlab-ce.sh
 
 auto install python pack:
