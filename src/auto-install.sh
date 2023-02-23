@@ -136,6 +136,10 @@ apt install ibus-array -y -f
 # 給 Flatpak 使用
 apt-get install flatpak -y -f
 
+# Snap
+apt install snapd
+snap install snap-store
+
 # 來源更新
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
