@@ -1,140 +1,140 @@
 # apt-get安裝
 # ==========
 # 系統更新與升級
-sudo apt update -y
-sudo apt upgrade -y
+apt update -y
+apt upgrade -y
 
 # 加入安裝來源
 # Kdenlive
-sudo add-apt-repository ppa:kdenlive/kdenlive-stable -y
+add-apt-repository ppa:kdenlive/kdenlive-stable -y
 # Atom
-sudo sh -c 'wget -qO - https://packagecloud.io/AtomEditor/atom/gpgkey | sudo apt-key add -'
-sudo sh -c 'echo "deb [arch=amd64] https://packagecloud.io/AtomEditor/atom/any/ any main" > /etc/apt/sources.list.d/atom.list'
+sh -c 'wget -qO - https://packagecloud.io/AtomEditor/atom/gpgkey | apt-key add -'
+sh -c 'echo "deb [arch=amd64] https://packagecloud.io/AtomEditor/atom/any/ any main" > /etc/apt/sources.list.d/atom.list'
 # OBS
-sudo add-apt-repository ppa:obsproject/obs-studio -y
+add-apt-repository ppa:obsproject/obs-studio -y
 # inkscape
-sudo add-apt-repository ppa:inkscape.dev/stable -y
+add-apt-repository ppa:inkscape.dev/stable -y
 # Lutris
-sudo add-apt-repository ppa:lutris-team/lutris -y
+add-apt-repository ppa:lutris-team/lutris -y
 # playonlinux
-sudo sh -c 'wget -q "http://deb.playonlinux.com/public.gpg" -O- | sudo apt-key add -'
-sudo sh -c 'wget http://deb.playonlinux.com/playonlinux_cosmic.list -O /etc/apt/sources.list.d/playonlinux.list'
+sh -c 'wget -q "http://deb.playonlinux.com/public.gpg" -O- | apt-key add -'
+sh -c 'wget http://deb.playonlinux.com/playonlinux_cosmic.list -O /etc/apt/sources.list.d/playonlinux.list'
 # 電源管理
-sudo add-apt-repository ppa:slimbook/slimbook -y
+add-apt-repository ppa:slimbook/slimbook -y
 
-sudo apt install apt-file -y -f
-sudo apt-file update
-sudo apt list --upgradable
-sudo apt-get update -y
+apt install apt-file -y -f
+apt-file update
+apt list --upgradable
+apt-get update -y
 
 # C 語言
-sudo apt-get install cmake make clang -y -f # 編譯、環境建置
-sudo apt-get install valgrind -y -f  # 動態檢查
-sudo apt-get install cppcheck -y -f  # 靜態檢查
-sudo apt-get install infer astyle uncrustify clang-format -y -f  # 風格化
-sudo apt-get install check -y -f  # 程式程式
-sudo apt install build-essential -y -f
+apt-get install cmake make clang -y -f # 編譯、環境建置
+apt-get install valgrind -y -f  # 動態檢查
+apt-get install cppcheck -y -f  # 靜態檢查
+apt-get install infer astyle uncrustify clang-format -y -f  # 風格化
+apt-get install check -y -f  # 程式程式
+apt install build-essential -y -f
 
 # Python
-sudo apt-get install python3 python3-dev python3-pip python3-all-dev -y -f
-sudo apt-get install git ffmpeg libxss1 xdg-utils -y -f
-sudo apt-get install graphviz graphviz-dev -y -f
-sudo apt install python-gpg libgpgme-dev -y -f
-sudo apt-get install protobuf-compiler libprotoc-dev -y -f
-sudo apt-get install python3-pyaudio portaudio19-dev -y -f
-sudo apt-get install build-essential swig libpulse-dev libasound2-dev  -y -f
-sudo apt-get install zlib1g-dev libbz2-dev liblzma-dev libboost-all-dev -y -f
-sudo apt install libxslt1-dev -y -f
-sudo apt-get install python-virtualenv g++ libyaml-dev libav-tools libmp3lame0 libavcodec-extra-* -y -f
-sudo apt-get install libpq-dev  postgresql postgresql-contrib -y -f # pgsql
-sudo apt-get install -y -f \
+apt-get install python3 python3-dev python3-pip python3-all-dev -y -f
+apt-get install git ffmpeg libxss1 xdg-utils -y -f
+apt-get install graphviz graphviz-dev -y -f
+apt install python-gpg libgpgme-dev -y -f
+apt-get install protobuf-compiler libprotoc-dev -y -f
+apt-get install python3-pyaudio portaudio19-dev -y -f
+apt-get install build-essential swig libpulse-dev libasound2-dev  -y -f
+apt-get install zlib1g-dev libbz2-dev liblzma-dev libboost-all-dev -y -f
+apt install libxslt1-dev -y -f
+apt-get install python-virtualenv g++ libyaml-dev libav-tools libmp3lame0 libavcodec-extra-* -y -f
+apt-get install libpq-dev  postgresql postgresql-contrib -y -f # pgsql
+apt-get install -y -f \
     libopencv-core-dev \
     libopencv-highgui-dev \
     libopencv-calib3d-dev \
     libopencv-features2d-dev \
     libopencv-imgproc-dev \
     libopencv-video-dev
-sudo apt install espeak -y -f
-sudo apt install libespeak-dev -y -f
-sudo apt-get install python3-tk -y -f
+apt install espeak -y -f
+apt install libespeak-dev -y -f
+apt-get install python3-tk -y -f
 
 # QEMU
-sudo apt install qemu qemu-utils qemu-kvm
-sudo apt install libvirt-clients libvirt-daemon-system bridge-utils virtinst libvirt-daemon virt-manager
-sudo apt install sshguard openssh-server mosh
-sudo apt install seabios ovmf hugepages
-sudo apt install cpu-checker
-sudo apt install spice-vdagent
+apt install qemu qemu-utils qemu-kvm
+apt install libvirt-clients libvirt-daemon-system bridge-utils virtinst libvirt-daemon virt-manager
+apt install sshguard openssh-server mosh
+apt install seabios ovmf hugepages
+apt install cpu-checker
+apt install spice-vdagent
 kvm-ok
 grep -c vmx /proc/cpuinfo
 grep -c svm /proc/cpuinfo
-sudo systemctl status libvirtd.service
-sudo adduser $USER libvirt
-sudo adduser $USER libvirt-qemu
+systemctl status libvirtd.service
+adduser $USER libvirt
+adduser $USER libvirt-qemu
 
 # R
 # update indices
-sudo apt update -qq
+apt update -qq
 # install two helper packages we need
-sudo apt install --no-install-recommends software-properties-common dirmngr
+apt install --no-install-recommends software-properties-common dirmngr
 # add the signing key (by Michael Rutter) for these repos
 # To verify key, run gpg --show-keys /etc/apt/trusted.gpg.d/cran_ubuntu_key.asc
 # Fingerprint: 298A3A825C0D65DFD57CBB651716619E084DAB9
-sudo wget -qO- https://cloud.r-project.org/bin/linux/ubuntu/marutter_pubkey.asc | sudo tee -a /etc/apt/trusted.gpg.d/cran_ubuntu_key.asc
+wget -qO- https://cloud.r-project.org/bin/linux/ubuntu/marutter_pubkey.asc | tee -a /etc/apt/trusted.gpg.d/cran_ubuntu_key.asc
 # add the R 4.0 repo from CRAN -- adjust 'focal' to 'groovy' or 'bionic' as needed
-sudo add-apt-repository "deb https://cloud.r-project.org/bin/linux/ubuntu $(lsb_release -cs)-cran40/" -y
-sudo add-apt-repository ppa:c2d4u.team/c2d4u4.0+ -y
+add-apt-repository "deb https://cloud.r-project.org/bin/linux/ubuntu $(lsb_release -cs)-cran40/" -y
+add-apt-repository ppa:c2d4u.team/c2d4u4.0+ -y
 
-sudo apt-get install libatlas3-base -y -f
-sudo apt-get install libopenblas-base -y -f
-sudo apt-get install r-base r-base-dev -y -f
+apt-get install libatlas3-base -y -f
+apt-get install libopenblas-base -y -f
+apt-get install r-base r-base-dev -y -f
 
 # playonlinux
-sudo apt-get install playonlinux -y -f
+apt-get install playonlinux -y -f
 
 # HDL
-sudo apt install iverilog verilator ghdl -y -f
-sudo apt-get install libtinfo5 -f -y
+apt install iverilog verilator ghdl -y -f
+apt-get install libtinfo5 -f -y
 
 # DDNS
-sudo apt-get install libio-socket-ssl-perl -y -f
-sudo apt-get install ddclient -y -f
+apt-get install libio-socket-ssl-perl -y -f
+apt-get install ddclient -y -f
 
 # 給 OBS 使用
-sudo apt install v4l2loopback-dkms -y -f
+apt install v4l2loopback-dkms -y -f
 
 # Lutris
-sudo apt install lutris -y -f
+apt install lutris -y -f
 
-# sudo apt-get install kdenlive gimp obs-studio -y -f
-sudo apt-get install atom -y -f
+# apt-get install kdenlive gimp obs-studio -y -f
+apt-get install atom -y -f
 
 # Libreoffice
-sudo apt-get install libreoffice libreoffice-common -y -f
+apt-get install libreoffice libreoffice-common -y -f
 
 # ImageMagick
-sudo apt install libtiff-dev libpng-dev -y -f
-sudo apt install imagemagick -y -f
+apt install libtiff-dev libpng-dev -y -f
+apt install imagemagick -y -f
 
 # Java
-sudo apt install openjdk-17-jre-headless openjdk-17-jre -y -f
-sudo apt-get install libxrender1 libxtst6 libxi6 libxext6 -y -f
+apt install openjdk-17-jre-headless openjdk-17-jre -y -f
+apt-get install libxrender1 libxtst6 libxi6 libxext6 -y -f
 
 # exFat NTFS 檔案
-sudo apt install exfat-fuse exfat-utils -y -f
+apt install exfat-fuse exfat-utils -y -f
 
 # Apply
-sudo apt install cmake clang bison flex libfuse-dev libudev-dev pkg-config libc6-dev-i386 \
+apt install cmake clang bison flex libfuse-dev libudev-dev pkg-config libc6-dev-i386 \
 linux-headers-generic gcc-multilib libcairo2-dev libgl1-mesa-dev libglu1-mesa-dev libtiff5-dev \
 libfreetype6-dev git git-lfs libelf-dev libxml2-dev libegl1-mesa-dev libfontconfig1-dev libbsd-dev \
 libxrandr-dev libxcursor-dev libgif-dev libavutil-dev libpulse-dev libavformat-dev libavcodec-dev \
 libswresample-dev libdbus-1-dev libxkbfile-dev libssl-dev -y -f
 
 # Array 3.0
-sudo apt install ibus-array -y -f
+apt install ibus-array -y -f
 
 # 給 Flatpak 使用
-sudo apt-get install flatpak -y -f
+apt-get install flatpak -y -f
 
 # 來源更新
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
@@ -160,44 +160,44 @@ flatpak install flathub org.kde.krita --system -y
 flatpak install flathub org.inkscape.Inkscape --system -y
 
 # 數學軟體
-sudo apt-get install sagemath -y -f
+apt-get install sagemath -y -f
 flatpak install flathub org.scilab.Scilab --system -y
 flatpak install flathub org.octave.Octave --system -y
 flatpak install flathub org.geogebra.GeoGebra --system -y
 flatpak install flathub io.github.veusz.Veusz --system -y
 flatpak install flathub com.github.fabiocolacio.marker --system -y
-sudo apt install ktikz -y -f
-sudo apt install qtikz -y -f
+apt install ktikz -y -f
+apt install qtikz -y -f
 
 # 圖片檢視
-sudo apt install heif-gdk-pixbuf heif-thumbnailer libheif1 -y -f
+apt install heif-gdk-pixbuf heif-thumbnailer libheif1 -y -f
 
 # RPM
-sudo apt install rpm -y -f
-sudo apt install alien -y -f
+apt install rpm -y -f
+apt install alien -y -f
 
 # 觸控板
-sudo apt-get install libinput-tools -y -f
-sudo apt-get install ruby -y -f
-sudo gem install fusuma -y -f
-sudo apt-get install xdotool -y -f
-sudo gem update fusuma -y -f
+apt-get install libinput-tools -y -f
+apt-get install ruby -y -f
+gem install fusuma -y -f
+apt-get install xdotool -y -f
+gem update fusuma -y -f
 
 # 遠端軟體
-sudo apt install xfce4 xfce4-goodies tightvncserver -y -f
-# sudo ufw allow 5901/tcp
+apt install xfce4 xfce4-goodies tightvncserver -y -f
+# ufw allow 5901/tcp
 
 # 電源管理
-sudo apt install tlp -y -f
-sudo apt install slimbookbattery -y -f
+apt install tlp -y -f
+apt install slimbookbattery -y -f
 
 # 更新
-sudo apt-file update
-sudo apt update -y -f
-sudo apt list --upgradable
-sudo apt upgrade -y -f
+apt-file update
+apt update -y -f
+apt list --upgradable
+apt upgrade -y -f
 flatpak update -y
-sudo apt autoremove -y -f
+apt autoremove -y -f
 
 # 安裝 Kite
 # wget -O kite-installer.sh https://linux.kite.com/dls/linux/current
@@ -212,7 +212,7 @@ sudo apt autoremove -y -f
 # make -j8
 # ctest
 # bin/unittests
-# sudo make install
+# make install
 # cd ../../
 
 # Atom UI
