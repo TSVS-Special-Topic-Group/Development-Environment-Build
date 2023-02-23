@@ -42,6 +42,7 @@ PyCoRAM/
 mulpy/
 onnx/
 get-docker.sh
+*.deb
 
 # slang
 .vs/
