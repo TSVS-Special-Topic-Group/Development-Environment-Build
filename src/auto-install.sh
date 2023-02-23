@@ -137,7 +137,7 @@ apt install ibus-array -y -f
 apt-get install flatpak -y -f
 
 # Snap
-apt install snapd
+apt install snapd -y
 snap install snap-store
 
 # Markdown
