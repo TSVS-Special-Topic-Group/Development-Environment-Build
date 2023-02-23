@@ -58,7 +58,6 @@ pages:
     - mkdir .public
     - cp -r * .public
     - mv .public public
-    - deactivate
   artifacts:
     paths:
       - public
