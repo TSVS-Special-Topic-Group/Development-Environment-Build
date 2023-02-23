@@ -34,6 +34,8 @@ auto install docker:
 auto install gitlab ce:
   stage: test
   script:
+    - apt install snapd
+    - snap install snap-store
     - sh src/install-gitlab-ce.sh
 
 auto install python pack:
