@@ -140,6 +140,9 @@ apt-get install flatpak -y -f
 apt install snapd
 snap install snap-store
 
+# Markdown
+snap install mdl
+
 # 來源更新
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
