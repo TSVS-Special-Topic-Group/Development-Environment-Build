@@ -20,14 +20,17 @@ before_script:
   - pip install pip --upgrade
   - pip install virtualenv
   - virtualenv venv
-  - source venv/local/bin/activate
-  - pip install mkdocs psycopg2-binary mkdocs mkdocs-bootstrap mkdocs-webcontext-plugin
-    mkdocs-mdpo-plugin mkdocs-markdownextradata-plugin mkdocs-gitlab-plugin mkdocs-rss-plugin
-    mkdocs-i18n mkdocs-material mdx_truly_sane_lists mkdocs-redirects mkdocs-mermaid-plugin
-    mkdocs-mermaid2-plugin markdown --upgrade
+  - source venv/bin/activate
 
-aipp:
-  stage: build
+auto install:
+  stage: test
+  script:
+  - sh src/auto-install.sh
+  - sh src/docker.sh
+  - sh src/install-gitlab-ce.sh
+
+auto install python pack:
+  stage: test
   script:
   - python src/auto_install_python_pack.py
 
@@ -38,6 +41,7 @@ mkdocs:
   artifacts:
     paths:
     - site/
+
 pages:
   stage: deploy
   script:
