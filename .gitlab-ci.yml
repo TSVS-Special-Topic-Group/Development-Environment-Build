@@ -25,22 +25,22 @@ before_script:
 auto install:
   stage: test
   script:
-  - sh src/auto-install.sh
-  - sh src/docker.sh
-  - sh src/install-gitlab-ce.sh
+    - sh src/auto-install.sh
+    - sh src/docker.sh
+    - sh src/install-gitlab-ce.sh
 
 auto install python pack:
   stage: test
   script:
-  - python src/auto_install_python_pack.py
+    - python src/auto_install_python_pack.py
 
 mkdocs:
-  stage: build
+  stage: deploy
   script:
-  - mkdocs build
+    - mkdocs build
   artifacts:
     paths:
-    - site/
+      - site/
 
 pages:
   stage: deploy
