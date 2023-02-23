@@ -1,4 +1,4 @@
-nohup noip-duc -g atca.ddns.net -u timmy61109 -p 123WwDdVv_ &
+# nohup noip-duc -g url -u username -p password &
 
 if docker > /dev/null
   then
