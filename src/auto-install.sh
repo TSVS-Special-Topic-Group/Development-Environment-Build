@@ -123,6 +123,11 @@ apt-get install libxrender1 libxtst6 libxi6 libxext6 -y -f
 # exFat NTFS 檔案
 apt install exfat-fuse exfat-utils -y -f
 
+# Fonts
+apt install fonts-noto-cjk fonts-noto -y -f
+apt install fonts-arphic-ukai fonts-arphic-uming -y -f
+apt install fonts-noto -y -f
+
 # Apply
 apt install cmake clang bison flex libfuse-dev libudev-dev pkg-config libc6-dev-i386 \
 linux-headers-generic gcc-multilib libcairo2-dev libgl1-mesa-dev libglu1-mesa-dev libtiff5-dev \
@@ -182,6 +187,9 @@ apt install heif-gdk-pixbuf heif-thumbnailer libheif1 -y -f
 # RPM
 apt install rpm -y -f
 apt install alien -y -f
+
+# Ruby
+apt-get install ruby -y -f
 
 # 觸控板
 apt-get install libinput-tools -y -f

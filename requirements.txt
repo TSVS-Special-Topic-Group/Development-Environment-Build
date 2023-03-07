@@ -120,6 +120,7 @@ mkdocs-mermaid-plugin
 mkdocs-mermaid2-plugin
 markdown-katex
 markdown
+pymarkdownlnt
 
 python-gnupg
 youtube_dl
