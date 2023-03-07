@@ -34,7 +34,7 @@ auto install docker:
 auto install gitlab ce:
   stage: test
   script:
-    - apt install snapd
+    - apt install snapd -y
     - snap install snap-store
     - sh src/install-gitlab-ce.sh
 
