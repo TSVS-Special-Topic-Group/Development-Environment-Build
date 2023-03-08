@@ -277,11 +277,14 @@ apm install file-icons minimap highlight-selected
 code --install-extension akamud.vscode-theme-onedark
 code --install-extension ms-vscode.atom-keybindings
 
+# VS code C/C++
+code --install-extension ms-vscode.cpptools-extension-pack
+
 # VS code Python
 code --install-extension ms-python.vscode-pylance
 code --install-extension ms-python.python
 
-# VS code 環境管理
+# VS code Python 環境管理
 code --install-extension donjayamanne.python-environment-manager
 
 # VS code Python Lint
