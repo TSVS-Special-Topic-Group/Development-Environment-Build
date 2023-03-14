@@ -59,18 +59,18 @@ apt install libespeak-dev -y -f
 apt-get install python3-tk -y -f
 
 # QEMU
-apt install qemu qemu-utils qemu-kvm
-apt install libvirt-clients libvirt-daemon-system bridge-utils virtinst libvirt-daemon virt-manager
-apt install sshguard openssh-server mosh
-apt install seabios ovmf hugepages
-apt install cpu-checker
-apt install spice-vdagent
+sudo apt install qemu qemu-utils qemu-kvm -y -f
+sudo apt install libvirt-clients libvirt-daemon-system bridge-utils virtinst libvirt-daemon virt-manager -y -f
+sudo apt install sshguard openssh-server mosh -y -f
+sudo apt install seabios ovmf hugepages -y -f
+sudo apt install cpu-checker -y -f
+sudo apt install spice-vdagent -y -f
 kvm-ok
-grep -c vmx /proc/cpuinfo
-grep -c svm /proc/cpuinfo
-systemctl status libvirtd.service
-adduser $USER libvirt
-adduser $USER libvirt-qemu
+sudo grep -c vmx /proc/cpuinfo
+sudo grep -c svm /proc/cpuinfo
+# sudo systemctl status libvirtd.service
+sudo adduser $USER libvirt
+sudo adduser $USER libvirt-qemu
 
 # R
 # update indices
