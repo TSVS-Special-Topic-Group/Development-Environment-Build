@@ -181,3 +181,9 @@ gTTS
 pyttsx3
 googletrans
 mediapipe
+
+openai-whisper
+pytube
+torch
+torchvision
+torchaudio
