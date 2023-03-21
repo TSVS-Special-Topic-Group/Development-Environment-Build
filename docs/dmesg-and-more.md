@@ -6,6 +6,12 @@
 username@hostname:path<$|#>
 ```
 
+## 修改執行顯示前綽
+
+```bash
+PS1="\u@\h [$(date +%k:%M:%S)]> "
+```
+
 ## 開機資訊指令
 
 當開機有問題時，可以使用 `dmesg` 查閱系統相關資訊，例如硬碟、驅動程式等，使用以下功能：
@@ -50,10 +56,13 @@ uname -r
 
 `/dev/pts/` 是所有使用的終端機畫面，每個有不同的編號，因此如果知道是誰的就可以直接傳訊息給對方。
 
-timmy@timmy-Latitude-E5550:~$ echo "hi" > /dev/pts/14
-timmy@timmy-Latitude-E5550:~$ echo "hi\lf" > /dev/pts/14
-timmy@timmy-Latitude-E5550:~$ echo "hi hi" > /dev/pts/14
-timmy@timmy-Latitude-E5550:~$ 
+```
+echo "hi" > /dev/pts/0
+```
 
+這個時候另一個終端機會出現以下訊息：
 
+```bash
+timmy@timmy-Latitude-E5550:~/arduino-ide$ hi
 
+```
