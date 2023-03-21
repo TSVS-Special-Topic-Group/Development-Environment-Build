@@ -350,6 +350,7 @@ code --install-extension shd101wyy.markdown-preview-enhanced
 code --install-extension marp-team.marp-vscode
 code --install-extension yzhang.markdown-all-in-one
 code --install-extension DavidAnson.vscode-markdownlint
+code --install-extension mushan.vscode-paste-image
 
 # Python套件安裝
 cd ..
