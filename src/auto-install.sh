@@ -198,6 +198,9 @@ gem install fusuma -y -f
 apt-get install xdotool -y -f
 gem update fusuma -y -f
 
+# 安裝 SoftEther VPN
+sudo apt -y install cmake gcc g++ make pkgconf libncurses5-dev libssl-dev libsodium-dev libreadline-dev zlib1g-dev
+
 # 遠端軟體
 apt install xfce4 xfce4-goodies tightvncserver -y -f
 # ufw allow 5901/tcp
