@@ -25,22 +25,28 @@ cp gitlab.rb /var/lib/gitlab/config/
 docker restart gitlab
 
 # Kubectl
-apt-get update
-apt-get install -y ca-certificates curl
-apt-get install -y apt-transport-https
-curl -fsSLo /usr/share/keyrings/kubernetes-archive-keyring.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg
-echo "deb [signed-by=/usr/share/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | tee /etc/apt/sources.list.d/kubernetes.list
-apt-get update
-apt-get install -y kubectl
+sudo apt-get update
+sudo apt-get install -y ca-certificates curl
+sudo apt-get install -y apt-transport-https
+sudo curl -fsSLo /etc/apt/keyrings/kubernetes-archive-keyring.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg
+echo "deb [signed-by=/etc/apt/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list
+sudo apt-get update
+sudo apt-get install -y kubectl
+
+# Podman
+
+sudo apt-get -y install podman
 
 # Minikube
 curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube_latest_amd64.deb
 dpkg -i minikube_latest_amd64.deb
-minikube start --driver=docker
-minikube config set driver docker
+minikube start --cpus 4 --force --force-systemd=true --driver=podman
+minikube config set driver podman
 
 # Helm
 snap install helm --classic
+
+# Start Use
 helm repo add gitlab https://charts.gitlab.io
 helm repo update
 kubectl create namespace gitlab
