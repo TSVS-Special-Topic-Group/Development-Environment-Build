@@ -58,6 +58,10 @@ apt install espeak -y -f
 apt install libespeak-dev -y -f
 apt-get install python3-tk -y -f
 
+# Podman
+
+apt-get -y install podman
+
 # QEMU
 sudo apt install qemu qemu-utils qemu-kvm -y -f
 sudo apt install libvirt-clients libvirt-daemon-system bridge-utils virtinst libvirt-daemon virt-manager -y -f
