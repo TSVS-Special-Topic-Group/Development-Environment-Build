@@ -209,6 +209,11 @@ DNS 也要另外設定在路由器的閘道所在位置。
   - [Qemu/KVM & Virt-manager installation on Ubuntu 22.04](https://youtu.be/vyLNpPY-Je0)
 - KVM
   - [Configuring Guest Networking](http://www.linux-kvm.org/page/Networking)
+- NAT Mode
+  - [KVM forward ports to guests VM with UFW on Linux](https://www.cyberciti.biz/faq/kvm-forward-ports-to-guests-vm-with-ufw-on-linux/)
+  - [Bare Metal in the Cloud – Part 1 – Let’s Rent Hardware](https://blog.wirelessmoves.com/2022/04/bare-metal-in-the-cloud-part-1-lets-rent-hardware.html)
+  - [Bare Metal Cloud – Part 2 – KVM and NAT Port Forwarding](https://blog.wirelessmoves.com/2022/04/bare-metal-cloud-part-2-kvm-and-nat-port-forwarding.html)
+  - [Bare Metal Cloud – Part 3 – Several Public IPs – Macvtap vs. Bridging](https://blog.wirelessmoves.com/2022/04/bare-metal-cloud-part-3-several-public-ips-macvtap-vs-bridging.html)
 - Bridged Mode
   - [17.2. Bridged Mode](https://access.redhat.com/documentation/zh-tw/red_hat_enterprise_linux/7/html/virtualization_deployment_and_administration_guide/sect-bridge-mode)
   - Use nmtui
