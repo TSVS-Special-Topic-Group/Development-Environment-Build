@@ -1,70 +1,66 @@
-敏捷跨領域系統
-===
+# 敏捷跨領域系統
+
 「敏捷跨領域系統」(Agile-Interdisciplinary-System)是一個透過文化、工具與實作達到不同領域可以融合與合作，此系統最先嘗試與實作將軟體開發應用在翻譯上面，未來會以此為範本持續改進並應用在不同行業。
 
 此專案以Docker架設GitLab-CE、GitLab Runner，將持續整合、持續發佈與開發與運維結合翻譯，未來會使用Kubernetes來達到目標。其中會將建置、運作、使用與備份的過程記錄下來，除了提供離職時有人可以接手，此手冊也提供未來需要的人使用。
 
 使用Docker架設GitLab-CE與GitLab Runner的流程與方式記錄下來，並且包括三種模式備份。
 
-# 目錄
+## 目錄
 
-<!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=6 orderedList=false} -->
-<!-- code_chunk_output -->
+- [敏捷跨領域系統](#敏捷跨領域系統)
+  - [目錄](#目錄)
+  - [系統環境](#系統環境)
+  - [Docker](#docker)
+    - [安裝Docker](#安裝docker)
+    - [Docker GitLab](#docker-gitlab)
+      - [使用Docker安裝GitLab](#使用docker安裝gitlab)
+      - [使用Docker更新GitLab](#使用docker更新gitlab)
+      - [GitLab強制導向https](#gitlab強制導向https)
+      - [開啟GitLab電子郵件通知](#開啟gitlab電子郵件通知)
+      - [GitLab備份與還原](#gitlab備份與還原)
+        - [GitLab備份](#gitlab備份)
+          - [GitLab備份前須知](#gitlab備份前須知)
+          - [GitLab開始備份](#gitlab開始備份)
+        - [GitLab還原](#gitlab還原)
+          - [GitLab還原須知](#gitlab還原須知)
+          - [GitLab進行還原](#gitlab進行還原)
+        - [遺失或未備份`gitlab-secrets.json`問題](#遺失或未備份gitlab-secretsjson問題)
+    - [Docker GitLab-Runner](#docker-gitlab-runner)
+    - [Docker Kroki](#docker-kroki)
+    - [Docker PlantUML](#docker-plantuml)
+    - [Docker Gitpod](#docker-gitpod)
+  - [Kubernetes](#kubernetes)
+    - [安裝Kubernetes](#安裝kubernetes)
+    - [檢查虛擬環境](#檢查虛擬環境)
+    - [安裝Kubectl](#安裝kubectl)
+      - [使用`curl`下載並安裝](#使用curl下載並安裝)
+      - [使用 apt 套件管理軟體安裝](#使用-apt-套件管理軟體安裝)
+    - [安裝Minikube](#安裝minikube)
+      - [使用安裝套件安裝](#使用安裝套件安裝)
+      - [使用二進位檔案安裝](#使用二進位檔案安裝)
+      - [使用 Homebrew 安裝Minikube](#使用-homebrew-安裝minikube)
+      - [設定使用虛擬環境](#設定使用虛擬環境)
+        - [使用Docker](#使用docker)
+    - [安裝Helm](#安裝helm)
+      - [使用`Homebrew`安裝Helm](#使用homebrew安裝helm)
+      - [使用 snap 安裝 Helm](#使用-snap-安裝-helm)
+      - [快速使用Helm](#快速使用helm)
+    - [Helm GitLab](#helm-gitlab)
+    - [Helm GitLab-Runner](#helm-gitlab-runner)
+      - [從GitLab下載Chart安裝GitLab-Runner](#從gitlab下載chart安裝gitlab-runner)
+      - [使用Helm的Chart安裝GitLab-Runner](#使用helm的chart安裝gitlab-runner)
+  - [Ubuntu防火牆設定](#ubuntu防火牆設定)
+  - [自動化備份](#自動化備份)
+    - [異地備份](#異地備份)
+    - [腳本](#腳本)
+    - [設定排程](#設定排程)
+      - [設定使用者的設定檔](#設定使用者的設定檔)
+      - [設定系統的設定檔](#設定系統的設定檔)
+  - [DDclient](#ddclient)
+  - [參考資料](#參考資料)
 
-- [目錄](#-目錄)
-- [系統環境](#-系統環境)
-- [Docker](#-docker)
-  - [安裝Docker](#-安裝docker)
-  - [Docker GitLab](#-docker-gitlab)
-    - [使用Docker安裝GitLab](#-使用docker安裝gitlab)
-    - [使用Docker更新GitLab](#-使用docker更新gitlab)
-    - [GitLab強制導向https](#-gitlab強制導向https)
-    - [開啟GitLab電子郵件通知](#-開啟gitlab電子郵件通知)
-    - [GitLab備份與還原](#-gitlab備份與還原)
-      - [GitLab備份](#-gitlab備份)
-        - [GitLab備份前須知](#-gitlab備份前須知)
-        - [GitLab開始備份](#-gitlab開始備份)
-      - [GitLab還原](#-gitlab還原)
-        - [GitLab還原須知](#-gitlab還原須知)
-        - [GitLab進行還原](#-gitlab進行還原)
-      - [遺失或未備份`gitlab-secrets.json`問題](#-遺失或未備份gitlab-secretsjson問題)
-  - [Docker GitLab-Runner](#-docker-gitlab-runner)
-  - [Docker Kroki](#-docker-kroki)
-  - [Docker PlantUML](#-docker-plantuml)
-  - [Docker Gitpod](#-docker-gitpod)
-- [Kubernetes](#-kubernetes)
-  - [安裝Kubernetes](#-安裝kubernetes)
-  - [檢查虛擬環境](#-檢查虛擬環境)
-  - [安裝Kubectl](#-安裝kubectl)
-    - [使用`curl`下載並安裝](#-使用curl下載並安裝)
-    - [使用`apt-get`套件管理軟體安裝](#-使用apt-get套件管理軟體安裝)
-  - [安裝Minikube](#-安裝minikube)
-    - [使用安裝套件安裝](#-使用安裝套件安裝)
-    - [使用二進位檔案安裝](#-使用二進位檔案安裝)
-    - [使用`Homebrew`安裝Minikube](#-使用homebrew安裝minikube)
-    - [設定使用虛擬環境](#-設定使用虛擬環境)
-      - [使用Docker](#-使用docker)
-  - [安裝Helm](#-安裝helm)
-    - [使用`Homebrew`安裝Helm](#-使用homebrew安裝helm)
-    - [使用`snap`安裝Helm](#-使用snap安裝helm)
-    - [快速使用Helm](#-快速使用helm)
-  - [Helm GitLab](#-helm-gitlab)
-  - [Helm GitLab-Runner](#-helm-gitlab-runner)
-    - [從GitLab下載Chart安裝GitLab-Runner](#-從gitlab下載chart安裝gitlab-runner)
-    - [使用Helm的Chart安裝GitLab-Runner](#-使用helm的chart安裝gitlab-runner)
-- [Ubuntu防火牆設定](#-ubuntu防火牆設定)
-- [自動化備份](#-自動化備份)
-  - [異地備份](#-異地備份)
-  - [腳本](#-腳本)
-  - [設定排程](#-設定排程)
-    - [設定使用者的設定檔](#-設定使用者的設定檔)
-    - [設定系統的設定檔](#-設定系統的設定檔)
-- [DDclient](#-ddclient)
-- [參考資料](#-參考資料)
-
-<!-- /code_chunk_output -->
-
-# 系統環境
+## 系統環境
 
 - System:Ubuntu 18.04 LTS
 - Docker:19.03.8
@@ -138,8 +134,8 @@
   - version: v1.9.0
   - commit: 48fefd43444d2f8852f527c78f0141b377b1e42a
 
-# Docker
-## 安裝Docker
+## Docker
+### 安裝Docker
 安裝Docker
 
 ```
@@ -218,8 +214,8 @@ Sun Sep 25 05:21:03 2022
 +-----------------------------------------------------------------------------+
 ```
 
-## Docker GitLab
-### 使用Docker安裝GitLab
+### Docker GitLab
+#### 使用Docker安裝GitLab
 下載最新映像檔。
 
 ```
@@ -232,7 +228,7 @@ docker pull gitlab/gitlab-ce:latest
 docker run -d --publish 443:443 --publish 80:80 --publish 22:22 --publish 25:25 --publish 465:465 --publish 587:587 --name gitlab --restart always --volume /var/lib/gitlab/config/:/etc/gitlab --volume /var/lib/gitlab/logs/:/var/log/gitlab --volume /var/lib/gitlab/data/:/var/opt/gitlab gitlab/gitlab-ce:latest
 ```
 
-### 使用Docker更新GitLab
+#### 使用Docker更新GitLab
 先將GitLab停止運作。
 
 ```
@@ -257,16 +253,16 @@ sudo docker pull gitlab/gitlab-ce:latest
 docker run -d --publish 443:443 --publish 80:80 --publish 22:22 --publish 25:25 --publish 465:465 --publish 587:587 --name gitlab --restart always --volume /var/lib/gitlab/config/:/etc/gitlab --volume /var/lib/gitlab/logs/:/var/log/gitlab --volume /var/lib/gitlab/data/:/var/opt/gitlab gitlab/gitlab-ce:latest
 ```
 
-### GitLab強制導向https
+#### GitLab強制導向https
 如果要將GitLab強至導向https作為瀏覽，請設定`gitlab.rb`所放置檔案的位置，如果你是使用容器的話。
 
 請在`gitlab.rb`裡面加入這樣的行句或者找出來編輯也可以，使用的是GitLab-CE整合的Let's Encrypt的功能，可以自動產生與更新憑證。
 
 ```rb
-external_url "https://gitlab.example.com"         # Must use https protocol
-letsencrypt['enable'] = true                      # GitLab 10.5 and 10.6 require this option
-letsencrypt['contact_emails'] = ['youremail@example.com'] # Optional
-# This example renews every 7th day at 12:30
+external_url "https://gitlab.example.com"         ## Must use https protocol
+letsencrypt['enable'] = true                      ## GitLab 10.5 and 10.6 require this option
+letsencrypt['contact_emails'] = ['youremail@example.com'] ## Optional
+## This example renews every 7th day at 12:30
 letsencrypt['auto_renew_hour'] = "12"
 letsencrypt['auto_renew_minute'] = "30"
 letsencrypt['auto_renew_day_of_month'] = "*/7"
@@ -280,7 +276,7 @@ gitlab-ctl reconfigure
 gitlab-ctl renew-le-certs
 ```
 
-### 開啟GitLab電子郵件通知
+#### 開啟GitLab電子郵件通知
 在`gitlab.rb`的Email認證修改的地方新增或修改以下內容:
 
 ```rb
@@ -293,7 +289,7 @@ gitlab_rails['smtp_domain'] = "smtp.gmail.com"
 gitlab_rails['smtp_authentication'] = "login"
 gitlab_rails['smtp_enable_starttls_auto'] = true
 gitlab_rails['smtp_tls'] = false
-gitlab_rails['smtp_openssl_verify_mode'] = 'peer' # Can be: 'none', 'peer', 'client_once', 'fail_if_no_peer_cert', see http://api.rubyonrails.org/classes/ActionMailer/Base.html
+gitlab_rails['smtp_openssl_verify_mode'] = 'peer' ## Can be: 'none', 'peer', 'client_once', 'fail_if_no_peer_cert', see http://api.rubyonrails.org/classes/ActionMailer/Base.html
 
 gitlab_rails['gitlab_email_from'] = 'from@email.com'
 gitlab_rails['gitlab_email_reply_to'] = 'reply_to@email.com'
@@ -303,7 +299,7 @@ gitlab_rails['gitlab_email_reply_to'] = 'reply_to@email.com'
 
 ```
 @System-Product-Name:/var/lib/gitlab/config$ docker exec -ti gitlab /bin/bash
-root@56714314cc19:/# gitlab-ctl reconfigure
+root@56714314cc19:/## gitlab-ctl reconfigure
 Starting Chef Client, version 14.14.29
 resolving cookbooks for run list: ["gitlab"]
 ...
@@ -316,7 +312,7 @@ gitlab Reconfigured!
 重新啟動後使用`gitlab-rails console`進入gitlab命令列，以`Notify.test_email('test@email.com', 'GitLab send Email', 'GitLab send Email to test.').deliver_now`測試電子郵件是否可以正常運作。
 
 ```
-root@56714314cc19:/# gitlab-rails console
+root@56714314cc19:/## gitlab-rails console
 --------------------------------------------------------------------------------
  GitLab:       12.8.1 (d18b43a5f5a) FOSS
  GitLab Shell: 11.0.0
@@ -349,14 +345,14 @@ X-Auto-Response-Suppress: All
 
 ```
 irb(main):002:0> exit
-root@56714314cc19:/# exit
+root@56714314cc19:/## exit
 exit
 @System-Product-Name:/var/lib/gitlab/config$
 ```
 
-### GitLab備份與還原
-#### GitLab備份
-##### GitLab備份前須知
+#### GitLab備份與還原
+##### GitLab備份
+###### GitLab備份前須知
 備份GitLab系統內容，備份的內容如下:
 
 - 資料
@@ -374,7 +370,7 @@ exit
 - `/etc/gitlab/gitlab-secrets.json`:資料庫金鑰、CI/CD以及雙重驗證。
 - `/etc/gitlab/gitlab.rb`:伺服器的設定檔。
 
-##### GitLab開始備份
+###### GitLab開始備份
 首先要進入到容器裡面。
 
 ```
@@ -436,7 +432,7 @@ Backup task is done.
 此時到達`/var/opt/gitlab/backups`目錄底下，這裡會放置剛剛備份的檔案。
 
 ```
-root@e86cceb85518:/var/opt/gitlab/backups# ll
+root@e86cceb85518:/var/opt/gitlab/backups## ll
 total 696
 drwx------  2 git  root   4096 Apr 25 09:07 ./
 drwxr-xr-x 20 root root   4096 Apr 25 08:59 ../
@@ -449,8 +445,8 @@ drwxr-xr-x 20 root root   4096 Apr 25 08:59 ../
 
 如果是在容器內部進行還原，請到容器所存放的資料卷底下去複製出來並轉移到要還原的資料庫底下。
 
-#### GitLab還原
-##### GitLab還原須知
+##### GitLab還原
+###### GitLab還原須知
 請確定備份的伺服器與還原的伺服器的版本要一致，如果不一致請將一方退版本後讓版本一致再進行還原。
 
 要還原備份，您還需要還原`/etc/gitlab/gitlab-secrets.json`或`/home/git/gitlab/.secret`。裡面有資料庫加密的金鑰、CI/CD以及雙重驗證的相關資料。因此如果你無法連同這兩個一起回覆的話，開啟雙重驗證的使用者與GitLab Runner將無法使用你的伺服器。
@@ -464,7 +460,7 @@ drwxr-xr-x 20 root root   4096 Apr 25 08:59 ../
 
 如果要還原到掛載的位置，請在還原之前先將目錄保持乾淨，否則GitLab在自動還原時會移動目錄，這將會導致錯誤與問題。
 
-##### GitLab進行還原
+###### GitLab進行還原
 在GitLab裡面，還原檔案的目錄可以在`gitlab.rb`的`gitlab_rails['backup_path']`中設定，預設值為`/var/opt/gitlab/backups/`，例如:
 
 ```
@@ -517,7 +513,7 @@ sudo cp gitlab-secrets.json /var/lib/gitlab/config/
 docker restart gitlab
 ```
 
-#### 遺失或未備份`gitlab-secrets.json`問題
+##### 遺失或未備份`gitlab-secrets.json`問題
 解決還原GitLab資料時遺失或未備份`gitlab-secrets.json`時的問題，會出現，首先進入到GitLab的資料庫。
 
 ```
@@ -545,7 +541,7 @@ UPDATE ci_builds SET token = null, token_encrypted = null;
 TRUNCATE integrations, chat_names, issue_tracker_data, jira_tracker_data, slack_integrations, web_hooks, zentao_tracker_data, web_hook_logs;
 ```
 
-## Docker GitLab-Runner
+### Docker GitLab-Runner
 使用Docker架設GitLab Runner:
 
 ```
@@ -599,35 +595,35 @@ openssl s_client -connect ${SERVER}:${PORT} -showcerts </dev/null 2>/dev/null | 
 gitlab-runner register --name timewaver-translate --url https://gitlab.example.com --registration-token mzR62nG88Lb4UzJek1xH --tls-ca-file=/etc/gitlab-runner/certs/gitlab.example.com.crt
 ```
 
-## Docker Kroki
+### Docker Kroki
 
 ```
 docker run -d --name kroki -p 8080:8000 yuzutech/kroki
 ```
 
-## Docker PlantUML
+### Docker PlantUML
 
 ```
 docker run -d --name plantuml -p 8080:8080 plantuml/plantuml-server:tomcat
 ```
 
-## Docker Gitpod
+### Docker Gitpod
 
-# Kubernetes
-## 安裝Kubernetes
+## Kubernetes
+### 安裝Kubernetes
 架設Kubernetes提供更安全的容器環境，更快速、自動化的調動服務。
 
-## 檢查虛擬環境
+### 檢查虛擬環境
 使用以下指令檢查系統與硬體是否支援虛擬化環境。
 
 ```
 grep -E --color 'vmx|svm' /proc/cpuinfo
 ```
 
-## 安裝Kubectl
+### 安裝Kubectl
 在安裝Minikube前需要先安裝Kubectl，可以使用`curl`或`apt-get`安裝。
 
-### 使用`curl`下載並安裝
+#### 使用`curl`下載並安裝
 以下是在沒有權限的時候安裝方式：
 
 ```
@@ -637,7 +633,7 @@ echo "$(cat kubectl.sha256)  kubectl" | sha256sum --check
 chmod +x kubectl
 mkdir -p ~/.local/bin
 mv ./kubectl ~/.local/bin/kubectl
-# and then append (or prepend) ~/.local/bin to $PATH
+## and then append (or prepend) ~/.local/bin to $PATH
 ```
 
 如果有權限則改為以下方式：
@@ -646,8 +642,9 @@ mv ./kubectl ~/.local/bin/kubectl
 sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
 ```
 
-### 使用`apt-get`套件管理軟體安裝
-Ubuntu可以使用`apt-get`安裝使用。
+#### 使用 apt 套件管理軟體安裝
+
+Ubuntu可以使用 `apt-get` 安裝使用。
 
 ```
 sudo apt-get update
@@ -659,10 +656,12 @@ sudo apt-get update
 sudo apt-get install -y kubectl
 ```
 
-## 安裝Minikube
+### 安裝Minikube
+
 安裝方式有三種，安裝包、二進制檔案與`Homebrw`。
 
-### 使用安裝套件安裝
+#### 使用安裝套件安裝
+
 到Minikube的[官方連結](https://github.com/kubernetes/minikube/releases)選擇使用的系統與環境安裝，針對Ubuntr可以使用`dgkp`安裝`.deb`檔案。
 
 ```
@@ -670,7 +669,7 @@ curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube_latest
 sudo dpkg -i minikube_latest_amd64.deb
 ```
 
-### 使用二進位檔案安裝
+#### 使用二進位檔案安裝
 
 如果不想使用安裝包安裝，可以使用
 
@@ -686,7 +685,8 @@ sudo mkdir -p /usr/local/bin/
 sudo install minikube /usr/local/bin/
 ```
 
-### 使用`Homebrew`安裝Minikube
+#### 使用 Homebrew 安裝Minikube
+
 請使用以下步驟安裝環境。
 
 ```
@@ -695,26 +695,30 @@ sudo apt-get install build-essential
 brew install minikube
 ```
 
-### 設定使用虛擬環境
+#### 設定使用虛擬環境
+
 由於Kubernetes是一個容器的管理器，因此初次使用須自行選擇使用Docker、KVM或者VirtualBox當作運行Kubernetes叢集，這裡我們選擇使用Docker。
 
-#### 使用Docker
+##### 使用Docker
+
 由於我有特別使用別的使用者作為管理，因此使用安裝Docker的方式一樣，來
 
 使用Docker當作Kubernetes的叢集環境。
 
-```
+```bash
 minikube start --driver=docker
 ```
 
 使用Docker當作Kubernetes預設叢集環境。
 
-```
+```bash
 minikube config set driver docker
 ```
 
-## 安裝Helm
-### 使用`Homebrew`安裝Helm
+### 安裝Helm
+
+#### 使用`Homebrew`安裝Helm
+
 由於官方安裝此軟體的名稱已經改變了，需要請使用`brew install helm`作為安裝指令。
 
 ```
@@ -730,23 +734,24 @@ brew update
 brew install helm
 ```
 
-### 使用`snap`安裝Helm
+#### 使用 snap 安裝 Helm
 由於官方安裝此軟體的名稱已經改變了，需要請使用`brew install helm`作為安裝指令。
 
-```
+```bash
 sudo snap install helm --classic
 ```
 
-### 快速使用Helm
+#### 快速使用Helm
+
 Helm 3之後不需要初始化，可以直接新增遠端儲存庫`https://artifacthub.io`並命名成`stable`:
 
-```
+```bash
 helm repo add bitnami https://charts.bitnami.com/bitnami
 ```
 
 可以查看安裝後的狀態。
 
-```
+```bash
 helm search repo bitnami
 ```
 
@@ -833,16 +838,20 @@ mysql-1664023587	default  	1       	2022-09-24 20:46:28.911454009 +0800 CST	depl
 release "mysql-1664023587" uninstalled
 ```
 
-## Helm GitLab
-## Helm GitLab-Runner
-### 從GitLab下載Chart安裝GitLab-Runner
+### Helm GitLab
+
+### Helm GitLab-Runner
+
+#### 從GitLab下載Chart安裝GitLab-Runner
+
 從官方的GitLab下載最新[GitLab-Runner](https://gitlab.com/gitlab-org/charts/gitlab-runner.git)的Chart來安裝。
 
 ```
 git clone https://gitlab.com/gitlab-org/charts/gitlab-runner.git
 ```
 
-### 使用Helm的Chart安裝GitLab-Runner
+#### 使用Helm的Chart安裝GitLab-Runner
+
 使用Helm添加GitLab官方儲存庫。
 
 ```
@@ -860,10 +869,10 @@ kubectl create namespace gitlab
 Helm Chart 部份：
 
 ```yaml
-## Set the certsSecretName in order to pass custom certificates for GitLab Runner to use
-## Provide resource name for a Kubernetes Secret Object in the same namespace,
-## this is used to populate the /etc/gitlab-runner/certs directory
-## ref: https://docs.gitlab.com/runner/configuration/tls-self-signed.html#supported-options-for-self-signed-certificates
+### Set the certsSecretName in order to pass custom certificates for GitLab Runner to use
+### Provide resource name for a Kubernetes Secret Object in the same namespace,
+### this is used to populate the /etc/gitlab-runner/certs directory
+### ref: https://docs.gitlab.com/runner/configuration/tls-self-signed.html#supported-options-for-self-signed-certificates
 ##
 certsSecretName: gitlab-atca-ddns-net-cert
 ```
@@ -892,7 +901,7 @@ helm upgrade --namespace gitlab -f values.yaml gitlab-runner gitlab/gitlab-runne
 helm delete gitlab-runner -n gitlab
 ```
 
-# Ubuntu防火牆設定
+## Ubuntu防火牆設定
 可以先查看是否啟動防火牆。
 
 ```
@@ -940,19 +949,19 @@ sudo ufw allow 465/tcp
 sudo ufw allow 587/tcp
 ```
 
-# 自動化備份
+## 自動化備份
 請先參閱 [GitLab備份與還原](#GitLab備份與還原)了解如何設定與備份GitLab，並且了解如何還原。
 
-## 異地備份
+### 異地備份
 備份至檔案伺服器。
 
-## 腳本
+### 腳本
 用於更新、升級與備份的腳本原始碼，可以透過設定排程來讓備份更加順利與方便。
 
 ```shell
 cd /root/Git/backup
 git pull
-docker exec -t gitlab gitlab-backup create  # 在更新前先進行備份
+docker exec -t gitlab gitlab-backup create  ## 在更新前先進行備份
 
 docker stop gitlab
 docker rm gitlab
@@ -962,7 +971,7 @@ minikube delete
 
 sudo apt-get update
 sudo apt-get upgrade -y
-# sudo dpkg -i minikube_*.deb
+## sudo dpkg -i minikube_*.deb
 docker pull gitlab/gitlab-ce:latest
 
 docker run --cpus=6 --cpuset-cpus 0-6 -d --publish 443:443 --publish 80:80 --publish 22:22 --publish 25:25 --publish 465:465 --publish 587:587 --name gitlab --restart always --volume /var/lib/gitlab/config/:/etc/gitlab --volume /var/lib/gitlab/logs/:/var/log/gitlab --volume /var/lib/gitlab/data/:/var/opt/gitlab gitlab/gitlab-ce:latest
@@ -975,10 +984,10 @@ helm upgrade --namespace gitlab gitlab-runner -f gitlab-values.yaml gitlab/gitla
 helm upgrade --namespace gitlab atca-gitlab-runner -f atca-values.yaml gitlab/gitlab-runner
 ```
 
-## 設定排程
+### 設定排程
 請參考鳥哥的[第十六章、檔案伺服器之二： SAMBA 伺服器](http://linux.vbird.org/linux_server/0370samba.php)的 [15.3.2 系統的設定檔： /etc/crontab, /etc/cron.d/*](https://linux.vbird.org/linux_basic/centos7/0430cron.php#etc_crontab1)，查看完相關設定後，可以再自行設定想要的備份時間。
 
-### 設定使用者的設定檔
+#### 設定使用者的設定檔
 先使用Nano開啟crontab檔案。
 
 ```
@@ -988,12 +997,12 @@ crontab -e
 輸入公司排定的更新時間。
 
 ```
-# Edit this file to introduce tasks to be run by cron.
+## Edit this file to introduce tasks to be run by cron.
 #
 ...
-# m h  dom mon dow   command
+## m h  dom mon dow   command
 
-# GitLab-CE與GitLab Runner更新的時間
+## GitLab-CE與GitLab Runner更新的時間
 00 16 * * 0 sh /home/$USER/Git/backup/auto_update_upgrade_backup.sh
 ```
 
@@ -1003,7 +1012,7 @@ crontab -e
 sudo systemctl restart cron.service
 ```
 
-### 設定系統的設定檔
+#### 設定系統的設定檔
 先使用Nano開啟crontab檔案。
 
 ```
@@ -1013,15 +1022,15 @@ sudo nano /etc/crontab
 輸入公司排定的更新時間。
 
 ```shell
-# /etc/crontab: system-wide crontab
-# Unlike any other crontab you don't have to run the `crontab'
-# command to install the new version when you edit this file
-# and files in /etc/cron.d. These files also have username fields,
-# that none of the other crontabs do.
+## /etc/crontab: system-wide crontab
+## Unlike any other crontab you don't have to run the `crontab'
+## command to install the new version when you edit this file
+## and files in /etc/cron.d. These files also have username fields,
+## that none of the other crontabs do.
 
 ...
 
-# GitLab-CE與GitLab Runner更新的時間
+## GitLab-CE與GitLab Runner更新的時間
 * 5 * * 0 root sh /root/Git/backup/auto_update_upgrade_backup.sh >> /var/log/auto_update_upgrade_backup.log
 ```
 
@@ -1031,7 +1040,7 @@ sudo nano /etc/crontab
 sudo systemctl restart cron.service
 ```
 
-# DDclient
+## DDclient
 使用 DDclient 更新 no-ip 或者 Google Domain 的網域IP，透過以下指令安裝。
 
 ```
@@ -1066,7 +1075,7 @@ sudo ddclient -daemon=0 -debug -verbose -noquiet
 SUCCESS:  updating ddns.example.com: good: IP address set to 1.2.3.4
 ```
 
-# 參考資料
+## 參考資料
 
 - Docker
   - [docker docs](https://docs.docker.com/)
