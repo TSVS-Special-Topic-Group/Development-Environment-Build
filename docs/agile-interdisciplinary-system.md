@@ -41,7 +41,10 @@
       - [使用二進位檔案安裝](#使用二進位檔案安裝)
       - [使用 Homebrew 安裝Minikube](#使用-homebrew-安裝minikube)
       - [設定使用虛擬環境](#設定使用虛擬環境)
-        - [使用Docker](#使用docker)
+        - [使用 Qemu](#使用-qemu)
+        - [使用 Podman](#使用-podman)
+        - [使用 Docker](#使用-docker)
+    - [安裝 Podman](#安裝-podman)
     - [安裝Helm](#安裝helm)
       - [使用`Homebrew`安裝Helm](#使用homebrew安裝helm)
       - [使用 snap 安裝 Helm](#使用-snap-安裝-helm)
@@ -699,20 +702,100 @@ brew install minikube
 
 由於Kubernetes是一個容器的管理器，因此初次使用須自行選擇使用Docker、KVM或者VirtualBox當作運行Kubernetes叢集，這裡我們選擇使用Docker。
 
-##### 使用Docker
+##### 使用 Qemu
 
-由於我有特別使用別的使用者作為管理，因此使用安裝Docker的方式一樣，來
+```bash
+minikube start --driver=qemu
+```
 
-使用Docker當作Kubernetes的叢集環境。
+##### 使用 Podman
+
+雖然覺得無法使用 Docker 覺得有點可惜，但 Podman 可以直接使用 apt 安裝時，還是覺得這點比較方便。
+
+```bash
+minikube start --driver=podman
+```
+
+設定為預設環境
+
+```bash
+minikube config set driver podman
+```
+
+##### 使用 Docker
+
+由於 2020 年 Kubernetes 取消使用 `cri-dockerd` 技術時，會造成無法使用 docker 錯誤，為以下錯誤訊息：
+
+```text
+kubectl create namespace gitlab
+helm repo update
+helm install --namespace gitlab gitlab-runner -f gitlab-values.yaml gitlab/gitlab-runner
+helm install --namespace gitlab atca-gitlab-runner -f atca-values.yaml gitlab/gitlab-runner
+helm upgrade --namespace gitlab gitlab-runner -f gitlab-values.yaml gitlab/gitlab-runner
+helm upgrade --namespace gitlab atca-gitlab-runner -f atca-values.yaml gitlab/gitlab-runner
+😄  minikube v1.30.0 on Ubuntu 22.04 (kvm/amd64)
+❗  minikube skips various validations when --force is supplied; this may lead to unexpected behavior
+✨  Using the docker driver based on user configuration
+📌  Using Docker driver with root privileges
+👍  Starting control plane node minikube in cluster minikube
+🚜  Pulling base image ...
+💾  Downloading Kubernetes v1.26.3 preload ...
+    > preloaded-images-k8s-v18-v1...:  397.02 MiB / 397.02 MiB  100.00% 20.21 M
+    > gcr.io/k8s-minikube/kicbase...:  373.53 MiB / 373.53 MiB  100.00% 5.88 Mi
+🔥  Creating docker container (CPUs=4, Memory=4000MB) ...
+❗  Image was not built for the current minikube version. To resolve this you can delete and recreate your minikube cluster using the latest images. Expected minikube version: v1.29.0 -> Actual minikube version: v1.30.0
+
+❌  Exiting due to RUNTIME_ENABLE: Failed to enable container runtime: sudo systemctl restart cri-docker: Process exited with status 1
+stdout:
+
+stderr:
+Job for cri-docker.service failed because the control process exited with error code.
+See "systemctl status cri-docker.service" and "journalctl -xe" for details.
+
+
+╭───────────────────────────────────────────────────────────────────────────────────────────╮
+│                                                                                           │
+│    😿  If the above advice does not help, please let us know:                             │
+│    👉  https://github.com/kubernetes/minikube/issues/new/choose                           │
+│                                                                                           │
+│    Please run `minikube logs --file=logs.txt` and attach logs.txt to the GitHub issue.    │
+│                                                                                           │
+╰───────────────────────────────────────────────────────────────────────────────────────────╯
+
+The connection to the server localhost:8080 was refused - did you specify the right host or port?
+Error: no repositories found. You must add one before updating
+Error: INSTALLATION FAILED: repo gitlab not found
+Error: INSTALLATION FAILED: repo gitlab not found
+Error: repo gitlab not found
+Error: repo gitlab not found
+```
+
+未來則會找時間研究使用 `containerd` 建置虛擬環境，我相信 GitLab 上面都會有說明。
+
+另外，礙於目前時間，因此目前還是暫時使用Docker安裝，使用 Docker 當作 Kubernetes 的叢集環境。
 
 ```bash
 minikube start --driver=docker
 ```
 
-使用Docker當作Kubernetes預設叢集環境。
+對於新的裝置，建議將預設機器使用 `None` ，後續才可以將 Docker 當作 Kubernetes 叢集環境。
 
 ```bash
-minikube config set driver docker
+minikube config set driver none
+```
+
+另一個作法是將版本下降，往回到 `1.22.0` 版本。
+
+```bash
+minikube start --driver=none --kubernetes-version v1.22.0 --extra-config kubeadm.ignore-preflight-errors=SystemVerification
+```
+
+不過目前暫時尚未使用過，也可能不打算測試，應該會改為使用新技術，也發現 `kvm2` 、 `qemu` 等，感覺使用這些會很有趣。
+
+### 安裝 Podman
+
+```bash
+sudo apt-get -y install podman
 ```
 
 ### 安裝Helm
@@ -902,6 +985,7 @@ helm delete gitlab-runner -n gitlab
 ```
 
 ## Ubuntu防火牆設定
+
 可以先查看是否啟動防火牆。
 
 ```
@@ -1130,3 +1214,12 @@ SUCCESS:  updating ddns.example.com: good: IP address set to 1.2.3.4
   - https://ddclient.net/
   - https://blog.cre0809.com/archives/231
   - https://support.google.com/domains/answer/6147083?authuser=0&hl=zh-Hant#zippy=%2C%E5%9C%A8%E9%96%98%E9%81%93%E4%B8%BB%E6%A9%9F%E6%88%96%E4%BC%BA%E6%9C%8D%E5%99%A8%E4%B8%AD%E8%A8%AD%E5%AE%9A%E7%94%A8%E6%88%B6%E7%AB%AF%E7%A8%8B%E5%BC%8F
+- Kubernetes 取消對於 Docker 支援
+  - [The Future of Dockershim is cri-dockerd](https://www.mirantis.com/blog/the-future-of-dockershim-is-cri-dockerd/)
+  - [none](https://minikube.sigs.k8s.io/docs/drivers/none/#requirements)
+  - [unable to start minikube with docker without cri-dockerd](https://github.com/kubernetes/minikube/issues/14410)
+  - [K8s 宣布與 Dockershim 分手，Docker 用戶該怎麼辦？](https://www.geminiopencloud.com/zh-tw/blog/dockershim-removed/)
+  - [K8s 終將廢棄 docker，TKE 早已支援 containerd](https://www.gushiciku.cn/pl/gpmw/zh-tw)
+- podman
+  - [podman.io](https://podman.io/)
+  - [Podman Installation Instructions](https://podman.io/getting-started/installation)
