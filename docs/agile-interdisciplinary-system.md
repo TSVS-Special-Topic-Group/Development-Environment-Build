@@ -280,6 +280,7 @@ gitlab-ctl renew-le-certs
 ```
 
 #### 開啟GitLab電子郵件通知
+
 在`gitlab.rb`的Email認證修改的地方新增或修改以下內容:
 
 ```rb
