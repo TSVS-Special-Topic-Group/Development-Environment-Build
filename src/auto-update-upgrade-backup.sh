@@ -22,7 +22,7 @@ docker run --cpus=6 --cpuset-cpus 0-5 -d --publish 80:80 --publish 443:443 --pub
 docker run -d --name gitlab-runner --restart always -v /var/lib/gitlab-runner/:/etc/gitlab-runner/ -v /var/lib/gitlab-runner/certs/gitlab.atcatw.org.crt:/etc/gitlab-runner/certs/gitlab.atcatw.org.crt -v /var/run/docker.sock:/var/run/docker.sock gitlab/gitlab-runner:latest
 # gitlab-runner register --name gitlab-atcatw-org --url https://gitlab.atcatw.org --registration-token nRskPUYV-VVtTXFMtcKA
 
-minikube start --cpus 4 --force --force-systemd=true --driver=podman
+minikube start --cpus 6 --force --driver=podman
 kubectl create namespace gitlab
 helm repo update
 helm install --namespace gitlab gitlab-runner -f gitlab-values.yaml gitlab/gitlab-runner
