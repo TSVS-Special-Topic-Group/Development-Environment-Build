@@ -263,3 +263,8 @@ DNS 也要另外設定在路由器的閘道所在位置。
     - [Build a network emulator using Libvirt and KVM](https://www.brianlinkletter.com/2019/02/build-a-network-emulator-using-libvirt/)
     - [Deployment pre-requisites](https://libvirt.org/drvqemu.html#deployment-pre-requisites)
     - [Libvirt](https://ubuntu.com/server/docs/virtualization-libvirt)
+    - [Oops Step ( Home lab of a kind ) 系列 libvirt](https://ithelp.ithome.com.tw/articles/10214584)
+    - [架設 Linux KVM 虛擬化主機 (Set up Linux KVM virtualization host)](https://www.lijyyh.com/2015/12/linux-kvm-set-up-linux-kvm.html)
+    - [章 15. 使​​​​​​​用​​​​​​​ virsh 來​​​​​​​管​​​​​​​理​​​​​​​虛​​​​​​​擬​​​​​​​主​​​​​​​機​​​​​​​](https://access.redhat.com/documentation/zh-tw/red_hat_enterprise_linux/5/html/virtualization/ch-virt-task-virsh)
+    - [Networking](https://wiki.libvirt.org/Networking.html)
+    - [Use virsh commands to manage KVM networking](https://www.techtarget.com/searchitoperations/tip/Use-virsh-commands-to-manage-KVM-networking)
