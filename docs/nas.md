@@ -214,6 +214,12 @@ DNS 也要另外設定在路由器的閘道所在位置。
   - [Bare Metal in the Cloud – Part 1 – Let’s Rent Hardware](https://blog.wirelessmoves.com/2022/04/bare-metal-in-the-cloud-part-1-lets-rent-hardware.html)
   - [Bare Metal Cloud – Part 2 – KVM and NAT Port Forwarding](https://blog.wirelessmoves.com/2022/04/bare-metal-cloud-part-2-kvm-and-nat-port-forwarding.html)
   - [Bare Metal Cloud – Part 3 – Several Public IPs – Macvtap vs. Bridging](https://blog.wirelessmoves.com/2022/04/bare-metal-cloud-part-3-several-public-ips-macvtap-vs-bridging.html)
+  - [7.4. FORWARD 與 NAT 規則](https://web.mit.edu/rhel-doc/4/RH-DOCS/rhel-sg-zh_tw-4/s1-firewall-ipt-fwd.html)
+  - [第四章、連上 Internet](https://linux.vbird.org/linux_server/centos6/0130internet_connect.php#note_files)
+  - [第十二章 NAT 路由器及防火牆](https://www.twbsd.org/cht/book/new/ch12.htm)
+  - [實地了解動手設定NAT 設定Cisco路由器節省IP使用量](https://www.netadmin.com.tw/netadmin/zh-tw/technology/D2A29F9258334DB3AF86A074E7931A7C)
+  - [NAT穿透技術 從外部直接溝通私有IP](https://www.netadmin.com.tw/netadmin/zh-tw/technology/9E69BC3BDD3E427C8D1DAF3272983130)
+  - [網路位址轉譯 (NAT) 常見問題](https://www.cisco.com/c/zh_tw/support/docs/ip/network-address-translation-nat/26704-nat-faq-00.html)
 - Bridged Mode
   - [17.2. Bridged Mode](https://access.redhat.com/documentation/zh-tw/red_hat_enterprise_linux/7/html/virtualization_deployment_and_administration_guide/sect-bridge-mode)
   - Use nmtui
