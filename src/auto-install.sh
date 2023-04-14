@@ -50,7 +50,7 @@ sudo apt-get install python3-pyaudio portaudio19-dev -y -f
 sudo apt-get install build-essential swig libpulse-dev libasound2-dev  -y -f
 sudo apt-get install zlib1g-dev libbz2-dev liblzma-dev libboost-all-dev -y -f
 sudo apt install libxslt1-dev -y -f
-sudo apt-get install python-virtualenv g++ libyaml-dev libav-tools libmp3lame0 libavcodec-extra-* -y -f
+sudo apt-get install g++ libyaml-dev libmp3lame0 libavcodec-extra-* -y -f
 sudo apt-get install libpq-dev  postgresql postgresql-contrib -y -f # pgsql
 sudo apt-get install -y -f \
     libopencv-core-dev \
