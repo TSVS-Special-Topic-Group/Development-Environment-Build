@@ -8,8 +8,8 @@ sudo apt upgrade -y
 # Kdenlive
 sudo add-apt-repository ppa:kdenlive/kdenlive-stable -y
 # Atom
-sudo sh -c 'wget -qO - https://packagecloud.io/AtomEditor/atom/gpgkey | apt-key add -'
-sudo sh -c 'echo "deb [arch=amd64] https://packagecloud.io/AtomEditor/atom/any/ any main" > /etc/apt/sources.list.d/atom.list'
+# sudo sh -c 'wget -qO - https://packagecloud.io/AtomEditor/atom/gpgkey | apt-key add -'
+# sudo sh -c 'echo "deb [arch=amd64] https://packagecloud.io/AtomEditor/atom/any/ any main" > /etc/apt/sources.list.d/atom.list'
 # OBS
 sudo add-apt-repository ppa:obsproject/obs-studio -y
 # inkscape
@@ -17,10 +17,13 @@ sudo add-apt-repository ppa:inkscape.dev/stable -y
 # Lutris
 sudo add-apt-repository ppa:lutris-team/lutris -y
 # playonlinux
-sudo sh -c 'wget -q "http://deb.playonlinux.com/public.gpg" -O- | apt-key add -'
-sudo sh -c 'wget http://deb.playonlinux.com/playonlinux_stretch.list -O /etc/apt/sources.list.d/playonlinux.list'
+# sudo sh -c 'wget -q "http://deb.playonlinux.com/public.gpg" -O- | apt-key add -'
+# sudo sh -c 'wget http://deb.playonlinux.com/playonlinux_stretch.list -O /etc/apt/sources.list.d/playonlinux.list'
 # Wine
-
+sudo dpkg --add-architecture i386 
+sudo mkdir -pm755 /etc/apt/keyrings
+sudo wget -O /etc/apt/keyrings/winehq-archive.key https://dl.winehq.org/wine-builds/winehq.key
+sudo wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/ubuntu/dists/kinetic/winehq-kinetic.sources
 # 電源管理
 sudo add-apt-repository ppa:slimbook/slimbook -y
 
@@ -41,7 +44,7 @@ sudo apt install build-essential -y -f
 sudo apt-get install python3 python3-dev python3-pip python3-all-dev -y -f
 sudo apt-get install git ffmpeg libxss1 xdg-utils -y -f
 sudo apt-get install graphviz graphviz-dev -y -f
-sudo apt install python-gpg libgpgme-dev -y -f
+sudo apt install python3-gpg libgpgme-dev -y -f
 sudo apt-get install protobuf-compiler libprotoc-dev -y -f
 sudo apt-get install python3-pyaudio portaudio19-dev -y -f
 sudo apt-get install build-essential swig libpulse-dev libasound2-dev  -y -f
@@ -61,8 +64,7 @@ sudo apt install libespeak-dev -y -f
 sudo apt-get install python3-tk -y -f
 
 # Podman
-
-sudo apt-get -y install podman
+sudo apt-get install podman -y -f
 
 # QEMU
 sudo apt install qemu qemu-utils qemu-kvm -y -f
@@ -78,15 +80,18 @@ sudo grep -c svm /proc/cpuinfo
 sudo adduser $USER libvirt
 sudo adduser $USER libvirt-qemu
 
+# Wine
+sudo apt install --install-recommends winehq-stable -y -f
+
 # R
 # update indices
 sudo apt update -qq
 # install two helper packages we need
-sudo apt install --no-install-recommends software-properties-common dirmngr
+sudo apt install --no-install-recommends software-properties-common dirmngr -y -f
 # add the signing key (by Michael Rutter) for these repos
 # To verify key, run gpg --show-keys /etc/apt/trusted.gpg.d/cran_ubuntu_key.asc
 # Fingerprint: 298A3A825C0D65DFD57CBB651716619E084DAB9
-wget -qO- https://cloud.r-project.org/bin/linux/ubuntu/marutter_pubkey.asc | tee -a /etc/apt/trusted.gpg.d/cran_ubuntu_key.asc
+sudo sh -c 'wget -qO- https://cloud.r-project.org/bin/linux/ubuntu/marutter_pubkey.asc | tee -a /etc/apt/trusted.gpg.d/cran_ubuntu_key.asc'
 # add the R 4.0 repo from CRAN -- adjust 'focal' to 'groovy' or 'bionic' as needed
 sudo add-apt-repository "deb https://cloud.r-project.org/bin/linux/ubuntu $(lsb_release -cs)-cran40/" -y
 sudo add-apt-repository ppa:c2d4u.team/c2d4u4.0+ -y
@@ -104,7 +109,7 @@ sudo apt-get install libtinfo5 -f -y
 
 # DDNS
 sudo apt-get install libio-socket-ssl-perl -y -f
-sudo apt-get install ddclient -y -f
+# sudo apt-get install ddclient -y -f
 
 # 給 OBS 使用
 sudo apt install v4l2loopback-dkms -y -f
@@ -112,8 +117,8 @@ sudo apt install v4l2loopback-dkms -y -f
 # Lutris
 sudo apt install lutris -y -f
 
-# apt-get install kdenlive gimp obs-studio -y -f
-sudo apt-get install atom -y -f
+# sudo apt-get install kdenlive gimp obs-studio -y -f
+# sudo apt-get install atom -y -f
 
 # Libreoffice
 sudo apt-get install libreoffice libreoffice-common -y -f
@@ -136,10 +141,10 @@ sudo apt install fonts-noto -y -f
 
 # Apply
 sudo apt install cmake clang bison flex libfuse-dev libudev-dev pkg-config libc6-dev-i386 \
-linux-headers-generic gcc-multilib libcairo2-dev libgl1-mesa-dev libglu1-mesa-dev libtiff5-dev \
-libfreetype6-dev git git-lfs libelf-dev libxml2-dev libegl1-mesa-dev libfontconfig1-dev libbsd-dev \
-libxrandr-dev libxcursor-dev libgif-dev libavutil-dev libpulse-dev libavformat-dev libavcodec-dev \
-libswresample-dev libdbus-1-dev libxkbfile-dev libssl-dev -y -f
+    linux-headers-generic gcc-multilib libcairo2-dev libgl1-mesa-dev libglu1-mesa-dev libtiff5-dev \
+    libfreetype6-dev git git-lfs libelf-dev libxml2-dev libegl1-mesa-dev libfontconfig1-dev libbsd-dev \
+    libxrandr-dev libxcursor-dev libgif-dev libavutil-dev libpulse-dev libavformat-dev libavcodec-dev \
+    libswresample-dev libdbus-1-dev libxkbfile-dev libssl-dev -y -f
 
 # Array 3.0
 sudo apt install ibus-array -y -f
@@ -150,9 +155,6 @@ sudo apt-get install flatpak -y -f
 # Snap
 sudo apt install snapd -y -f
 sudo snap install snap-store
-
-# Markdown
-sudo snap install mdl
 
 # 來源更新
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
@@ -167,7 +169,6 @@ flatpak install flathub com.rawtherapee.RawTherapee --system -y
 flatpak install flathub com.obsproject.Studio --system -y
 flatpak install flathub org.darktable.Darktable --system -y
 flatpak install flathub org.videolan.VLC --system -y
-flatpak install flathub com.spotify.Client --system -y
 # flatpak install flathub org.libreoffice.LibreOffice --system -y
 flatpak install flathub org.telegram.desktop --system -y
 flatpak install flathub com.usebottles.bottles --system -y
@@ -204,6 +205,10 @@ sudo apt-get install xdotool -y -f
 sudo gem install fusuma
 sudo gem update fusuma
 
+# Markdown
+# sudo snap install mdl
+sudo gem install mdl
+
 # 安裝 SoftEther VPN
 sudo apt -y install cmake gcc g++ make pkgconf libncurses5-dev libssl-dev libsodium-dev libreadline-dev zlib1g-dev
 
@@ -237,49 +242,6 @@ flatpak update -y
 # bin/unittests
 # make install
 # cd ../../
-
-# Atom UI
-apm install linter
-apm install linter-ui-default
-apm install intentions
-
-# Python linter
-apm install python-linters
-
-# Python debugger
-apm install python-debugger
-
-# Atom Python 自動完成
-apm install Hydrogen
-apm install kite
-apm install autocomplete-python
-
-# Atom 繁體中文
-apm install atom-i18n
-
-# Atom效能檢查
-apm install busy-signal
-
-# Atom Markdown
-apm install pdf-view markdown-preview-enhanced markdown-table-editor insert-timestamp markdown-image-insertion markdown-image-assistant
-
-# Atom HDL linter
-apm install linter-veriloghdl linter-vhdl
-
-# Atom HDL language support
-apm install language-verilog language-vhdl lancelot-language-hdl language-hdl
-
-# Atom C language support
-apm install linter-gcc gpp-compiler
-
-# Atom Docker
-apm install linter-docker docker language-docker
-
-# Atom 終端機
-apm install platformio-ide-terminal
-
-# Atom 檔案圖標 小地圖 突顯
-apm install file-icons minimap highlight-selected
 
 # VS code Atom Thnem
 code --install-extension akamud.vscode-theme-onedark
@@ -406,6 +368,7 @@ git clone https://github.com/onnx/onnx.git
 cd onnx
 git submodule update --init --recursive
 python3 setup.py install
+cd ..
 
 rm -rf PyCoRAM/ onnx/ PyCoRAM/ ipgen/ hardcheck/ veriloggen/ dulwich/ slang/ mulpy/
-sudo apt autoremove
+sudo apt autoremove -y
