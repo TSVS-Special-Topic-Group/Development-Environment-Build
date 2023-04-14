@@ -132,7 +132,7 @@ sudo apt install openjdk-17-jre-headless openjdk-17-jre -y -f
 sudo apt install libxrender1 libxtst6 libxi6 libxext6 -y -f
 
 # exFat NTFS 檔案
-sudo apt install exfat-fuse exfat-utils -y -f
+sudo apt install exfat-fuse exfatprogs -y -f
 
 # Fonts
 sudo apt install fonts-noto-cjk fonts-noto -y -f
