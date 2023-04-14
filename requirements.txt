@@ -123,6 +123,7 @@ markdown
 pymarkdownlnt
 
 python-gnupg
+fs
 youtube_dl
 astroid
 certifi
