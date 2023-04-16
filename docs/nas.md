@@ -12,6 +12,7 @@
     - [NAT Mode](#nat-mode)
     - [Bridged Mode](#bridged-mode)
     - [Router Mode](#router-mode)
+      - [Proxy 解決無法連線網際網路](#proxy-解決無法連線網際網路)
   - [結論](#結論)
   - [參考資料](#參考資料)
 
@@ -181,7 +182,27 @@ virbr2		8000.xxxxxxxxxxxx	yes		vnet19
 
 後來發現使用Router很好用，設定整棟路由表就可以連線，雖然橋接有橋接的好處，可惜如果使用路由模式，會造成內網沒有網際網路，因為在數據機的時候因為 NAT 無法將網際網路轉換回來，造成無法連接外面的網際網路，雖然可以透過 DNS 找到 IP ，但因為無法連接回來，因此無法正常使用。
 
-DNS 也要另外設定在路由器的閘道所在位置。
+#### Proxy 解決無法連線網際網路
+
+透過區域網路內架設 Proxy 的方式，來解決無法連線到網際網路問題，同樣使用 Docker 或者其他人容器技術也可以做到。
+
+透過以下指令快速建立 Proxy Server 。
+
+```bash
+docker run -d --name squid-container -e TZ=UTC -p 3128:3128 ubuntu/squid:latest
+```
+
+開啟防火牆設定。
+
+```bash
+sudo ufw allow 3128
+```
+
+通過 `curl` 測試代理伺服器是否正常運作。
+
+```bash
+curl --proxy http://hostname:3128 https://medium.com
+```
 
 ## 結論
 
