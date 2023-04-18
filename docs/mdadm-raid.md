@@ -1,5 +1,7 @@
 # RAID
 
+## mdadm 建立虛擬陣列磁碟
+
 使用 `mdadm` 建立 RAID 。
 
 以下是使用 `lsblk` 查詢硬碟，可以看到我有兩顆 1TB 的實體硬碟。
@@ -130,3 +132,7 @@ Consistency Policy : bitmap
 ```
 
 ![2023-04-19-03-04-07](assets/2023-04-19-03-04-07.png)
+
+## 參考資料
+
+- [第十四章、磁碟配額(Quota)與進階檔案系統管理](https://linux.vbird.org/linux_basic/centos7/0420quota.php)
