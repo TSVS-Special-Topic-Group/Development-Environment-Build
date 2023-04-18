@@ -225,6 +225,7 @@ apt install xclip -y -f
 
 # S.M.A.R.T.
 apt install smartmontools -y -f
+apt install xfsprogs zfsutils-linux btrfs-progs f2fs-tools exfat-fuse exfatprogs udftools -y -f
 
 # 更新
 sudo apt-file update
