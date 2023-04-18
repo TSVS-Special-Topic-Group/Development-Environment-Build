@@ -64,5 +64,4 @@ echo "hi" > /dev/pts/0
 
 ```bash
 timmy@timmy-Latitude-E5550:~/arduino-ide$ hi
-
 ```
