@@ -220,6 +220,12 @@ sudo apt install xfce4 xfce4-goodies tightvncserver -y -f
 sudo apt install tlp -y -f
 sudo apt install slimbookbattery -y -f
 
+# VScode
+apt install xclip -y -f
+
+# S.M.A.R.T.
+apt install smartmontools -y -f
+
 # 更新
 sudo apt-file update
 sudo apt update -f
