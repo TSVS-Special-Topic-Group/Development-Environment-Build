@@ -5,11 +5,17 @@ sudo apt update
 sudo apt upgrade -y
 
 # 加入安裝來源
+# =============
 # Kdenlive
 sudo add-apt-repository ppa:kdenlive/kdenlive-stable -y
 # Atom
 # sudo sh -c 'wget -qO - https://packagecloud.io/AtomEditor/atom/gpgkey | apt-key add -'
 # sudo sh -c 'echo "deb [arch=amd64] https://packagecloud.io/AtomEditor/atom/any/ any main" > /etc/apt/sources.list.d/atom.list'
+
+# AnyDesk
+sudo sh -c 'wget -qO - https://keys.anydesk.com/repos/DEB-GPG-KEY | apt-key add -'
+sudo sh -c 'echo "deb http://deb.anydesk.com/ all main" > /etc/apt/sources.list.d/anydesk-stable.list'
+
 # OBS
 sudo add-apt-repository ppa:obsproject/obs-studio -y
 # inkscape
@@ -212,9 +218,10 @@ sudo gem install mdl
 # 安裝 SoftEther VPN
 sudo apt -y install cmake gcc g++ make pkgconf libncurses5-dev libssl-dev libsodium-dev libreadline-dev zlib1g-dev
 
-# 遠端軟體
+# 遠端軟體 遠端桌面
 sudo apt install xfce4 xfce4-goodies tightvncserver -y -f
 # ufw allow 5901/tcp
+apt install anydesk
 
 # 電源管理
 sudo apt install tlp -y -f
