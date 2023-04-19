@@ -221,11 +221,11 @@ sudo apt install tlp -y -f
 sudo apt install slimbookbattery -y -f
 
 # VScode
-apt install xclip -y -f
+sudo apt install xclip -y -f
 
 # S.M.A.R.T.
-apt install smartmontools -y -f
-apt install xfsprogs zfsutils-linux btrfs-progs f2fs-tools exfat-fuse exfatprogs udftools -y -f
+sudo apt install smartmontools -y -f
+sudo apt install xfsprogs zfsutils-linux btrfs-progs f2fs-tools exfat-fuse exfatprogs udftools -y -f
 
 # 更新
 sudo apt-file update
@@ -377,5 +377,5 @@ git submodule update --init --recursive
 python3 setup.py install
 cd ..
 
-rm -rf PyCoRAM/ onnx/ PyCoRAM/ ipgen/ hardcheck/ veriloggen/ dulwich/ slang/ mulpy/
+sudo rm -rf PyCoRAM/ onnx/ PyCoRAM/ ipgen/ hardcheck/ veriloggen/ dulwich/ slang/ mulpy/
 sudo apt autoremove -y
