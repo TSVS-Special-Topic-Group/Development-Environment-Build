@@ -70,7 +70,7 @@ nvme0n1     259:0    0   1.9T  0 disk
 └─nvme0n1p9 259:9    0 197.8G  0 part  
 ```
 
-因此我用以下參數進行建立空間。因為 RAID 1 為一整個區塊，因此 `--chunk` 部份可以不用加上。
+因此我用以下參數進行建立空間。因為 RAID 1 為一整個區塊，因此 `--chunk` 部份可以不用加上。 **如果是要用在開機使用，要多加一個參數 `--metadata=0.90` ，後續章節有說明**
 
 ```bash
 sudo mdadm --create /dev/md/md0 --auto=yes --level=1 --chunk=256K --raid-devices=2 --spare-devices=0 /dev/sd{a,f}
@@ -96,7 +96,7 @@ mdadm: array /dev/md/md0 started.
 mdadm: timeout waiting for /dev/md/md0
 ```
 
-此時可以使用 `mdadm -detail /dev/md/md0` 查詢相關資料。
+此時可以使用 `sudo mdadm -detail /dev/md/md0` 查詢相關資料。
 
 ```text
 /dev/md/md0:
@@ -133,6 +133,54 @@ Consistency Policy : bitmap
 
 ![2023-04-19-03-04-07](assets/2023-04-19-03-04-07.png)
 
+## 建立 RAID 組態檔
+
+組態檔案主要用於確保 mdadm 在自動開機的時候可以保證磁碟機的名稱是對應的，因為自動掛載會依照 UUID 進行判別，使用以下指令自動產生組態檔案：
+
+```bash
+sudo mdadm --examine --scan | sudo tee -a /etc/mdadm.conf
+```
+
+會產生以下：
+
+```bash
+ARRAY metadata=imsm UUID=d2b381dd:218ddf9d:0344e06d:813b3862
+ARRAY /dev/md/Volume1 container=d2b381dd:218ddf9d:0344e06d:813b3862 member=0 UUID=926f3af9:4ad9d37b:f2761048:8c3ec4de
+ARRAY /dev/md127 UUID=e2a4c5e5:164f02e3:ef242f65:a48d748b
+```
+
+## 管理 RAID 裝置
+
+- `--add` ：Hotadd 後續裝置。
+- `--remove` ：移除後續的非作用中裝置。
+- `--fail` ：將後續裝置標示為錯誤。
+
+同步
+
+```bash
+sudo sync
+```
+
+## RAID 1 開機無法組件問題
+
+還好沒有將重要的資料放在未設定自動開機的 RAID 1 內，不然東西都消失，會慾哭無淚。如果一般流程建立 RAID 1 的話，會有以下訊息：
+
+```text
+mdadm: Note: this array has metadata at the start and
+    may not be suitable as a boot device.  If you plan to
+    store '/boot' on this device please ensure that
+    your boot-loader understands md/v1.x metadata, or use
+    --metadata=0.90
+```
+
+說明如果要用於自動開機的話，記得加上參數 `--metadata=0.90` ，因為開機時有機會 boot loader 無法辨識，造成無法掛載硬碟，作者我就是因為這樣造成給 FPGA 的相關環境直接死掉，還好只是程式而非撰寫資料，會需要花時間將所有程式下載回來。
+
+```bash
+sudo mdadm --create /dev/md/md0 --auto=yes --level=1 --chunk=256K --raid-devices=2 --spare-devices=0 /dev/sd{a,f} --metadata=0.90
+```
+
 ## 參考資料
 
 - [第十四章、磁碟配額(Quota)與進階檔案系統管理](https://linux.vbird.org/linux_basic/centos7/0420quota.php)
+- [在 Oracle Linux 上建置軟體 RAID 陣列](https://docs.oracle.com/zh-tw/learn/ol-mdadm/#introduction)
+- [阿就操場啊~](https://2formosa.blogspot.com/2017/04/mdadm-raid1-boot-metadata.html)
