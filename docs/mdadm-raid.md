@@ -96,7 +96,7 @@ mdadm: array /dev/md/md0 started.
 mdadm: timeout waiting for /dev/md/md0
 ```
 
-此時可以使用 `sudo mdadm -detail /dev/md/md0` 查詢相關資料。
+此時可以使用 `sudo mdadm --detail /dev/md/md0` 查詢相關資料。
 
 ```text
 /dev/md/md0:

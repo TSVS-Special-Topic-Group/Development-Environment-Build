@@ -54,6 +54,7 @@
       - [從GitLab下載Chart安裝GitLab-Runner](#從gitlab下載chart安裝gitlab-runner)
       - [使用Helm的Chart安裝GitLab-Runner](#使用helm的chart安裝gitlab-runner)
   - [Ubuntu防火牆設定](#ubuntu防火牆設定)
+  - [設定 Minikube 代理伺服器](#設定-minikube-代理伺服器)
   - [自動化備份](#自動化備份)
     - [異地備份](#異地備份)
     - [腳本](#腳本)
@@ -1034,13 +1035,27 @@ sudo ufw allow 465/tcp
 sudo ufw allow 587/tcp
 ```
 
+## 設定 Minikube 代理伺服器
+
+由於預設內 Podman 應該是沒有網際網路的，理論上應該要有但因為時間不夠研究這麼多，所以直接使用代理伺服器來建立連線，較為迅速有效率，透過這樣的方式解決了容器內沒有網際網路的問題。
+
+```bash
+export HTTP_PROXY=http://10.0.0.3:3128
+# export HTTPS_PROXY=https://<proxy hostname:port>
+export NO_PROXY=localhost,127.0.0.1,10.96.0.0/12,192.168.59.0/24,192.168.49.0/24,192.168.39.0/24,10.0.0.0/24,10.1.1.0/24,10.2.2.0/24,50.0.0.0/24
+
+minikube start
+```
+
 ## 自動化備份
-請先參閱 [GitLab備份與還原](#GitLab備份與還原)了解如何設定與備份GitLab，並且了解如何還原。
+
+請先參閱 [GitLab備份與還原](#GitLab備份與還原) 了解如何設定與備份GitLab，並且了解如何還原。
 
 ### 異地備份
 備份至檔案伺服器。
 
 ### 腳本
+
 用於更新、升級與備份的腳本原始碼，可以透過設定排程來讓備份更加順利與方便。
 
 ```shell
@@ -1070,9 +1085,11 @@ helm upgrade --namespace gitlab atca-gitlab-runner -f atca-values.yaml gitlab/gi
 ```
 
 ### 設定排程
+
 請參考鳥哥的[第十六章、檔案伺服器之二： SAMBA 伺服器](http://linux.vbird.org/linux_server/0370samba.php)的 [15.3.2 系統的設定檔： /etc/crontab, /etc/cron.d/*](https://linux.vbird.org/linux_basic/centos7/0430cron.php#etc_crontab1)，查看完相關設定後，可以再自行設定想要的備份時間。
 
 #### 設定使用者的設定檔
+
 先使用Nano開啟crontab檔案。
 
 ```
@@ -1098,6 +1115,7 @@ sudo systemctl restart cron.service
 ```
 
 #### 設定系統的設定檔
+
 先使用Nano開啟crontab檔案。
 
 ```
