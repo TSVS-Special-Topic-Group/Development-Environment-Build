@@ -216,12 +216,16 @@ sudo gem update fusuma
 sudo gem install mdl
 
 # 安裝 SoftEther VPN
-sudo apt -y install cmake gcc g++ make pkgconf libncurses5-dev libssl-dev libsodium-dev libreadline-dev zlib1g-dev
+sudo apt install cmake gcc g++ make pkgconf libncurses5-dev libssl-dev libsodium-dev libreadline-dev zlib1g-dev -f -y
+
+# Install L2TP/IPSec
+sudo apt-get install network-manager-l2tp -y -f
+sudo apt-get install network-manager-l2tp-gnome -y -f
 
 # 遠端軟體 遠端桌面
 sudo apt install xfce4 xfce4-goodies tightvncserver -y -f
 # ufw allow 5901/tcp
-apt install anydesk
+sudo apt install anydesk
 
 # 電源管理
 sudo apt install tlp -y -f
