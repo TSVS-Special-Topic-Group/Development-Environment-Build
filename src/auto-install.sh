@@ -89,6 +89,9 @@ sudo adduser $USER libvirt-qemu
 # Wine
 sudo apt install --install-recommends winehq-stable -y -f
 
+# SQL
+sudo apt-get install sqlitebrowser -y -f
+
 # R
 # update indices
 sudo apt update -qq
