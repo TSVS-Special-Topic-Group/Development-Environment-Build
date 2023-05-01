@@ -224,6 +224,8 @@ sudo apt install cmake gcc g++ make pkgconf libncurses5-dev libssl-dev libsodium
 # Install L2TP/IPSec
 sudo apt-get install network-manager-l2tp -y -f
 sudo apt-get install network-manager-l2tp-gnome -y -f
+sudo apt-get install network-manager-strongswan-gnome -y -f
+sudo apt-get install network-manager-vpnc-gnome -y -f
 
 # 遠端軟體 遠端桌面
 sudo apt install xfce4 xfce4-goodies tightvncserver -y -f
