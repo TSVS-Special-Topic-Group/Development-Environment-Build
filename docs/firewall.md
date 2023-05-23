@@ -142,7 +142,9 @@ sudo firewall-cmd --reload
 
 ### NAT 轉換
 
-## 規則設定
+### CentOS 服務鎖定保護
+
+避免有人隨意去更換與重新調整重要的 port ，因此 CentOS 會自動鎖定。
 
 ## 參考資料
 
