@@ -167,7 +167,7 @@ Subsystem	sftp	/usr/lib/openssh/sftp-server
 使用SSH建立隧道，以連線區域網路所需要使用的協定，類似虛擬區域網路(VPN)。
 
 ```bash
-ssh -R 0.0.0.0:9090:localhost:8080 johnliu@external-server
+ssh -p 22 -L 80:127.0.0.1:8080 -N username@hostname
 ```
 
 ## 設定不輸入密碼登入
