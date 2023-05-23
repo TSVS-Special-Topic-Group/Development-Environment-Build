@@ -1,4 +1,5 @@
 # 開發工具
+
 作業系統，建議依照數字順序：
 
 1. Linux
@@ -39,7 +40,7 @@
 
 - Python
   - 支援：Linux、Windows、Mac
-  - Python Package:有[PyPi](https://pypi.org/)套件管理工具，我們所有使用的套件可以[看這](/requirements.txt)，可以使用`pip install -r requirements.txt --upgrade`安裝，部份套件在Windows對於C/C++/C#等環境要求相當嚴苛
+  - Python Package:有[PyPi](https://pypi.org/)套件管理工具，我們所有使用的套件可以[看這](/requirements.txt)，可以使用 `pip install -r requirements.txt --upgrade` 安裝，部份套件在Windows對於C/C++/C#等環境要求相當嚴苛
     - [twine](https://twine.readthedocs.io/)：推送到[PyPi](https://pypi.org/)的工具
     - [setuptools](https://setuptools.readthedocs.io/)：一個程式套件管理
   - Documentation
