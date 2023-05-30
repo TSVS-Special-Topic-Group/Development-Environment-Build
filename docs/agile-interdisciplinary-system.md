@@ -94,7 +94,7 @@
   - Security Options:
     - apparmor
     - seccomp
-    -  Profile: default
+    - Profile: default
   - Kernel Version: 4.15.0-96-generic
   - Operating System: Ubuntu 18.04.4 LTS
   - OSType: linux
@@ -1058,7 +1058,7 @@ minikube start
 
 用於更新、升級與備份的腳本原始碼，可以透過設定排程來讓備份更加順利與方便。
 
-```shell
+```bash
 cd /root/Git/backup
 git pull
 docker exec -t gitlab gitlab-backup create  ## 在更新前先進行備份
@@ -1092,13 +1092,13 @@ helm upgrade --namespace gitlab atca-gitlab-runner -f atca-values.yaml gitlab/gi
 
 先使用Nano開啟crontab檔案。
 
-```
+```bash
 crontab -e
 ```
 
 輸入公司排定的更新時間。
 
-```
+```text
 ## Edit this file to introduce tasks to be run by cron.
 #
 ...
@@ -1116,15 +1116,15 @@ sudo systemctl restart cron.service
 
 #### 設定系統的設定檔
 
-先使用Nano開啟crontab檔案。
+先使用 Nano 開啟 crontab 檔案。
 
-```
+```bash
 sudo nano /etc/crontab
 ```
 
 輸入公司排定的更新時間。
 
-```shell
+```bash
 ## /etc/crontab: system-wide crontab
 ## Unlike any other crontab you don't have to run the `crontab'
 ## command to install the new version when you edit this file
@@ -1139,7 +1139,7 @@ sudo nano /etc/crontab
 
 重新啟動
 
-```shell
+```bash
 sudo systemctl restart cron.service
 ```
 
