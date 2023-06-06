@@ -345,6 +345,9 @@ code --install-extension yzhang.markdown-all-in-one
 code --install-extension DavidAnson.vscode-markdownlint
 code --install-extension mushan.vscode-paste-image
 
+# LaTeX
+code --install-extension James-Yu.latex-workshop
+
 # Python套件安裝
 cd ..
 python3 auto_install_python_pack.py
