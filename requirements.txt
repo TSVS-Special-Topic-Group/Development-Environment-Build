@@ -1,5 +1,13 @@
 pip
 
+opencv-python
+pygame
+requests
+numpy
+gTTS
+pyttsx3
+googletrans
+mediapipe
 keras
 launchpadlib
 tensorflow
@@ -10,9 +18,9 @@ pandas
 sympy
 nose
 scikit-learn
-pycaret # python3.8
-pycaret-nightly # python3.8
-pycaret-ts-alpha # python3.8
+pycaret
+pycaret-nightly
+pycaret-ts-alpha
 
 virtualenv
 
@@ -172,16 +180,6 @@ PyOpenGL
 
 tuxdrive
 GoSync
-
-beautifulsoup4
-opencv-python
-pygame
-requests
-numpy
-gTTS
-pyttsx3
-googletrans
-mediapipe
 
 openai-whisper
 pytube
