@@ -26,16 +26,27 @@ sudo add-apt-repository ppa:obsproject/obs-studio -y
 sudo add-apt-repository ppa:inkscape.dev/stable -y
 # Lutris
 sudo add-apt-repository ppa:lutris-team/lutris -y
+
 # playonlinux
 # sudo sh -c 'wget -q "http://deb.playonlinux.com/public.gpg" -O- | apt-key add -'
 # sudo sh -c 'wget http://deb.playonlinux.com/playonlinux_stretch.list -O /etc/apt/sources.list.d/playonlinux.list'
+
 # Wine
 sudo dpkg --add-architecture i386 
 sudo mkdir -pm755 /etc/apt/keyrings
 sudo wget -O /etc/apt/keyrings/winehq-archive.key https://dl.winehq.org/wine-builds/winehq.key
 sudo wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/ubuntu/dists/kinetic/winehq-kinetic.sources
+
 # 電源管理
 sudo add-apt-repository ppa:slimbook/slimbook -y
+
+# cri-o
+sudo sh -c 'echo "deb [signed-by=/usr/share/keyrings/libcontainers-archive-keyring.gpg] https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/xUbuntu_22.04/ /" > /etc/apt/sources.list.d/devel:kubic:libcontainers:stable.list'
+sudo sh -c 'echo "deb [signed-by=/usr/share/keyrings/libcontainers-crio-archive-keyring.gpg] https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable:/cri-o:/1.19/xUbuntu_22.04/ /" > /etc/apt/sources.list.d/devel:kubic:libcontainers:stable:cri-o:1.19.list'
+
+mkdir -p /usr/share/keyrings
+sudo sh -c 'curl -L https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/xUbuntu_22.04/Release.key | gpg --dearmor -o /usr/share/keyrings/libcontainers-archive-keyring.gpg'
+sudo sh -c 'curl -L https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable:/cri-o:/1.19/xUbuntu_22.04/Release.key | gpg --dearmor -o /usr/share/keyrings/libcontainers-crio-archive-keyring.gpg'
 
 sudo apt install apt-file -y -f
 sudo apt-file update
@@ -180,7 +191,7 @@ flatpak install flathub com.spotify.Client --system -y
 flatpak install flathub org.gimp.GIMP --system -y
 flatpak install flathub org.kde.kdenlive --system -y
 flatpak install flathub com.rawtherapee.RawTherapee --system -y
-flatpak install flathub com.obsproject.Studio --system -y
+# flatpak install flathub com.obsproject.Studio --system -y
 flatpak install flathub org.darktable.Darktable --system -y
 flatpak install flathub org.videolan.VLC --system -y
 # flatpak install flathub org.libreoffice.LibreOffice --system -y
@@ -261,6 +272,9 @@ sudo apt install xfsprogs zfsutils-linux btrfs-progs f2fs-tools exfat-fuse exfat
 # RAID
 sudo apt install mdadm -y -f
 sudo apt install zfsutils-linux -y -f
+
+# cri-o
+sudo apt-get install cri-o cri-o-runc -y
 
 # 更新
 sudo apt-file update

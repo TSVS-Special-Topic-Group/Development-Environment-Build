@@ -153,6 +153,8 @@ futures3
 feedparser
 markdown-mermaid-to-images
 
+podman-compose
+
 SpeechRecognition
 pydub
 PyAudio
