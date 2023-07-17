@@ -156,6 +156,12 @@ sudo apt install imagemagick -y -f
 sudo apt install openjdk-17-jre-headless openjdk-17-jre -y -f
 sudo apt install libxrender1 libxtst6 libxi6 libxext6 -y -f
 
+# Latex
+sudo apt install texlive-full -y -f
+sudo apt install texlive -y -f
+sudo apt install texstudio -y -f
+sudo apt install texlive-science texlive-latex-extra texlive-extra-utils latexmk texlive-publishers texlive-science -y -f
+
 # exFat NTFS 檔案
 sudo apt install exfat-fuse exfatprogs -y -f
 
