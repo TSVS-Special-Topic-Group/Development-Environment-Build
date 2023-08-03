@@ -344,6 +344,9 @@ code --install-extension marp-team.marp-vscode
 code --install-extension yzhang.markdown-all-in-one
 code --install-extension DavidAnson.vscode-markdownlint
 code --install-extension mushan.vscode-paste-image
+code --install-extension csholmq.excel-to-markdown-table
+# code --install-extension darkriszty.markdown-table-prettify
+code --install-extension TakumiI.markdowntable
 
 # LaTeX
 code --install-extension James-Yu.latex-workshop
