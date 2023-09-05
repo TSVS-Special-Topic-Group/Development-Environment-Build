@@ -20,27 +20,27 @@ docker restart gitlab
 # chown git:git /var/opt/gitlab/backups/<備份版本>_gitlab_backup.tar
 # exit
 # docker exec -it <name of container> gitlab-backup restore BACKUP=<備份版本>
-cp gitlab.rb /var/lib/gitlab/config/
+# cp gitlab.rb /var/lib/gitlab/config/
 # cp gitlab-secrets.json /var/lib/gitlab/config/
-docker restart gitlab
+# docker restart gitlab
 
 # Kubectl
 sudo apt-get update
-sudo apt-get install -y ca-certificates curl
-sudo apt-get install -y apt-transport-https
-sudo curl -fsSLo /etc/apt/keyrings/kubernetes-archive-keyring.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg
-echo "deb [signed-by=/etc/apt/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list
+# apt-transport-https may be a dummy package; if so, you can skip that package
+sudo apt-get install -y apt-transport-https ca-certificates curl
+curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.28/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
+# This overwrites any existing configuration in /etc/apt/sources.list.d/kubernetes.list
+echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.28/deb/ /' | sudo tee /etc/apt/sources.list.d/kubernetes.list
 sudo apt-get update
 sudo apt-get install -y kubectl
 
 # Podman
-
 sudo apt-get -y install podman
 
 # Minikube
 curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube_latest_amd64.deb
 dpkg -i minikube_latest_amd64.deb
-minikube start --cpus 4 --force --force-systemd=true --driver=podman
+minikube start --cpus 6 --force --driver=podman --container-runtime=cri-o --download-only=true
 minikube config set driver podman
 
 # Helm
@@ -50,7 +50,7 @@ snap install helm --classic
 helm repo add gitlab https://charts.gitlab.io
 helm repo update
 kubectl create namespace gitlab
-helm install --namespace gitlab gitlab-runner -f gitlab-values.yaml gitlab/gitlab-runner
-helm install --namespace gitlab atca-gitlab-runner -f atca-values.yaml gitlab/gitlab-runner
-helm upgrade --namespace gitlab gitlab-runner -f gitlab-values.yaml gitlab/gitlab-runner
-helm upgrade --namespace gitlab atca-gitlab-runner -f atca-values.yaml gitlab/gitlab-runner
+# helm install --namespace gitlab gitlab-runner -f gitlab-values.yaml gitlab/gitlab-runner
+# helm install --namespace gitlab atca-gitlab-runner -f atca-values.yaml gitlab/gitlab-runner
+# helm upgrade --namespace gitlab gitlab-runner -f gitlab-values.yaml gitlab/gitlab-runner
+# helm upgrade --namespace gitlab atca-gitlab-runner -f atca-values.yaml gitlab/gitlab-runner
