@@ -258,6 +258,10 @@ sudo apt install xclip -y -f
 sudo apt install smartmontools -y -f
 sudo apt install xfsprogs zfsutils-linux btrfs-progs f2fs-tools exfat-fuse exfatprogs udftools -y -f
 
+# RAID
+sudo apt install mdadm -y -f
+sudo apt install zfsutils-linux -y -f
+
 # 更新
 sudo apt-file update
 sudo apt update
