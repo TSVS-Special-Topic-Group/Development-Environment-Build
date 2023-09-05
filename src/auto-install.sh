@@ -240,8 +240,8 @@ sudo apt install stress-ng -y -f
 
 # 溫度監控
 sudo apt install lm-sensors -y -f
-sudo sensors-detect
-sensors
+# sudo sensors-detect
+# sensors
 
 # 電源管理
 sudo apt install tlp -y -f
