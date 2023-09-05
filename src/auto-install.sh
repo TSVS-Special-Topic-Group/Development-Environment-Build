@@ -280,7 +280,15 @@ sudo apt install mdadm -y -f
 sudo apt install zfsutils-linux -y -f
 
 # cri-o
-sudo apt-get install cri-o cri-o-runc -y
+sudo apt-get install cri-o cri-o-runc -y -f
+
+# PDF
+sudo apt install pdftk -y -f
+# install pdfunite gs convert qpdf
+sudo apt install qpdf poppler-utils ghostscript imagemagick -y -f
+sudo apt-get install evince -y -f
+sudo snap install pdf2go
+# sudo snap install evince
 
 # 更新
 sudo apt-file update
