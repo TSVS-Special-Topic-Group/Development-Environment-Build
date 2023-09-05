@@ -277,6 +277,9 @@ flatpak update -y
 # make install
 # cd ../../
 
+# 安裝私有軟體
+sudo dpkg -i packaged/*.deb
+
 # VS code Atom Thnem
 code --install-extension akamud.vscode-theme-onedark
 code --install-extension ms-vscode.atom-keybindings
@@ -363,8 +366,7 @@ code --install-extension TakumiI.markdowntable
 code --install-extension James-Yu.latex-workshop
 
 # Python套件安裝
-cd ..
-python3 auto_install_python_pack.py
+python3 src/auto_install_python_pack.py
 python3 -m ipykernel install --user
 
 # 安裝 Dulwich
