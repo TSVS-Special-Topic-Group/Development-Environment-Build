@@ -236,10 +236,10 @@ sudo apt install anydesk -y -f
 # 電腦效能燒機測試軟體
 sudo add-apt-repository ppa:colin-king/stress-ng
 sudo apt update
-sudo apt install stress-ng
+sudo apt install stress-ng -y -f
 
 # 溫度監控
-sudo apt install lm-sensors
+sudo apt install lm-sensors -y -f
 sudo sensors-detect
 sensors
 
