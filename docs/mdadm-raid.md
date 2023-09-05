@@ -1,5 +1,11 @@
 # RAID
 
+## 安裝
+
+```bash
+sudo apt install mdadm
+```
+
 ## mdadm 建立虛擬陣列磁碟
 
 使用 `mdadm` 建立 RAID 。
@@ -73,7 +79,7 @@ nvme0n1     259:0    0   1.9T  0 disk
 因此我用以下參數進行建立空間。因為 RAID 1 為一整個區塊，因此 `--chunk` 部份可以不用加上。 **如果是要用在開機使用，要多加一個參數 `--metadata=0.90` ，後續章節有說明**
 
 ```bash
-sudo mdadm --create /dev/md/md0 --auto=yes --level=1 --chunk=256K --raid-devices=2 --spare-devices=0 /dev/sd{a,f}
+sudo mdadm --create /dev/md/md0 --auto=yes --level=1 --chunk=256K --metadata=0.90 --raid-devices=2 --spare-devices=0 /dev/sd{a,f}
 ```
 
 會出現 `Continue creating array?` 的詢問，這個時候輸入 `y` 的選項，即可完成。
