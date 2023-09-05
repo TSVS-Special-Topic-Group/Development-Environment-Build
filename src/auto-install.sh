@@ -233,6 +233,16 @@ sudo apt install xfce4 xfce4-goodies tightvncserver -y -f
 # ufw allow 5901/tcp
 sudo apt install anydesk -y -f
 
+# 電腦效能燒機測試軟體
+sudo add-apt-repository ppa:colin-king/stress-ng
+sudo apt update
+sudo apt install stress-ng
+
+# 溫度監控
+sudo apt install lm-sensors
+sudo sensors-detect
+sensors
+
 # 電源管理
 sudo apt install tlp -y -f
 sudo apt install slimbookbattery -y -f
