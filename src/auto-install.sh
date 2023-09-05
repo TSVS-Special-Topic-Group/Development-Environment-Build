@@ -234,7 +234,7 @@ sudo apt install xfce4 xfce4-goodies tightvncserver -y -f
 sudo apt install anydesk -y -f
 
 # 電腦效能燒機測試軟體
-sudo add-apt-repository ppa:colin-king/stress-ng
+sudo add-apt-repository ppa:colin-king/stress-ng -y
 sudo apt update
 sudo apt install stress-ng -y -f
 
