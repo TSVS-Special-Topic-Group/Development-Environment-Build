@@ -118,7 +118,7 @@ sudo apt-get install libtinfo5 -f -y
 
 # DDNS
 sudo apt-get install libio-socket-ssl-perl -y -f
-# sudo apt-get install ddclient -y -f
+sudo apt-get install ddclient -y -f
 
 # 給 OBS 使用
 sudo apt install v4l2loopback-dkms -y -f
@@ -126,7 +126,8 @@ sudo apt install v4l2loopback-dkms -y -f
 # Lutris
 sudo apt install lutris -y -f
 
-# sudo apt-get install kdenlive gimp obs-studio -y -f
+sudo apt-get install obs-studio -y -f
+# sudo apt-get install kdenlive gimp -y -f
 # sudo apt-get install atom -y -f
 
 # Libreoffice
@@ -148,7 +149,7 @@ sudo apt install fonts-noto-cjk fonts-noto -y -f
 sudo apt install fonts-arphic-ukai fonts-arphic-uming -y -f
 sudo apt install fonts-noto -y -f
 
-# Apply
+# Apple
 sudo apt install cmake clang bison flex libfuse-dev libudev-dev pkg-config libc6-dev-i386 \
     linux-headers-generic gcc-multilib libcairo2-dev libgl1-mesa-dev libglu1-mesa-dev libtiff5-dev \
     libfreetype6-dev git git-lfs libelf-dev libxml2-dev libegl1-mesa-dev libfontconfig1-dev libbsd-dev \
@@ -179,11 +180,11 @@ flatpak install flathub com.obsproject.Studio --system -y
 flatpak install flathub org.darktable.Darktable --system -y
 flatpak install flathub org.videolan.VLC --system -y
 # flatpak install flathub org.libreoffice.LibreOffice --system -y
-flatpak install flathub org.telegram.desktop --system -y
+# flatpak install flathub org.telegram.desktop --system -y
 flatpak install flathub com.usebottles.bottles --system -y
 flatpak install flathub org.blender.Blender --system -y
 flatpak install flathub com.github.muriloventuroso.pdftricks --system -y
-flatpak install flathub md.obsidian.Obsidian --system -y
+# flatpak install flathub md.obsidian.Obsidian --system -y
 flatpak install flathub org.kde.krita --system -y
 flatpak install flathub org.inkscape.Inkscape --system -y
 
@@ -230,7 +231,7 @@ sudo apt-get install network-manager-vpnc-gnome -y -f
 # 遠端軟體 遠端桌面
 sudo apt install xfce4 xfce4-goodies tightvncserver -y -f
 # ufw allow 5901/tcp
-sudo apt install anydesk
+sudo apt install anydesk -y -f
 
 # 電源管理
 sudo apt install tlp -y -f
@@ -245,7 +246,7 @@ sudo apt install xfsprogs zfsutils-linux btrfs-progs f2fs-tools exfat-fuse exfat
 
 # 更新
 sudo apt-file update
-sudo apt update -f
+sudo apt update
 sudo apt list --upgradable
 sudo apt upgrade -y -f
 flatpak update -y
@@ -255,7 +256,7 @@ flatpak update -y
 # bash kite-installer.sh --download
 # bash kite-installer.sh --install
 
-# # 安裝 slang
+# 安裝 slang
 # git clone https://github.com/MikePopoloski/slang.git
 # cd slang
 # mkdir build && cd build
