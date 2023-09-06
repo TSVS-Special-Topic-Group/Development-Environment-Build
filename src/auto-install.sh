@@ -479,3 +479,4 @@ cd ..
 sudo rm -rf PyCoRAM/ onnx/ PyCoRAM/ ipgen/ hardcheck/ veriloggen/ dulwich/ slang/ mulpy/
 sudo apt autoremove -y
 sudo apt clean
+sudo apt autoclean
