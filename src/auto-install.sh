@@ -1,6 +1,6 @@
-# =================================================================
+# =====================================================================================
 # 安裝路徑請在專案根目錄執行
-# =================================================================
+# =====================================================================================
 
 # apt-get安裝
 # ==========
@@ -8,10 +8,13 @@
 sudo apt update
 sudo apt upgrade -y
 
+# =====================================================================================
 # 加入安裝來源
-# =============
+# =====================================================================================
+
 # Kdenlive
 sudo add-apt-repository ppa:kdenlive/kdenlive-stable -y
+
 # Atom
 # sudo sh -c 'wget -qO - https://packagecloud.io/AtomEditor/atom/gpgkey | apt-key add -'
 # sudo sh -c 'echo "deb [arch=amd64] https://packagecloud.io/AtomEditor/atom/any/ any main" > /etc/apt/sources.list.d/atom.list'
@@ -28,8 +31,8 @@ sudo add-apt-repository ppa:inkscape.dev/stable -y
 sudo add-apt-repository ppa:lutris-team/lutris -y
 
 # playonlinux
-# sudo sh -c 'wget -q "http://deb.playonlinux.com/public.gpg" -O- | apt-key add -'
-# sudo sh -c 'wget http://deb.playonlinux.com/playonlinux_stretch.list -O /etc/apt/sources.list.d/playonlinux.list'
+sudo sh -c 'wget -q "http://deb.playonlinux.com/public.gpg" -O- | apt-key add -'
+sudo sh -c 'wget http://deb.playonlinux.com/playonlinux_stretch.list -O /etc/apt/sources.list.d/playonlinux.list'
 
 # Wine
 sudo dpkg --add-architecture i386 
@@ -41,12 +44,31 @@ sudo wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/ubuntu/
 sudo add-apt-repository ppa:slimbook/slimbook -y
 
 # cri-o
-sudo sh -c 'echo "deb [signed-by=/usr/share/keyrings/libcontainers-archive-keyring.gpg] https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/xUbuntu_22.04/ /" > /etc/apt/sources.list.d/devel:kubic:libcontainers:stable.list'
-sudo sh -c 'echo "deb [signed-by=/usr/share/keyrings/libcontainers-crio-archive-keyring.gpg] https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable:/cri-o:/1.19/xUbuntu_22.04/ /" > /etc/apt/sources.list.d/devel:kubic:libcontainers:stable:cri-o:1.19.list'
+sudo apt install apt-transport-https ca-certificates curl gnupg2 software-properties-common -y
+OS=xUbuntu_22.04
+VERSION=1.28
+sudo sh -c 'echo "deb https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/'$OS'/ /" > /etc/apt/sources.list.d/devel:kubic:libcontainers:stable.list'
+sudo sh -c 'echo "deb https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable:/cri-o:/'$VERSION'/'$OS'/ /" > /etc/apt/sources.list.d/devel:kubic:libcontainers:stable:cri-o:'$VERSION'.list'
 
-mkdir -p /usr/share/keyrings
-sudo sh -c 'curl -L https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/xUbuntu_22.04/Release.key | gpg --dearmor -o /usr/share/keyrings/libcontainers-archive-keyring.gpg'
-sudo sh -c 'curl -L https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable:/cri-o:/1.19/xUbuntu_22.04/Release.key | gpg --dearmor -o /usr/share/keyrings/libcontainers-crio-archive-keyring.gpg'
+curl -L https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/$OS/Release.key | sudo apt-key add -
+curl -L https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable:/cri-o:/$VERSION/$OS/Release.key | sudo apt-key add -
+
+# R
+# add the signing key (by Michael Rutter) for these repos
+# To verify key, run gpg --show-keys /etc/apt/trusted.gpg.d/cran_ubuntu_key.asc
+# Fingerprint: 298A3A825C0D65DFD57CBB651716619E084DAB9
+sudo sh -c 'wget -qO- https://cloud.r-project.org/bin/linux/ubuntu/marutter_pubkey.asc | tee -a /etc/apt/trusted.gpg.d/cran_ubuntu_key.asc'
+# add the R 4.0 repo from CRAN -- adjust 'focal' to 'groovy' or 'bionic' as needed
+sudo add-apt-repository "deb https://cloud.r-project.org/bin/linux/ubuntu $(lsb_release -cs)-cran40/" -y
+sudo add-apt-repository ppa:c2d4u.team/c2d4u4.0+ -y
+sudo apt list --upgradable
+
+# VScode
+# sudo sh -c 'echo "deb [arch=amd64,arm64,armhf] http://packages.microsoft.com/repos/code stable main" > /etc/apt/sources.list.d/vscode.list'
+
+# =====================================================================================
+# 安裝apt套件
+# =====================================================================================
 
 sudo apt install apt-file -y -f
 sudo apt-file update
@@ -112,14 +134,6 @@ sudo apt-get install sqlitebrowser -y -f
 sudo apt update -qq
 # install two helper packages we need
 sudo apt install --no-install-recommends software-properties-common dirmngr -y -f
-# add the signing key (by Michael Rutter) for these repos
-# To verify key, run gpg --show-keys /etc/apt/trusted.gpg.d/cran_ubuntu_key.asc
-# Fingerprint: 298A3A825C0D65DFD57CBB651716619E084DAB9
-sudo sh -c 'wget -qO- https://cloud.r-project.org/bin/linux/ubuntu/marutter_pubkey.asc | tee -a /etc/apt/trusted.gpg.d/cran_ubuntu_key.asc'
-# add the R 4.0 repo from CRAN -- adjust 'focal' to 'groovy' or 'bionic' as needed
-sudo add-apt-repository "deb https://cloud.r-project.org/bin/linux/ubuntu $(lsb_release -cs)-cran40/" -y
-sudo add-apt-repository ppa:c2d4u.team/c2d4u4.0+ -y
-
 sudo apt-get install libatlas3-base -y -f
 sudo apt-get install libopenblas-base -y -f
 sudo apt-get install r-base r-base-dev -y -f
@@ -281,6 +295,12 @@ sudo apt install zfsutils-linux -y -f
 
 # cri-o
 sudo apt-get install cri-o cri-o-runc -y -f
+sudo systemctl daemon-reload
+sudo systemctl enable crio
+sudo systemctl start crio
+sudo apt install containernetworking-plugins -y -f
+sudo systemctl restart crio
+sudo apt install cri-tools -y -f
 
 # PDF
 sudo apt install pdftk -y -f
@@ -312,6 +332,10 @@ flatpak update -y
 # bin/unittests
 # make install
 # cd ../../
+
+# 下載私有軟體
+cd packaged
+curl -LO https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 
 # 安裝私有軟體
 sudo dpkg -i packaged/*.deb
@@ -450,3 +474,4 @@ cd ..
 
 sudo rm -rf PyCoRAM/ onnx/ PyCoRAM/ ipgen/ hardcheck/ veriloggen/ dulwich/ slang/ mulpy/
 sudo apt autoremove -y
+sudo apt clean
