@@ -40,7 +40,7 @@ sudo apt-get -y install podman
 # Minikube
 cd packaged
 curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube_latest_amd64.deb
-dpkg -i minikube_latest_amd64.deb
+sudo dpkg -i minikube_latest_amd64.deb
 cd ..
 minikube start --cpus 6 --force --driver=podman --container-runtime=cri-o --download-only=true
 minikube config set driver podman
