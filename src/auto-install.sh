@@ -64,7 +64,10 @@ sudo add-apt-repository ppa:c2d4u.team/c2d4u4.0+ -y
 sudo apt list --upgradable
 
 # VScode
-# sudo sh -c 'echo "deb [arch=amd64,arm64,armhf] http://packages.microsoft.com/repos/code stable main" > /etc/apt/sources.list.d/vscode.list'
+wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
+sudo install -D -o root -g root -m 644 packages.microsoft.gpg /etc/apt/keyrings/packages.microsoft.gpg
+sudo sh -c 'echo "deb [arch=amd64,arm64,armhf signed-by=/etc/apt/keyrings/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main" > /etc/apt/sources.list.d/vscode.list'
+rm -f packages.microsoft.gpg
 
 # =====================================================================================
 # 安裝apt套件
@@ -339,6 +342,7 @@ curl -LO https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.d
 
 # 安裝私有軟體
 sudo dpkg -i packaged/*.deb
+sudo apt install -f
 
 # VS code Atom Thnem
 code --install-extension akamud.vscode-theme-onedark
