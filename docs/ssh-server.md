@@ -225,13 +225,13 @@ rsync 參數 來源檔案 目的檔案
 目前腳本所使用的備份，不會將資料刪除：
 
 ```bash
-rsync  -e 'ssh -p 2024' -arvhz --progress /var/lib/gitlab/ atca@192.168.122.102:/var/lib/gitlab/
+rsync -e 'ssh -p <port>' -arvhi --progress --partial --append /var/lib/gitlab/  <user>@<host>:/var/lib/gitlab/
 ```
 
 同步刪除指令
 
 ```bash
-sudo rsync -e 'ssh -p 2024' -arvhz --progress --delete /var/lib/gitlab/ root@192.168.122.102:/var/lib/gitlab/
+rsync -e 'ssh -p <port>' -arvhi --progress --delete --partial --append /var/lib/gitlab/  <user>@<host>:/var/lib/gitlab/
 ```
 
 ## References
