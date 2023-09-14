@@ -173,6 +173,10 @@ sudo apt install imagemagick -y -f
 sudo apt install openjdk-17-jre-headless openjdk-17-jre -y -f
 sudo apt install libxrender1 libxtst6 libxi6 libxext6 -y -f
 
+# Print Driver
+sudo add-apt-repository ppa:michael-gruz/canon-trunk  -y -f
+sudo apt-get update
+
 # Latex
 sudo apt install texlive-full -y -f
 sudo apt install texlive -y -f
