@@ -1,0 +1,23 @@
+# atca-system
+
+sudo netplan apply
+sleep 10
+sudo route del -net 10.0.0.0 gw 0.0.0.0 netmask 255.255.255.0 metric 0
+sudo route del -net 10.1.1.0 gw 0.0.0.0 netmask 255.255.255.0 metric 0
+sudo route del -net 10.2.2.0 gw 0.0.0.0 netmask 255.255.255.0 metric 0
+sudo route del -net 10.50.50.0 gw 0.0.0.0 netmask 255.255.255.0 metric 425
+sudo route del -net 0.0.0.0 gw 10.50.50.1 netmask 0.0.0.0 metric 20425
+sudo route del -net 50.0.0.0 gw 0.0.0.0 netmask 255.255.255.0 metric 0
+sudo route del -net 192.168.122.0 gw 0.0.0.0 netmask 255.255.255.0 metric 0
+
+sudo route add -net 10.0.0.0 netmask 255.255.255.0 gw 10.10.10.1 metric 0
+sudo route add -net 10.1.1.0 netmask 255.255.255.0 gw 10.1.1.1 metric 0
+sudo route add -net 10.2.2.0 netmask 255.255.255.0 gw 10.2.2.1 metric 0
+# sudo route add -net 10.20.20.0 netmask 255.255.255.0 gw 10.10.10.1 metric 0
+# sudo route add -net 10.30.30.0 netmask 255.255.255.0 gw 10.10.10.1 metric 0
+sudo route add -net 10.50.50.0 netmask 255.255.255.0 gw 10.50.50.1 metric 0
+sudo route add -net 50.0.0.0 netmask 255.255.255.0 gw 50.0.0.1 metric 0
+sudo route add -net 192.168.122.0 netmask 255.255.255.0 gw 192.168.122.1 metric 0
+# sudo route add -net 192.168.1.0 netmask 255.255.255.0 gw 10.10.10.1 metric 0
+
+route -n
