@@ -6,6 +6,7 @@ docker exec -t gitlab rm -rf /var/lib/gitlab/data/backups/repositories
 docker exec -t gitlab rm /opt/gitlab/embedded/service/gitlab-rails/tmp/backup_restore.pid
 docker exec -t gitlab gitlab-backup create  # 在更新前先進行備份
 # sudo rsync -e 'ssh -p 2023' -arvhz --progress --delete /var/lib/gitlab/data/backups/ timmy@nas.atcatw.org:/mnt/NAS/backup/gitlab/  # 異地備援
+# sudo rsync -e 'ssh -p 2023' -arvhi --progress --delete --partial --append /var/lib/gitlab/ atca@docker.system.org:/var/lib/gitlab/
 
 helm repo add gitlab https://charts.gitlab.io
 helm repo add traefik https://traefik.github.io/charts
