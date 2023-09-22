@@ -12,10 +12,16 @@ Port 22
 PasswordAuthentication yes
 ```
 
-重新啟動SSH伺服器跟SSH。
+重新啟動SSH伺服器跟SSH，此為較為老或者舊Linux系統為止使用，於 Ubuntu 18.04 淘汰吧？
 
 ```bash
 /etc/init.d/ssh restart
+```
+
+或者使用以下指令，下列指令為新的管控服務的功能與操作方式，建議使用此：
+
+```bash
+sudo systemctl restart sshd 
 ```
 
 可以透過 `hostname` 查詢IP：
