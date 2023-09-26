@@ -169,6 +169,12 @@ sudo apt-get install libreoffice libreoffice-common -y -f
 sudo apt install libtiff-dev libpng-dev -y -f
 sudo apt install imagemagick -y -f
 
+# 網路工具
+sudo apt install inetutils-traceroute -y -f
+
+# 日誌伺服器
+sudo apt install rsyslog -y -f
+
 # Java
 sudo apt install openjdk-17-jre-headless openjdk-17-jre -y -f
 sudo apt install libxrender1 libxtst6 libxi6 libxext6 -y -f
