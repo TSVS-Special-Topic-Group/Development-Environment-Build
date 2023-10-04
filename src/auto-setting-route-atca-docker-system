@@ -16,7 +16,7 @@ sudo route add -net 10.10.10.0 netmask 255.255.255.0 gw 10.1.1.1 metric 0
 sudo route add -net 10.20.20.0 netmask 255.255.255.0 gw 10.1.1.1 metric 0
 sudo route add -net 10.30.30.0 netmask 255.255.255.0 gw 10.1.1.1 metric 0
 sudo route add -net 10.40.40.0 netmask 255.255.255.0 gw 10.1.1.1 metric 0
-sudo route add -net 10.50.50.0 netmask 255.255.255.0 gw 10.50.50.1 metric 0
+sudo route add -net 10.50.50.0 netmask 255.255.255.0 gw 10.1.1.1 metric 0
 sudo route add -net 192.10.0.0 netmask 255.255.255.0 gw 10.1.1.1 metric 0
 
 route -n
