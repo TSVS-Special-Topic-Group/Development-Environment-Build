@@ -188,3 +188,5 @@ pytube
 torch
 torchvision
 torchaudio
+
+psutil

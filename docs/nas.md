@@ -7,6 +7,7 @@
   - [前言](#前言)
   - [環境佈署](#環境佈署)
   - [安裝 TrueNAS](#安裝-truenas)
+  - [安裝 bashtop](#安裝-bashtop)
   - [網路設定](#網路設定)
     - [Libvirt 介紹](#libvirt-介紹)
     - [NAT Mode](#nat-mode)
@@ -82,6 +83,40 @@ sudo adduser $USER libvirt-qemu
 基本上安裝要下載 `iso` 映像檔，然後使用 QEMU 將檔案呼叫出來。
 
 基本安裝教學可以參考 [QEMU-KVM 教學](https://github.com/twtrubiks/linux-note/tree/master/QEMU-KVM-tutorial) ，裡面講的相當實用，可惜在網路設定方面比較沒有琢磨。
+
+## 安裝 bashtop
+
+bashtop 是一個精美而且強大的指令環境監視器，可以在指令或者 bash 的情況下即時與動態的顯示電腦狀態，如果希望可以使用 ssh 連線檢視動態效能的話，推薦使用此軟體。
+
+因為 TrueNAS 因為並未內建 `pip` ，但特別的是有內建 Python3 ，因此要自己重新下載安裝 `pip` ，建議統一在 `root` 安裝 `pip` 可以提供其他使用者使用。
+
+```bash
+wget https://bootstrap.pypa.io/get-pip.py
+```
+
+安裝 `pip` ：
+
+```bash
+sudo python get-pip.py
+```
+
+基本上這樣操作就可以把所有 `pip` 或者安裝的軟體都安裝好，速度也蠻快的，但就需要網際網路這樣。接下來安裝環境：
+
+```bash
+sudo python3 -m ensurepip
+sudo python3 -m pip install psutil
+```
+
+接下來複製儲存庫到 `/usr/lib/` ：
+
+```bash
+cd /usr/lib/
+git clone https://github.com/aristocratos/bashtop.git
+cd /usr/bin/
+ln -s /usr/lib/bashtop/bashtop bashtop
+```
+
+接下來使用 `bashtop` 就可以直接執行喔。另外，放在 `/usr/lib/` 提供其他 User 也可以使用喔，但權限的測試就需要各位自己嘗試設定了。
 
 ## 網路設定
 

@@ -46,6 +46,7 @@ docker run --cpus=6 --cpuset-cpus 0-5 -d \
 # export HTTPS_PROXY=https://<proxy hostname:port>
 # export NO_PROXY=localhost,127.0.0.1,10.96.0.0/12,192.168.59.0/24,192.168.49.0/24,192.168.39.0/24,10.0.0.0/24,10.1.1.0/24,10.2.2.0/24,50.0.0.0/24
 
+#minikube config set rootless true
 minikube start --cpus 6 --force --driver=podman --container-runtime=cri-o --download-only=true
 helm repo update
 

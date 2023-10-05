@@ -111,6 +111,16 @@ sudo apt-get install python3-tk -y -f
 
 # Podman
 sudo apt-get install podman -y -f
+sudo apt install conntrack -y -f
+
+# cri-o
+sudo apt-get install cri-o cri-o-runc -y -f
+sudo systemctl daemon-reload
+sudo systemctl enable crio
+sudo systemctl start crio
+sudo apt install containernetworking-plugins -y -f
+sudo systemctl restart crio
+sudo apt install cri-tools -y -f
 
 # QEMU
 sudo apt install qemu qemu-utils qemu-kvm -y -f
@@ -131,6 +141,11 @@ sudo apt install --install-recommends winehq-stable -y -f
 
 # SQL
 sudo apt-get install sqlitebrowser -y -f
+
+# bashtop-monitor
+sudo add-apt-repository ppa:bashtop-monitor/bashtop -y
+sudo apt update
+sudo apt install bashtop -y -f
 
 # R
 # update indices
@@ -305,15 +320,6 @@ sudo apt install xfsprogs zfsutils-linux btrfs-progs f2fs-tools exfat-fuse exfat
 # RAID
 sudo apt install mdadm -y -f
 sudo apt install zfsutils-linux -y -f
-
-# cri-o
-sudo apt-get install cri-o cri-o-runc -y -f
-sudo systemctl daemon-reload
-sudo systemctl enable crio
-sudo systemctl start crio
-sudo apt install containernetworking-plugins -y -f
-sudo systemctl restart crio
-sudo apt install cri-tools -y -f
 
 # PDF
 sudo apt install pdftk -y -f
