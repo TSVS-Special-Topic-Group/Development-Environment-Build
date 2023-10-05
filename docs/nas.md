@@ -8,6 +8,7 @@
   - [環境佈署](#環境佈署)
   - [安裝 TrueNAS](#安裝-truenas)
   - [安裝 bashtop](#安裝-bashtop)
+  - [NFS mount](#nfs-mount)
   - [網路設定](#網路設定)
     - [Libvirt 介紹](#libvirt-介紹)
     - [NAT Mode](#nat-mode)
@@ -117,6 +118,59 @@ ln -s /usr/lib/bashtop/bashtop bashtop
 ```
 
 接下來使用 `bashtop` 就可以直接執行喔。另外，放在 `/usr/lib/` 提供其他 User 也可以使用喔，但權限的測試就需要各位自己嘗試設定了。
+
+## NFS mount
+
+需要安裝以下套件：
+
+```bash
+sudo apt install nfs-common
+sudo apt-get install cifs-utils sshfs
+sudo apt install autofs
+```
+
+之後呢進行掛載，基本上參數都差不多，但可以透過 `nosuid` 、 `noexec` 、 `nodev` 、 `rw -o bg` 、 `soft` 、 `rsize=1024` 、 `wsize=1024` 等針對掛載進行設定。
+
+```bash
+sudo mount -t nfs -o nosuid,noexec,nodev,rw -o bg,soft,rsize=1024,wsize=1024 10.1.1.178:/mnt/NAS/timmy /home/timmy/test-nas-nfs
+```
+
+另外，可以使用 autoufs 進行自動掛載的功能，提供需要使用時自動的掛載檔案與目錄的指定位置，其中分成兩個資料，一個是控制有哪些設定檔案要進行掛載的主要設定檔 `/etc/auto.master` ，一個是設定哪些目錄需要掛載的掛載設定檔，可以依照需求放在指定位置。
+
+主要設定檔格式：
+
+```config
+自動掛載根目錄 目錄設定檔
+```
+
+\*註：自動掛載根目錄不需要存在，因為 `autofs` 會自動建立，如果建立會有出錯的問題。
+
+因為有提供自動尋找的功能，所以可以統一放在 `/etc/auto.master.d/` 。在 `/etc/auto.master` 增加的內容：
+
+```config
+/home/timmy /etc/auto.master.d/auto.nfs
+```
+
+我們這邊使用 `sudo nano /etc/auto.master.d/auto.nfs` 加入一個新的檔案 `auto.nfs` ，格式為以下：
+
+```bash
+/local/path/folder -參數  <hostname>:/path/folder
+```
+
+選項與參數：
+
+- 本地端次目錄：指的就是在 `/etc/auto.master` 內指定的目錄之次目錄
+- -掛載參數：可以使用 `nosuid` 、 `noexec` 、 `nodev` 、 `rw -o bg` 、 `soft` 、 `rsize=1024` 、 `wsize=1024` 等參數，也可以不用使用。
+- 伺服器所提供的目錄： 例如 192.168.100.254:/home/public 等
+
+並寫上以下內容：
+
+```bash
+timmy         -bg,soft,rw,rsize=32768,wsize=32768 10.1.1.178:/mnt/NAS/timmy
+treeocean     -bg,soft,rw,rsize=32768,wsize=32768 10.1.1.178:/mnt/NAS/treeocean
+nquatcc       -bg,soft,rw,rsize=32768,wsize=32768 10.1.1.178:/mnt/NAS/nquatcc
+timmy61109    -bg,soft,rw,rsize=32768,wsize=32768 10.1.1.178:/mnt/NAS/Users/timmy61109
+```
 
 ## 網路設定
 
