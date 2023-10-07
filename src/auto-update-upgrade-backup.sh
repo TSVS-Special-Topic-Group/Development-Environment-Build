@@ -29,7 +29,7 @@ sudo dpkg -i minikube_latest_amd64.deb
 docker pull gitlab/gitlab-ce:latest
 
 docker run --cpus=6 --cpuset-cpus 0-5 -d \
-    --publish 8880:80 \
+    --publish 80:80 \
     --publish 443:443 \
     --publish 22:22 \
     --publish 25:25 \
@@ -46,14 +46,8 @@ docker run --cpus=6 --cpuset-cpus 0-5 -d \
 # export HTTPS_PROXY=https://<proxy hostname:port>
 # export NO_PROXY=localhost,127.0.0.1,10.96.0.0/12,192.168.59.0/24,192.168.49.0/24,192.168.39.0/24,10.0.0.0/24,10.1.1.0/24,10.2.2.0/24,50.0.0.0/24
 
-#minikube config set rootless true
-minikube start --cpus 6 --force --driver=podman --container-runtime=cri-o --download-only=true
+minikube start --cpus 6 --driver=kvm2
 helm repo update
-
-# podman machine init --cpus 2 --memory 2048 --disk-size 20
-# podman machine start
-# podman system connection default podman-machine-default-root
-# podman info
 
 kubectl create namespace gitlab
 # helm install --namespace gitlab gitlab-runner -f gitlab-values.yaml gitlab/gitlab-runner
