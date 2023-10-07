@@ -35,18 +35,37 @@ sudo apt-get update
 sudo apt-get install -y kubectl
 
 # Podman
-sudo apt-get -y install podman
+sudo apt-get install podman -y -f
+sudo apt install conntrack -y -f
+
+# cri-o
+sudo apt install apt-transport-https ca-certificates curl gnupg2 software-properties-common -y
+OS=xUbuntu_22.04
+VERSION=1.28
+sudo sh -c 'echo "deb https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/'$OS'/ /" > /etc/apt/sources.list.d/devel:kubic:libcontainers:stable.list'
+sudo sh -c 'echo "deb https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable:/cri-o:/'$VERSION'/'$OS'/ /" > /etc/apt/sources.list.d/devel:kubic:libcontainers:stable:cri-o:'$VERSION'.list'
+
+curl -L https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/$OS/Release.key | sudo apt-key add -
+curl -L https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable:/cri-o:/$VERSION/$OS/Release.key | sudo apt-key add -
+
+sudo apt-get install cri-o cri-o-runc -y -f
+sudo systemctl daemon-reload
+sudo systemctl enable crio
+sudo systemctl start crio
+sudo apt install containernetworking-plugins -y -f
+sudo systemctl restart crio
+sudo apt install cri-tools -y -f
 
 # Minikube
 cd packaged
 curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube_latest_amd64.deb
 sudo dpkg -i minikube_latest_amd64.deb
 cd ..
-minikube start --cpus 6 --force --driver=podman --container-runtime=cri-o --download-only=true
+minikube start --cpus 6 --driver=kvm2
 minikube config set driver podman
 
 # Helm
-snap install helm --classic
+sudo snap install helm --classic
 
 # Start Use
 helm repo add gitlab https://charts.gitlab.io
