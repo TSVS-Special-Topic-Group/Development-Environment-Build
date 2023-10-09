@@ -180,6 +180,11 @@ sudo apt-get install obs-studio -y -f
 # Libreoffice
 sudo apt-get install libreoffice libreoffice-common -y -f
 
+# NFS
+sudo apt install nfs-common -y -f
+sudo apt-get install cifs-utils sshfs -y -f
+sudo apt install autofs -y -f
+
 # ImageMagick
 sudo apt install libtiff-dev libpng-dev -y -f
 sudo apt install imagemagick -y -f
