@@ -62,6 +62,8 @@
       - [設定使用者的設定檔](#設定使用者的設定檔)
       - [設定系統的設定檔](#設定系統的設定檔)
   - [DDclient](#ddclient)
+  - [GitLab CI](#gitlab-ci)
+  - [GitLab Agent](#gitlab-agent)
   - [參考資料](#參考資料)
 
 ## 系統環境
@@ -258,6 +260,7 @@ docker run -d --publish 443:443 --publish 80:80 --publish 22:22 --publish 25:25 
 ```
 
 #### GitLab強制導向https
+
 如果要將GitLab強至導向https作為瀏覽，請設定`gitlab.rb`所放置檔案的位置，如果你是使用容器的話。
 
 請在`gitlab.rb`裡面加入這樣的行句或者找出來編輯也可以，使用的是GitLab-CE整合的Let's Encrypt的功能，可以自動產生與更新憑證。
@@ -376,6 +379,7 @@ exit
 - `/etc/gitlab/gitlab.rb`:伺服器的設定檔。
 
 ###### GitLab開始備份
+
 首先要進入到容器裡面。
 
 ```
@@ -451,7 +455,9 @@ drwxr-xr-x 20 root root   4096 Apr 25 08:59 ../
 如果是在容器內部進行還原，請到容器所存放的資料卷底下去複製出來並轉移到要還原的資料庫底下。
 
 ##### GitLab還原
+
 ###### GitLab還原須知
+
 請確定備份的伺服器與還原的伺服器的版本要一致，如果不一致請將一方退版本後讓版本一致再進行還原。
 
 要還原備份，您還需要還原`/etc/gitlab/gitlab-secrets.json`或`/home/git/gitlab/.secret`。裡面有資料庫加密的金鑰、CI/CD以及雙重驗證的相關資料。因此如果你無法連同這兩個一起回覆的話，開啟雙重驗證的使用者與GitLab Runner將無法使用你的伺服器。
@@ -1178,6 +1184,18 @@ sudo ddclient -daemon=0 -debug -verbose -noquiet
 SUCCESS:  updating ddns.example.com: good: IP address set to 1.2.3.4
 ```
 
+## GitLab CI
+
+需要經過大量測試與製作相對應檢測檔案與環境，才會可以順利檢測完成。
+
+突然覺得如果要完整寫，應該要寫很東西才可以完成。
+
+## GitLab Agent
+
+GitLab Agent 不需要使用GCP也是可以使用，可以使用 minikube 也可以達到，而且也是很簡單，尤其現在都改用 Helm 了，目前也未看到 Docker 選項出來。
+
+![](assets/2023-10-09-13-37-16.png)
+
 ## 參考資料
 
 - Docker
@@ -1242,3 +1260,47 @@ SUCCESS:  updating ddns.example.com: good: IP address set to 1.2.3.4
 - podman
   - [podman.io](https://podman.io/)
   - [Podman Installation Instructions](https://podman.io/getting-started/installation)
+- GitLab CI
+  - https://gitlab.atcatw.org/help/user/clusters/agent/gitops/agent.md#gitops-configuration-reference
+  - https://chengweichen.com/2021/12/learn-cicd-with-auto-devops.html
+  - https://chengweichen.com/2022/02/learn-cicd-with-auto-devops-part4.html
+  - https://docs.gitlab.com/ee/user/packages/container_registry/build_and_push_images.html
+  - https://docs.gitlab.com/ee/ci/docker/using_docker_build.html
+  - https://docs.gitlab.com/ee/user/project/releases/
+  - https://docs.gitlab.com/charts/installation/cloud/index.html
+  - https://docs.gitlab.com/ee/user/clusters/agent/ci_cd_workflow.html#related-topics
+  - https://gitlab.atcatw.org/help/user/clusters/agent/ci_cd_workflow.md#authorize-the-agent
+  - https://www.pydocstyle.org/en/stable/usage.html#cli-usage
+  - https://docs.gitlab.com/ee/ci/docker/using_docker_images.html
+- GitLab Agent
+  - https://cloud.yandex.com/en/docs/managed-kubernetes/operations/applications/gitlab-agent
+  - https://youtu.be/sEBnuhzYD2I?si=tSx1EUeR3j3ndBQa
+  - https://www.youtube.com/watch?v=Sr3X5-O9HWA&t=541s
+  - https://www.youtube.com/watch?v=QRR3WuwnxXE&t=407s
+- Python Test packages
+  - https://pypi.org/project/coverage/
+  - https://coverage.readthedocs.io/en/7.3.2/#quick-start
+  - https://coverage.readthedocs.io/en/7.3.2/changes.html
+  - https://github.com/PyCQA/pydocstyle/issues/553
+  - https://pylint.readthedocs.io/en/latest/user_guide/messages/refactor/useless-object-inheritance.html
+  - https://stackoverflow.com/questions/4341746/how-do-i-disable-a-pylint-warning
+  - https://stackoverflow.com/questions/66946253/why-do-the-list-function-and-list-literals-act-differently
+  - https://pylint.readthedocs.io/en/latest/user_guide/messages/refactor/use-list-literal.html
+  - https://github.com/PyCQA/pycodestyle/issues/953
+  - https://ashine02.medium.com/flake8-%E9%8C%AF%E8%AA%A4%E7%A2%BC%E5%88%97%E8%A1%A8-e842e3ee14aa
+  - https://stackoverflow.com/questions/57019408/python-pep8-hanging-indent-error-message
+  - https://www.flake8rules.com/rules/E131.html
+  - [introduction to tox (beginner - intermediate) anthony explains #043](https://youtu.be/75WBE_qbpGk)
+  - [Need type annotation for variable in python 3.5 code](https://stackoverflow.com/questions/44615612/need-type-annotation-for-variable-in-python-3-5-code)
+  - [distutils.setup cmdclass type annotation problem](https://github.com/python/typeshed/issues/1681)
+  - [Type hints cheat sheet](https://mypy.readthedocs.io/en/stable/cheat_sheet_py3.html)
+  - https://pylint.readthedocs.io/en/latest/user_guide/messages/refactor/useless-object-inheritance.html
+- Python 依賴說明
+  - https://pip.pypa.io/en/latest/topics/dependency-resolution/#reduce-the-number-of-versions-pip-is-trying-to-use
+  - https://stackoverflow.com/questions/8795617/how-to-pip-install-a-package-with-min-and-max-version-range
+- helmfile
+  - https://helmfile.readthedocs.io/en/latest/#configuration
+  - https://github.com/roboll/helmfile/blob/master/docs/writing-helmfile.md
+  - https://github.com/helmfile/helmfile
+  - https://medium.com/swlh/how-to-declaratively-run-helm-charts-using-helmfile-ac78572e6088
+  - https://helmfile.readthedocs.io/en/latest/
