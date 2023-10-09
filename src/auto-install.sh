@@ -362,6 +362,7 @@ cd packaged
 curl -LO https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 
 # 安裝私有軟體
+cd ..
 sudo dpkg -i packaged/*.deb
 sudo apt install -f
 
